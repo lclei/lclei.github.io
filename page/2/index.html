@@ -484,19 +484,19 @@
 
 
   
-    <article id="post-wbcurrency" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-inserter" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/09/wbcurrency/">并发服务器</a>
+      <a class="article-title" href="/2019/12/09/inserter/">插入迭代器</a>
     </h1>
   
 
         
-        <a href="/2019/12/09/wbcurrency/" class="archive-article-date">
+        <a href="/2019/12/09/inserter/" class="archive-article-date">
   	<time datetime="2019-12-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-09</time>
 </a>
         
@@ -504,21 +504,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li>fork进程</li>
-<li>IO复用</li>
-<li>线程</li>
-</ol>
-<hr>
-<h2 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h2><p>主进程监听，在循环中接受连接请求，当连接建立后，fork一个子进程，在子进程中进行处理。</p>
-<ul>
-<li><p>主进程：listen -&gt; while(1) -&gt; accept -&gt; fork -&gt; close connfd</p>
-</li>
-<li><p>子进程：close listenfd -&gt; handle -&gt; close connfd</p>
-</li>
-</ul>
+        <h1 id="插入迭代器"><a href="#插入迭代器" class="headerlink" title="插入迭代器"></a>插入迭代器</h1><p>接受一个容器，生成一个迭代器，实现向给定容器插入元素</p>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><blockquote>
+<p>it = t</p>
+</blockquote>
+<p>在it指定的当前位置插入值t，且根据插入迭代器的类型不同，分别调用c.push_back(t), c.oush_front(t), c.insert(t,p)</p>
+<blockquote>
+<p>*it, it++, ++it</p>
+</blockquote>
+<p>有这些形式，但是什么都不做</p>
         
-          <a class="article-more-a" href="/2019/12/09/wbcurrency/#more">more >></a>
+          <a class="article-more-a" href="/2019/12/09/inserter/#more">more >></a>
         
       
 
@@ -532,11 +528,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">net</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">cpp</a>
         		</li>
       		
 		</ul>
@@ -546,7 +538,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/09/wbcurrency/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/12/09/inserter/">展开全文 >></a>
         </p>
       
 
