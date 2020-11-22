@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>net on lclei blog</title>
+    <link>http://localhost:1313/tags/net/</link>
+    <description>Recent content in net on lclei blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 11 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>web服务器</title>
+      <link>http://localhost:1313/post/webserver/</link>
+      <pubDate>Wed, 11 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/webserver/</guid>
+      <description>&lt;p&gt;首先创建几个函数以方便我们调用&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;open_clinetfd: 创建一个网络socket，作为客户端，并且尝试连接主机&lt;/li&gt;
+&lt;li&gt;open_listenfd: 创建socket，作为主机，并开始监听&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>并发服务器</title>
+      <link>http://localhost:1313/post/wbcurrency/</link>
+      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/wbcurrency/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;fork进程&lt;/li&gt;
+&lt;li&gt;IO复用&lt;/li&gt;
+&lt;li&gt;线程&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;多进程&#34;&gt;多进程&lt;/h2&gt;
+&lt;p&gt;主进程监听，在循环中接受连接请求，当连接建立后，fork一个子进程，在子进程中进行处理。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;主进程：listen -&amp;gt; while(1) -&amp;gt; accept -&amp;gt; fork -&amp;gt; close connfd&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;子进程：close listenfd -&amp;gt; handle -&amp;gt; close connfd&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>socket编程</title>
+      <link>http://localhost:1313/post/socket/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/socket/</guid>
+      <description>&lt;h1 id=&#34;socket编程&#34;&gt;socket编程&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://upload-images.jianshu.io/upload_images/13808395-a7a891ec7646660b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;思维导图.jpg&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

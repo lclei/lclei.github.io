@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>CodeWar 题2 - lclei blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="lclei" /><meta name="description" content="CodeWar::DoubleCola CodeWar上的一道题
+ Sheldon, Leonard, Penny, Rajesh and Howard are in the queue for a &amp;ldquo;Double Cola&amp;rdquo; drink vending machine; there are no other people in the queue. The first one in the queue (Sheldon) buys a can, drinks it and doubles! The resulting two Sheldons go to the end of the queue. Then the next in the queue (Leonard) buys a can, drinks it and gets to the end of the queue as two Leonards, and so on.
+For example, Penny drinks the third can of cola and the queue will look like this:
+ Rajesh, Howard, Sheldon, Sheldon, Leonard, Leonard, Penny, Penny
+ Write a program that will return the name of the person who will drink the n-th cola.
+" /><meta name="keywords" content="lclei, blog, code" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/codewar2/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="CodeWar 题2" />
+<meta property="og:description" content="CodeWar::DoubleCola
+CodeWar上的一道题
+
+Sheldon, Leonard, Penny, Rajesh and Howard are in the queue for a &ldquo;Double Cola&rdquo; drink vending machine; there are no other people in the queue. The first one in the queue (Sheldon) buys a can, drinks it and doubles! The resulting two Sheldons go to the end of the queue. Then the next in the queue (Leonard) buys a can, drinks it and gets to the end of the queue as two Leonards, and so on.
+For example, Penny drinks the third can of cola and the queue will look like this:
+
+Rajesh, Howard, Sheldon, Sheldon, Leonard, Leonard, Penny, Penny
+
+Write a program that will return the name of the person who will drink the n-th cola.
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/codewar2/" />
+<meta property="article:published_time" content="2019-12-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-12-08T00:00:00+00:00" />
+<meta itemprop="name" content="CodeWar 题2">
+<meta itemprop="description" content="CodeWar::DoubleCola
+CodeWar上的一道题
+
+Sheldon, Leonard, Penny, Rajesh and Howard are in the queue for a &ldquo;Double Cola&rdquo; drink vending machine; there are no other people in the queue. The first one in the queue (Sheldon) buys a can, drinks it and doubles! The resulting two Sheldons go to the end of the queue. Then the next in the queue (Leonard) buys a can, drinks it and gets to the end of the queue as two Leonards, and so on.
+For example, Penny drinks the third can of cola and the queue will look like this:
+
+Rajesh, Howard, Sheldon, Sheldon, Leonard, Leonard, Penny, Penny
+
+Write a program that will return the name of the person who will drink the n-th cola.
+">
+<meta itemprop="datePublished" content="2019-12-08T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-12-08T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="521">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="CodeWar 题2"/>
+<meta name="twitter:description" content="CodeWar::DoubleCola
+CodeWar上的一道题
+
+Sheldon, Leonard, Penny, Rajesh and Howard are in the queue for a &ldquo;Double Cola&rdquo; drink vending machine; there are no other people in the queue. The first one in the queue (Sheldon) buys a can, drinks it and doubles! The resulting two Sheldons go to the end of the queue. Then the next in the queue (Leonard) buys a can, drinks it and gets to the end of the queue as two Leonards, and so on.
+For example, Penny drinks the third can of cola and the queue will look like this:
+
+Rajesh, Howard, Sheldon, Sheldon, Leonard, Leonard, Penny, Penny
+
+Write a program that will return the name of the person who will drink the n-th cola.
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">lclei</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">lclei</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">CodeWar 题2</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-12-08 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#codewardoublecola">CodeWar::DoubleCola</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="codewardoublecola">CodeWar::DoubleCola</h1>
+<p>CodeWar上的一道题</p>
+<blockquote>
+<p>Sheldon, Leonard, Penny, Rajesh and Howard are in the queue for a &ldquo;Double Cola&rdquo; drink vending machine; there are no other people in the queue. The first one in the queue (Sheldon) buys a can, drinks it and doubles! The resulting two Sheldons go to the end of the queue. Then the next in the queue (Leonard) buys a can, drinks it and gets to the end of the queue as two Leonards, and so on.</p>
+<p>For example, Penny drinks the third can of cola and the queue will look like this:</p>
+<blockquote>
+<p>Rajesh, Howard, Sheldon, Sheldon, Leonard, Leonard, Penny, Penny</p>
+</blockquote>
+<p>Write a program that will return the name of the person who will drink the n-th cola.</p>
+</blockquote>
+<p>这种前端删除，double后加入后面，自然想到双向队列deque来做</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;deque&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">who_is_next</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">names</span><span class="p">,</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">deque</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span>  <span class="n">q</span><span class="p">;</span>
+  <span class="n">string</span> <span class="n">tmp</span><span class="p">;</span>
+  <span class="kt">long</span> <span class="kt">long</span> <span class="n">i</span><span class="p">;</span>
+  <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">names</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">q</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+  <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">r</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="n">q</span><span class="p">.</span><span class="n">pop_front</span><span class="p">();</span>
+    <span class="n">q</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">tmp</span><span class="p">);</span>
+    <span class="n">q</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">tmp</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>简单的测试能通过，但是最终测试显示超时，果然直接操作队列太慢了，尤其给的input范围</p>
+<blockquote>
+<p>1  ≤  n  ≤  10000000000</p>
+</blockquote>
+<p>所以还需要找到高效的方法，
+考虑整个循环，人数每轮结束后为{5，10，20，40，。。。}，除以人数5之后就是一个二进制数{1,2,4,8,&hellip;}，每一轮结束时的序号为{1,3,15,&hellip;.}，因此我们只需要判断轮次。另外每一轮所处位置也可以通过右移得到</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">who_is_next</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">names</span><span class="p">,</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">r</span><span class="o">--</span><span class="p">;</span>
+  <span class="kt">long</span> <span class="kt">long</span> <span class="n">n</span> <span class="o">=</span> <span class="n">r</span><span class="o">/</span><span class="n">names</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+  <span class="kt">long</span> <span class="kt">long</span> <span class="n">d</span><span class="p">;</span>
+  <span class="kt">long</span> <span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">64</span><span class="p">;</span>
+  <span class="k">while</span><span class="p">(</span><span class="n">i</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>
+    <span class="n">i</span><span class="o">--</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(((</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">&amp;</span><span class="p">((</span><span class="kt">long</span> <span class="kt">long</span><span class="p">)</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="p">))</span><span class="o">&gt;&gt;</span><span class="n">i</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">d</span> <span class="o">=</span> <span class="n">r</span> <span class="o">-</span> <span class="p">(((</span><span class="kt">long</span> <span class="kt">long</span><span class="p">)</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">names</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+  <span class="k">return</span> <span class="n">names</span><span class="p">[</span><span class="n">d</span><span class="o">&gt;&gt;</span><span class="n">i</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>提交结果后看到的优秀解答：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">who_is_next</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">names</span><span class="p">,</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">long</span> <span class="kt">long</span> <span class="n">x</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">names</span><span class="p">.</span><span class="n">size</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">names</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="n">names</span><span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">lclei</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-12-08
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/codewar1/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">codewar 题1</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/codewar3/">
+            <span class="next-text nav-default">codewar 题3</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:lclei@mail.ustc.edu.cn" class="iconfont icon-email" title="email"></a>
+      <a href="https://gitee.com/lclei" class="iconfont icon-gitee" title="gitee"></a>
+      <a href="https://github.com/lclei" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

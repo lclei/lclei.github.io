@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>lambda表达式 - lclei blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="lclei" /><meta name="description" content="lambda表达式 介绍 一个lambda表达式表示一个可调用的代码单元，可以将其理解为一个未命名的内联函数。形式为
+1 2  [capture list](parameter list) -&amp;gt; return type { function body} //必须使用尾置返回   几个特点
+ 必须使用尾置返回 在创建时捕获 只有一行return语句时可省略返回类型，否则默认为void 一般在给算法传递谓词时可以使用 " /><meta name="keywords" content="lclei, blog, code" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/lambda/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="lambda表达式" />
+<meta property="og:description" content="lambda表达式
+介绍
+一个lambda表达式表示一个可调用的代码单元，可以将其理解为一个未命名的内联函数。形式为
+
+
+1
+2
+
+
+[capture list](parameter list) -&gt; return type { function body}
+//必须使用尾置返回
+
+
+几个特点
+
+必须使用尾置返回
+在创建时捕获
+只有一行return语句时可省略返回类型，否则默认为void
+一般在给算法传递谓词时可以使用
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/lambda/" />
+<meta property="article:published_time" content="2019-12-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-12-09T00:00:00+00:00" />
+<meta itemprop="name" content="lambda表达式">
+<meta itemprop="description" content="lambda表达式
+介绍
+一个lambda表达式表示一个可调用的代码单元，可以将其理解为一个未命名的内联函数。形式为
+
+
+1
+2
+
+
+[capture list](parameter list) -&gt; return type { function body}
+//必须使用尾置返回
+
+
+几个特点
+
+必须使用尾置返回
+在创建时捕获
+只有一行return语句时可省略返回类型，否则默认为void
+一般在给算法传递谓词时可以使用
+">
+<meta itemprop="datePublished" content="2019-12-09T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-12-09T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="573">
+
+
+
+<meta itemprop="keywords" content="cpp," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="lambda表达式"/>
+<meta name="twitter:description" content="lambda表达式
+介绍
+一个lambda表达式表示一个可调用的代码单元，可以将其理解为一个未命名的内联函数。形式为
+
+
+1
+2
+
+
+[capture list](parameter list) -&gt; return type { function body}
+//必须使用尾置返回
+
+
+几个特点
+
+必须使用尾置返回
+在创建时捕获
+只有一行return语句时可省略返回类型，否则默认为void
+一般在给算法传递谓词时可以使用
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">lclei</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">lclei</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">lambda表达式</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-12-09 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#lambda表达式">lambda表达式</a>
+      <ul>
+        <li><a href="#介绍">介绍</a></li>
+        <li><a href="#lambda表达式的捕获">lambda表达式的捕获</a></li>
+        <li><a href="#mutable">mutable</a></li>
+        <li><a href="#返回">返回</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="lambda表达式">lambda表达式</h1>
+<h2 id="介绍">介绍</h2>
+<p>一个lambda表达式表示一个可调用的代码单元，可以将其理解为一个未命名的内联函数。形式为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[capture list](parameter list) -&gt; return type { function body}
+//必须使用尾置返回
+</code></pre></td></tr></table>
+</div>
+</div><p>几个特点</p>
+<ul>
+<li>必须使用尾置返回</li>
+<li>在创建时捕获</li>
+<li>只有一行return语句时可省略返回类型，否则默认为void</li>
+<li>一般在给算法传递谓词时可以使用</li>
+</ul>
+<h2 id="lambda表达式的捕获">lambda表达式的捕获</h2>
+<ul>
+<li>值捕获</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">fun1</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">size_t</span> <span class="n">v1</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span>
+    <span class="k">auto</span> <span class="n">f</span> <span class="o">=</span> <span class="p">[</span><span class="n">v1</span><span class="p">]{</span><span class="k">return</span> <span class="n">v1</span><span class="p">;};</span> <span class="c1">//省略了参数列表
+</span><span class="c1"></span>    <span class="n">v1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">f</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出21</p>
+<ul>
+<li>引用捕获</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">fun2</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">size_t</span> <span class="n">v2</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span>
+    <span class="k">auto</span> <span class="n">f2</span> <span class="o">=</span> <span class="p">[</span><span class="o">&amp;</span><span class="n">v2</span><span class="p">]</span> <span class="p">{</span><span class="k">return</span> <span class="n">v2</span><span class="p">;};</span>
+    <span class="n">v2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">f2</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>将输出0</p>
+<ul>
+<li>隐式捕获
+只在捕获列表里加=（值）或者&amp;（引用），由编译器来推断</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">fun3</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">size_t</span> <span class="n">v3</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span>
+    <span class="k">auto</span> <span class="n">f3</span> <span class="o">=</span> <span class="p">[</span><span class="o">&amp;</span><span class="p">]</span> <span class="p">{</span><span class="k">return</span> <span class="n">v3</span><span class="p">;};</span>
+    <span class="n">v3</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">f3</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出0</p>
+<ul>
+<li>混合捕获
+即在捕获列表开始使用=或者&amp;隐式捕获，再对不同的捕获变量使用显式捕获。此显式捕获必须与开始的隐式捕获不同（值或引用）</li>
+</ul>
+<h2 id="mutable">mutable</h2>
+<p>对于值捕获，lambda表达式不能改变捕获的参数，如</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">fun4</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">size_t</span> <span class="n">v4</span> <span class="o">=</span><span class="mi">21</span><span class="p">;</span>
+    <span class="k">auto</span> <span class="n">f4</span> <span class="o">=</span> <span class="p">[</span><span class="o">=</span><span class="p">]</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span>  <span class="p">{</span><span class="k">return</span> <span class="p">(</span><span class="o">++</span><span class="n">v4</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span><span class="p">;};</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span> <span class="o">&lt;&lt;</span> <span class="n">f4</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>编译错误</p>
+<blockquote>
+<p>error: increment of read-only variable &lsquo;v4'|</p>
+</blockquote>
+<p>可以在参数列表后面加mutable，同时即使没有参数，参数列表也不能省略了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">fun4</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">size_t</span> <span class="n">v4</span> <span class="o">=</span><span class="mi">21</span><span class="p">;</span>
+    <span class="k">auto</span> <span class="n">f4</span> <span class="o">=</span> <span class="p">[</span><span class="o">=</span><span class="p">]</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="k">mutable</span> <span class="p">{</span><span class="k">return</span> <span class="p">(</span><span class="o">++</span><span class="n">v4</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span><span class="p">;};</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span> <span class="o">&lt;&lt;</span> <span class="n">f4</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>而用引用捕获时就不需要了</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">fun4</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">size_t</span> <span class="n">v4</span> <span class="o">=</span><span class="mi">21</span><span class="p">;</span>
+    <span class="k">auto</span> <span class="n">f4</span> <span class="o">=</span> <span class="p">[</span><span class="o">&amp;</span><span class="p">]</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span>  <span class="p">{</span><span class="k">return</span> <span class="p">(</span><span class="o">++</span><span class="n">v4</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span><span class="p">;};</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span> <span class="o">&lt;&lt;</span> <span class="n">f4</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="返回">返回</h2>
+<p>当函数体不是只有一条return语句时需要指定返回类型，且必须用尾置返回类型。</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">lclei</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-12-09
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/cpp/">cpp</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/allocator/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">allocator</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/socket/">
+            <span class="next-text nav-default">socket编程</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:lclei@mail.ustc.edu.cn" class="iconfont icon-email" title="email"></a>
+      <a href="https://gitee.com/lclei" class="iconfont icon-gitee" title="gitee"></a>
+      <a href="https://github.com/lclei" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

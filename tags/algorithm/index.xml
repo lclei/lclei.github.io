@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>algorithm on lclei blog</title>
+    <link>http://localhost:1313/tags/algorithm/</link>
+    <description>Recent content in algorithm on lclei blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 08 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>穷举搜索</title>
+      <link>http://localhost:1313/post/%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/</link>
+      <pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/</guid>
+      <description>&lt;p&gt;实质是创建一个状态树，边建立边剪枝，得到最终状态输出
+步骤有：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;列出表示状态的数据结构&lt;/li&gt;
+&lt;li&gt;列出在状态之间迁移的动作的数据结构&lt;/li&gt;
+&lt;li&gt;列出两个状态转换的所有动作列表&lt;/li&gt;
+&lt;li&gt;创建一个deque存储搜索的状态&lt;/li&gt;
+&lt;li&gt;从deque尾端取出状态，判断是否是最终状态，是的话打印当前deque，进行搜索search，循环所有动作，执行动作searchOnOneAction&lt;/li&gt;
+&lt;li&gt;判断新状态是否有效，有效则加入deque，继续递归调用搜索&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

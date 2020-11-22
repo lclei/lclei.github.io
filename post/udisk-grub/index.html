@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>使用grub创建多系统u盘安装盘 - lclei blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="lclei" /><meta name="description" content="现在装系统都是用u盘安装了，一个u盘只能安装一个系统有些浪费了，因为空间足够大，可以装下好几个iso文件。 在linux环境中，使用dd命令只能制作一个引导盘，且其他空间不能再使用。从网上看用YUMI可以比较方便的制作多系统引导。然而实测发现是linux系统上实在太难用，装WINE也用不了。后来看到grub的方法成功实现了。
+" /><meta name="keywords" content="lclei, blog, code" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/udisk-grub/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="使用grub创建多系统u盘安装盘" />
+<meta property="og:description" content="现在装系统都是用u盘安装了，一个u盘只能安装一个系统有些浪费了，因为空间足够大，可以装下好几个iso文件。
+在linux环境中，使用dd命令只能制作一个引导盘，且其他空间不能再使用。从网上看用YUMI可以比较方便的制作多系统引导。然而实测发现是linux系统上实在太难用，装WINE也用不了。后来看到grub的方法成功实现了。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/udisk-grub/" />
+<meta property="article:published_time" content="2020-11-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-11-15T00:00:00+00:00" />
+<meta itemprop="name" content="使用grub创建多系统u盘安装盘">
+<meta itemprop="description" content="现在装系统都是用u盘安装了，一个u盘只能安装一个系统有些浪费了，因为空间足够大，可以装下好几个iso文件。
+在linux环境中，使用dd命令只能制作一个引导盘，且其他空间不能再使用。从网上看用YUMI可以比较方便的制作多系统引导。然而实测发现是linux系统上实在太难用，装WINE也用不了。后来看到grub的方法成功实现了。">
+<meta itemprop="datePublished" content="2020-11-15T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-11-15T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="820">
+
+
+
+<meta itemprop="keywords" content="linux," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用grub创建多系统u盘安装盘"/>
+<meta name="twitter:description" content="现在装系统都是用u盘安装了，一个u盘只能安装一个系统有些浪费了，因为空间足够大，可以装下好几个iso文件。
+在linux环境中，使用dd命令只能制作一个引导盘，且其他空间不能再使用。从网上看用YUMI可以比较方便的制作多系统引导。然而实测发现是linux系统上实在太难用，装WINE也用不了。后来看到grub的方法成功实现了。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">lclei</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">lclei</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">使用grub创建多系统u盘安装盘</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-11-15 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#u盘分区">u盘分区</a></li>
+        <li><a href="#grub">grub</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>现在装系统都是用u盘安装了，一个u盘只能安装一个系统有些浪费了，因为空间足够大，可以装下好几个iso文件。
+在linux环境中，使用dd命令只能制作一个引导盘，且其他空间不能再使用。从网上看用YUMI可以比较方便的制作多系统引导。然而实测发现是linux系统上实在太难用，装WINE也用不了。后来看到grub的方法成功实现了。</p>
+<p>grub的方法分为两步：</p>
+<ol>
+<li>对u盘分区，拷入iso文件</li>
+<li>安装grub，编辑grub.cfg</li>
+</ol>
+<h2 id="u盘分区">u盘分区</h2>
+<p>首先可以找一找是否有现成的分区软件可以用，比如manjaro-kde自带的KDE partion manager。</p>
+<p>下面还是给出fdisk的命令来复盘整个过程。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">sudo su  <span class="c1"># 提升权限方便后续操作</span>
+fdisk -l <span class="c1"># 查看当前分区，查找到u盘对应的位置，比如/dev/sdb</span>
+mkfs /dev/sdb <span class="c1"># 格式化</span>
+fdisk /dev/sdb <span class="c1"># 分区开始</span>
+d <span class="c1"># 删除原分区</span>
+n <span class="c1"># 新分区</span>
+a <span class="c1"># 增加引导标志</span>
+t <span class="c1"># 更改类型</span>
+w <span class="c1"># 写入保存</span>
+m <span class="c1"># 看help</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">I. Format your USB Flash Drive to use a Single Partition:
+
+    Open a terminal and type sudo su
+    Type fdisk -l (and note which device is your USB Drive)
+    Type fdisk /dev/sdx (replacing x with your actual usb device)
+    Type d (to delete the existing partition)
+    Type n (to create a new partition)
+    Type p (for primary partition)
+    Type 1 (to create the first partition)
+    Press Enter (to use the first cylinder)
+    Press Enter again (to use the default value as the last cylinder)
+    Type a (for active)
+    Type 1 (to mark the first partition active &#34;bootable&#34;)
+    Type t (for partition type)
+    Type c (to use fat32 partition)
+    Type w (to write the changes and close fdisk)
+
+II. Create a Fat32 Filesystem on the USB Flash Drive:
+
+    Type umount /dev/sdx1 (to unmount the mounted partition)
+    Type mkfs.vfat -F 32 -n MULTIBOOT /dev/sdx1 (to format the partition as fat32)
+    Remove and reinsert your USB flash drive, or remount it
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="grub">grub</h2>
+<p>挂载，安装grub</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">mount /dev/sdb1 /mnt/udisk/linux/
+grub-install --root-directory<span class="o">=</span>/mnt/udisk/linux/ --boot-directory<span class="o">=</span>/mnt/udisk/linux/boot/ --no-floppy /dev/sdb
+</code></pre></td></tr></table>
+</div>
+</div><p>grub配置，各linux发行版的grub menu都不太一样，需要从网上查找以及和iso中的文件进行比对，我现在用的manjaro和ubuntu的配置如下，亲测可以使用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">set</span> <span class="nv">timeout</span><span class="o">=</span><span class="m">10</span>
+insmod fat
+<span class="nb">set</span> <span class="nv">default</span><span class="o">=</span><span class="m">0</span>
+loadfont /boot/grub/fonts/unicode.pf2
+<span class="nb">set</span> <span class="nv">gfxmode</span><span class="o">=</span>1920x1080
+<span class="nb">set</span> <span class="nv">theme</span><span class="o">=</span><span class="s2">&#34;/boot/grub/themes/starfield/theme.txt&#34;</span>
+<span class="nb">export</span> theme
+<span class="nb">set</span> <span class="nv">gfxpayload</span><span class="o">=</span>keep
+insmod gfxterm
+insmod vbe
+insmod loopback
+insmod iso9660
+terminal_output gfxterm
+insmod jpeg
+background_image /boot/grub/grub.jpg
+<span class="nv">setmenu_color_normal</span><span class="o">=</span>white/black    
+<span class="nv">setmenu_color_highlight</span><span class="o">=</span>black/light-gray
+<span class="nb">set</span> <span class="nv">USBUUID</span><span class="o">=</span><span class="s2">&#34;306B-1C5B&#34;</span>
+
+menuentry <span class="s2">&#34;manjaro-kde-2012&#34;</span> --class manjaro<span class="o">{</span>
+	<span class="nb">set</span> <span class="nv">isofile</span><span class="o">=</span><span class="s2">&#34;/iso/manjaro-kde-20.1.2-201019-linux58.iso&#34;</span>
+	<span class="nb">set</span> <span class="nv">dri</span><span class="o">=</span><span class="s2">&#34;free&#34;</span>
+    search --no-floppy -f --set<span class="o">=</span>root <span class="nv">$isofile</span>
+    probe -u <span class="nv">$root</span> --set<span class="o">=</span>abc
+    <span class="nb">set</span> <span class="nv">pqr</span><span class="o">=</span><span class="s2">&#34;/dev/disk/by-uuid/</span><span class="nv">$abc</span><span class="s2">&#34;</span>
+    loopback loop <span class="nv">$isofile</span>
+    linux  <span class="o">(</span>loop<span class="o">)</span>/boot/vmlinuz-x86_64 <span class="nv">img_dev</span><span class="o">=</span><span class="nv">$pqr</span> <span class="nv">img_loop</span><span class="o">=</span><span class="nv">$isofile</span> <span class="nv">driver</span><span class="o">=</span><span class="nv">$dri</span> <span class="nv">lang</span><span class="o">=</span>zh_CN
+    initrd <span class="o">(</span>loop<span class="o">)</span>/boot/intel_ucode.img <span class="o">(</span>loop<span class="o">)</span>/boot/initramfs-x86_64.img
+<span class="o">}</span>
+
+menuentry <span class="s2">&#34;Ubuntu2004&#34;</span> <span class="o">{</span>
+    <span class="nb">set</span> <span class="nv">isofile</span><span class="o">=</span><span class="s2">&#34;/iso/ubuntu-20.04.1-desktop-amd64.iso&#34;</span>
+	loopback loop <span class="nv">$isofile</span>
+	linux <span class="o">(</span>loop<span class="o">)</span>/casper/vmlinuz <span class="nv">boot</span><span class="o">=</span>casper iso-scan/filename<span class="o">=</span><span class="nv">$isofile</span> <span class="nv">locale</span><span class="o">=</span>zh_CN.UTF-8
+	initrd <span class="o">(</span>loop<span class="o">)</span>/casper/initrd
+<span class="o">}</span>
+
+menuentry <span class="s2">&#34;System shutdown&#34;</span> --class shutdown <span class="o">{</span>
+<span class="nb">echo</span> <span class="s2">&#34;System shutting down...&#34;</span>
+halt
+<span class="o">}</span>
+
+menuentry <span class="s2">&#34;System restart&#34;</span> --class restart <span class="o">{</span>
+<span class="nb">echo</span> <span class="s2">&#34;System rebooting...&#34;</span>
+reboot
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">lclei</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-11-15
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/linux/">linux</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/webserver/">
+            <span class="next-text nav-default">web服务器</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:lclei@mail.ustc.edu.cn" class="iconfont icon-email" title="email"></a>
+      <a href="https://gitee.com/lclei" class="iconfont icon-gitee" title="gitee"></a>
+      <a href="https://github.com/lclei" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

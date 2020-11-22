@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>lclei blog</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on lclei blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 20 Aug 2017 21:38:52 +0800</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate>
+      
+      <guid>http://localhost:1313/about/</guid>
+      <description>Hugo is a static site engine written in Go.
+It makes use of a variety of open source projects including:
+ Cobra Viper J Walter Weatherman Cast  Learn more and contribute on GitHub.</description>
+    </item>
+    
+    <item>
+      <title>使用grub创建多系统u盘安装盘</title>
+      <link>http://localhost:1313/post/udisk-grub/</link>
+      <pubDate>Sun, 15 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/udisk-grub/</guid>
+      <description>&lt;p&gt;现在装系统都是用u盘安装了，一个u盘只能安装一个系统有些浪费了，因为空间足够大，可以装下好几个iso文件。
+在linux环境中，使用dd命令只能制作一个引导盘，且其他空间不能再使用。从网上看用YUMI可以比较方便的制作多系统引导。然而实测发现是linux系统上实在太难用，装WINE也用不了。后来看到grub的方法成功实现了。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>web服务器</title>
+      <link>http://localhost:1313/post/webserver/</link>
+      <pubDate>Wed, 11 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/webserver/</guid>
+      <description>&lt;p&gt;首先创建几个函数以方便我们调用&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;open_clinetfd: 创建一个网络socket，作为客户端，并且尝试连接主机&lt;/li&gt;
+&lt;li&gt;open_listenfd: 创建socket，作为主机，并开始监听&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>并发服务器</title>
+      <link>http://localhost:1313/post/wbcurrency/</link>
+      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/wbcurrency/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;fork进程&lt;/li&gt;
+&lt;li&gt;IO复用&lt;/li&gt;
+&lt;li&gt;线程&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;多进程&#34;&gt;多进程&lt;/h2&gt;
+&lt;p&gt;主进程监听，在循环中接受连接请求，当连接建立后，fork一个子进程，在子进程中进行处理。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;主进程：listen -&amp;gt; while(1) -&amp;gt; accept -&amp;gt; fork -&amp;gt; close connfd&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;子进程：close listenfd -&amp;gt; handle -&amp;gt; close connfd&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>allocator</title>
+      <link>http://localhost:1313/post/allocator/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/allocator/</guid>
+      <description>allocator #include &amp;lt;memory&amp;gt; allocator&amp;lt;T&amp;gt; a 定义一个名为a的allocator对象，它可以为类型为T的对象分配内存 a.allocate(n) 分配一段原始的、未构造的内存，保存n个类型为T的对象 a.deallocate(p,n) 释放</description>
+    </item>
+    
+    <item>
+      <title>lambda表达式</title>
+      <link>http://localhost:1313/post/lambda/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/lambda/</guid>
+      <description>&lt;h1 id=&#34;lambda表达式&#34;&gt;lambda表达式&lt;/h1&gt;
+&lt;h2 id=&#34;介绍&#34;&gt;介绍&lt;/h2&gt;
+&lt;p&gt;一个lambda表达式表示一个可调用的代码单元，可以将其理解为一个未命名的内联函数。形式为&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[capture list](parameter list) -&amp;gt; return type { function body}
+//必须使用尾置返回
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;几个特点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;必须使用尾置返回&lt;/li&gt;
+&lt;li&gt;在创建时捕获&lt;/li&gt;
+&lt;li&gt;只有一行return语句时可省略返回类型，否则默认为void&lt;/li&gt;
+&lt;li&gt;一般在给算法传递谓词时可以使用&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>socket编程</title>
+      <link>http://localhost:1313/post/socket/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/socket/</guid>
+      <description>&lt;h1 id=&#34;socket编程&#34;&gt;socket编程&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://upload-images.jianshu.io/upload_images/13808395-a7a891ec7646660b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;思维导图.jpg&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>右值引用</title>
+      <link>http://localhost:1313/post/rvalue/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/rvalue/</guid>
+      <description>&lt;h1 id=&#34;右值引用&#34;&gt;右值引用&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;使用&amp;amp;&amp;amp;表示&lt;/li&gt;
+&lt;li&gt;只能绑定到一个将要销毁的对象&lt;/li&gt;
+&lt;li&gt;左值持久，右值短暂&lt;/li&gt;
+&lt;li&gt;将左值转换为对应的右值使用std::move&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>多态 polymorphism</title>
+      <link>http://localhost:1313/post/polymorphism/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/polymorphism/</guid>
+      <description>&lt;h1 id=&#34;多态-polymorphism&#34;&gt;多态 polymorphism&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;一个接口，多种方法&lt;/li&gt;
+&lt;li&gt;使用虚函数实现&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;基类成员函数添加了virtual关键字，该函数在执行时绑定。否则在编译时绑定。所以&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;基类希望其派生类进行覆盖的函数，定义为虚函数&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>守护进程</title>
+      <link>http://localhost:1313/post/daemon/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/daemon/</guid>
+      <description>&lt;h1 id=&#34;守护进程&#34;&gt;守护进程&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;生存期长，常常在系统引导装入时启动，仅在系统关闭时终止&lt;/li&gt;
+&lt;li&gt;没有控制终端&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;如何编写&#34;&gt;如何编写&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;umask(0)&lt;/li&gt;
+&lt;li&gt;调用fork，使父进程exit&lt;/li&gt;
+&lt;li&gt;setsid创建一个新会话&lt;/li&gt;
+&lt;li&gt;工作目录改为根目录&lt;/li&gt;
+&lt;li&gt;关闭不需要的文件描述符&lt;/li&gt;
+&lt;li&gt;关闭标准输入输出&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+    <item>
+      <title>插入迭代器</title>
+      <link>http://localhost:1313/post/inserter/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/inserter/</guid>
+      <description>&lt;h1 id=&#34;插入迭代器&#34;&gt;插入迭代器&lt;/h1&gt;
+&lt;p&gt;接受一个容器，生成一个迭代器，实现向给定容器插入元素&lt;/p&gt;
+&lt;h2 id=&#34;操作&#34;&gt;操作&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;it = t&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在it指定的当前位置插入值t，且根据插入迭代器的类型不同，分别调用c.push_back(t), c.oush_front(t), c.insert(t,p)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;*it, it++, ++it&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;有这些形式，但是什么都不做&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>智能指针</title>
+      <link>http://localhost:1313/post/smartpointer/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/smartpointer/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;#include &amp;lt;memory&amp;gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;三种智能指针&lt;/p&gt;
+&lt;h2 id=&#34;shared_ptr&#34;&gt;shared_ptr&lt;/h2&gt;
+&lt;p&gt;有引用计数，当最后一个shared_ptr被销毁，其指向的对象将被析构。&lt;/p&gt;
+&lt;p&gt;例子：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;memory&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;iterator&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Foo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;public&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;Foo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;new@&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;}&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Foo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;release@&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;delete&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;nullptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;}&lt;/span&gt;
+    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+
+&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;smartptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;shared_ptr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Foo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sp1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;make_shared&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Foo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sp2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;make_shared&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Foo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Foo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[])&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;smartptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;其输出结果为&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>线程同步1</title>
+      <link>http://localhost:1313/post/thread2/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/thread2/</guid>
+      <description>&lt;h1 id=&#34;线程同步1&#34;&gt;线程同步1&lt;/h1&gt;
+&lt;p&gt;互斥量mutex&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;pthread,h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;pthread_mutex_init&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pthread_mutex_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;kr&#34;&gt;restrict&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mutex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+                                      &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pthread_mutexattr_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;kr&#34;&gt;restrict&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;attr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;pthread_mutex_destroy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pthread_mutex_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mutex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;pthread_mutex_lock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pthread_mutex_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mutex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;//对互斥量加锁，如果已经加锁，线程阻塞直至被解锁
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;pthread_mutex_trylock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pthread_mutex_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mutex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;//如果已经加锁，不会阻塞，而是返回EBUSY
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;pthread_mutex_unlock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pthread_mutex_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mutex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>线程同步2</title>
+      <link>http://localhost:1313/post/thread3/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/thread3/</guid>
+      <description>&lt;h1 id=&#34;线程同步2&#34;&gt;线程同步2&lt;/h1&gt;
+&lt;p&gt;时间锁&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;#include &amp;lt;pthread.h&amp;gt;
+#include &amp;lt;time.h&amp;gt;
+int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct timespec *restrict tsptr);
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;愿意等待timespec描述的时间，达到时间返回错误码ETIMEOUT
+一个例子&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>线程同步3</title>
+      <link>http://localhost:1313/post/thread4/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/thread4/</guid>
+      <description>&lt;h1 id=&#34;线程同步3&#34;&gt;线程同步3&lt;/h1&gt;
+&lt;p&gt;使用条件变量进行线程同步&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;pthread.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pthread_cond_init&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pthread_cond_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;kr&#34;&gt;restrict&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cond&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+                                   &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pthread_condattr_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;kr&#34;&gt;restrict&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;attr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;pthread_cond_destroy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pthread_cond_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cond&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;pthread_cond_wait&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pthread_cond_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;kr&#34;&gt;restrict&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cond&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+                                     &lt;span class=&#34;n&#34;&gt;pthread_mutex_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;kr&#34;&gt;restrict&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mutex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+                                     &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;timespec&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;kr&#34;&gt;restrict&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tsptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>线程的创建及退出</title>
+      <link>http://localhost:1313/post/thread1/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/thread1/</guid>
+      <description>&lt;h1 id=&#34;线程的创建及退出&#34;&gt;线程的创建及退出&lt;/h1&gt;</description>
+    </item>
+    
+    <item>
+      <title>输入输出流迭代器</title>
+      <link>http://localhost:1313/post/iostreamiterator/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/iostreamiterator/</guid>
+      <description>&lt;h1 id=&#34;输入输出流迭代器&#34;&gt;输入输出流迭代器&lt;/h1&gt;
+&lt;h2 id=&#34;istream_iterator&#34;&gt;istream_iterator&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;创建一个istream_iterator，然后把它绑定到一个流&lt;/li&gt;
+&lt;li&gt;如果默认初始化，则是一个尾后值的迭代器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;ostream_iterator&#34;&gt;ostream_iterator&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;ostream_iterator&amp;lt;T&amp;gt; out(os)  //out将类型为T的值写到os流中
+ostream_iterator&amp;lt;T&amp;gt; out(os, d)  //out将类型为T的值写到os流中，且在后面加上字符串d
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;有了输入输出流迭代器，我们可以把输入输出流当作容器来使用，在拷贝，初始化等等有和容器操作相同的形式，代码比较好看&lt;/p&gt;
+&lt;p&gt;例子&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/bind/</link>
+      <pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/bind/</guid>
+      <description>&lt;h1 id=&#34;bind&#34;&gt;bind&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;auto g = bind(f, arg_list)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;用我自己的话来说，就是把原来函数f的参数重新安排，可以直接绑定值，也可以使用占位符placeholder，达到减少参数或者调换参数顺序的作用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>codewar 题1</title>
+      <link>http://localhost:1313/post/codewar1/</link>
+      <pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/codewar1/</guid>
+      <description>&lt;h1 id=&#34;大数阶乘小数位数&#34;&gt;大数，阶乘，小数位数&lt;/h1&gt;
+&lt;p&gt;在codewar的一道题&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Consider the following numbers (where n! is factorial(n)):&lt;/p&gt;
+&lt;p&gt;u1 = (1 / 1!) * (1!)
+u2 = (1 / 2!) * (1! + 2!)
+u3 = (1 / 3!) * (1! + 2! + 3!)
+un = (1 / n!) * (1! + 2! + 3! + &amp;hellip; + n!)
+Which will win: 1 / n! or (1! + 2! + 3! + &amp;hellip; + n!)?&lt;/p&gt;
+&lt;p&gt;Are these numbers going to 0 because of 1/n! or to infinity due to the sum of factorials or to another number?&lt;/p&gt;
+&lt;p&gt;Task&lt;/p&gt;
+&lt;p&gt;Calculate (1 / n!) * (1! + 2! + 3! + &amp;hellip; + n!) for a given n, where n is an integer greater or equal to 1.&lt;/p&gt;
+&lt;p&gt;To avoid discussions about rounding, return the result truncated to 6 decimal places, for example:&lt;/p&gt;
+&lt;p&gt;1.0000989217538616 will be truncated to 1.000098&lt;br&gt;
+1.2125000000000001 will be truncated to 1.2125&lt;br&gt;
+Remark&lt;/p&gt;
+&lt;p&gt;Keep in mind that factorials grow rather rapidly, and you need to handle large inputs.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>CodeWar 题2</title>
+      <link>http://localhost:1313/post/codewar2/</link>
+      <pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/codewar2/</guid>
+      <description>&lt;h1 id=&#34;codewardoublecola&#34;&gt;CodeWar::DoubleCola&lt;/h1&gt;
+&lt;p&gt;CodeWar上的一道题&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Sheldon, Leonard, Penny, Rajesh and Howard are in the queue for a &amp;ldquo;Double Cola&amp;rdquo; drink vending machine; there are no other people in the queue. The first one in the queue (Sheldon) buys a can, drinks it and doubles! The resulting two Sheldons go to the end of the queue. Then the next in the queue (Leonard) buys a can, drinks it and gets to the end of the queue as two Leonards, and so on.&lt;/p&gt;
+&lt;p&gt;For example, Penny drinks the third can of cola and the queue will look like this:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Rajesh, Howard, Sheldon, Sheldon, Leonard, Leonard, Penny, Penny&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Write a program that will return the name of the person who will drink the n-th cola.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>codewar 题3</title>
+      <link>http://localhost:1313/post/codewar3/</link>
+      <pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/codewar3/</guid>
+      <description>&lt;h1 id=&#34;codewarintervals&#34;&gt;CodeWar::Intervals&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Write a function called sumIntervals/sum_intervals() that accepts an array of intervals, and returns the sum of all the interval lengths. Overlapping intervals should only be counted once.&lt;/p&gt;
+&lt;p&gt;Intervals&lt;/p&gt;
+&lt;p&gt;Intervals are represented by a pair of integers in the form of an array. The first value of the interval will always be less than the second value. Interval example: [1, 5] is an interval from 1 to 5. The length of this interval is 4.&lt;/p&gt;
+&lt;p&gt;Overlapping Intervals&lt;/p&gt;
+&lt;p&gt;List containing overlapping intervals:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[
+[1,4],
+[7, 10],
+[3, 5]
+]&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The sum of the lengths of these intervals is 7. Since [1, 4] and [3, 5] overlap, we can treat the interval as [1, 5], which has a length of 4.&lt;/p&gt;
+&lt;p&gt;Examples:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;sum_intervals( {
+{1,2},
+{6, 10},
+{11, 15}
+} ); // =&amp;gt; 9&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;sum_intervals( {
+{1,4},
+{7, 10},
+{3, 5}
+} ); // =&amp;gt; 7&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;sum_intervals( {
+{1,5},
+{10, 20},
+{1, 6},
+{16, 19},
+{5, 11}
+} ); // =&amp;gt; 19&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>CodeWars</title>
+      <link>http://localhost:1313/post/codewar/</link>
+      <pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/codewar/</guid>
+      <description>codewars 感觉题比leetcode的有趣，邀请链接 www.codewars.com/r/zuBfBg</description>
+    </item>
+    
+    <item>
+      <title>docker1</title>
+      <link>http://localhost:1313/post/docker1/</link>
+      <pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/docker1/</guid>
+      <description>&lt;h1 id=&#34;初探docker&#34;&gt;初探docker&lt;/h1&gt;
+&lt;p&gt;我的centos挂掉了，折腾了一两天没有成效，暂时不做他想，可能需要重装了吧。之前在win10上用VMware，老破电脑太卡，机缘巧合之下，我了解到docker是轻量级的虚拟机，来试一下。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>docker2</title>
+      <link>http://localhost:1313/post/docker2/</link>
+      <pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/docker2/</guid>
+      <description>&lt;h1 id=&#34;搭建开发环境&#34;&gt;搭建开发环境&lt;/h1&gt;
+&lt;p&gt;首先还是从centos入手吧&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;C:\Users\Administrator&amp;gt;docker search centos
+NAME                               DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
+centos                             The official build of CentOS.                   5221                [OK]
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;选择一个官方的版本，pull下来&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;docker run -it centos
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>docker3</title>
+      <link>http://localhost:1313/post/docker3/</link>
+      <pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/docker3/</guid>
+      <description>docker容器操作 让我们再梳理一遍这样的事实：镜像image运行产生容器container，镜像可以保存为镜像 查看容器 1 2 3 4 C:\WINDOWS\system32&amp;gt;docker ps -a CONTAINER ID IMAGE</description>
+    </item>
+    
+    <item>
+      <title>穷举搜索</title>
+      <link>http://localhost:1313/post/%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/</link>
+      <pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/</guid>
+      <description>&lt;p&gt;实质是创建一个状态树，边建立边剪枝，得到最终状态输出
+步骤有：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;列出表示状态的数据结构&lt;/li&gt;
+&lt;li&gt;列出在状态之间迁移的动作的数据结构&lt;/li&gt;
+&lt;li&gt;列出两个状态转换的所有动作列表&lt;/li&gt;
+&lt;li&gt;创建一个deque存储搜索的状态&lt;/li&gt;
+&lt;li&gt;从deque尾端取出状态，判断是否是最终状态，是的话打印当前deque，进行搜索search，循环所有动作，执行动作searchOnOneAction&lt;/li&gt;
+&lt;li&gt;判断新状态是否有效，有效则加入deque，继续递归调用搜索&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hello World</title>
+      <link>http://localhost:1313/post/hello-world/</link>
+      <pubDate>Sat, 07 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/hello-world/</guid>
+      <description>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick Start Create a new post 1  $ hexo new &amp;#34;My New Post&amp;#34;   More info: Writing
+Run server 1  $ hexo server   More info: Server
+Generate static files 1  $ hexo generate   More info: Generating</description>
+    </item>
+    
+  </channel>
+</rss>

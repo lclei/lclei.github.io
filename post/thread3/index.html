@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>线程同步2 - lclei blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="lclei" /><meta name="description" content="线程同步2 时间锁
+1 2 3  #include &amp;lt;pthread.h&amp;gt; #include &amp;lt;time.h&amp;gt; int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct timespec *restrict tsptr);   愿意等待timespec描述的时间，达到时间返回错误码ETIMEOUT 一个例子
+" /><meta name="keywords" content="lclei, blog, code" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/thread3/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="线程同步2" />
+<meta property="og:description" content="线程同步2
+时间锁
+
+
+1
+2
+3
+
+
+#include &lt;pthread.h&gt;
+#include &lt;time.h&gt;
+int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct timespec *restrict tsptr);
+
+
+愿意等待timespec描述的时间，达到时间返回错误码ETIMEOUT
+一个例子" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/thread3/" />
+<meta property="article:published_time" content="2019-12-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-12-09T00:00:00+00:00" />
+<meta itemprop="name" content="线程同步2">
+<meta itemprop="description" content="线程同步2
+时间锁
+
+
+1
+2
+3
+
+
+#include &lt;pthread.h&gt;
+#include &lt;time.h&gt;
+int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct timespec *restrict tsptr);
+
+
+愿意等待timespec描述的时间，达到时间返回错误码ETIMEOUT
+一个例子">
+<meta itemprop="datePublished" content="2019-12-09T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-12-09T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="323">
+
+
+
+<meta itemprop="keywords" content="linux," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="线程同步2"/>
+<meta name="twitter:description" content="线程同步2
+时间锁
+
+
+1
+2
+3
+
+
+#include &lt;pthread.h&gt;
+#include &lt;time.h&gt;
+int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct timespec *restrict tsptr);
+
+
+愿意等待timespec描述的时间，达到时间返回错误码ETIMEOUT
+一个例子"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">lclei</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">lclei</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">线程同步2</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-12-09 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#线程同步2">线程同步2</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="线程同步2">线程同步2</h1>
+<p>时间锁</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">#include &lt;pthread.h&gt;
+#include &lt;time.h&gt;
+int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct timespec *restrict tsptr);
+</code></pre></td></tr></table>
+</div>
+</div><p>愿意等待timespec描述的时间，达到时间返回错误码ETIMEOUT
+一个例子</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="c1">// APUE example11-13                                       
+</span><span class="c1">// pthread_mutex_timedlock                                 
+</span><span class="c1">// lcl 20190325                                            
+</span><span class="c1">//                                                         
+</span><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&#34;../myapue.h&#34;                                     </span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;                                       </span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;time.h&gt;                                          </span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>                                            
+<span class="p">{</span>                                                          
+    <span class="kt">int</span> <span class="n">err</span><span class="p">;</span>                                               
+    <span class="k">struct</span> <span class="n">timespec</span> <span class="n">tout</span><span class="p">;</span>                                  
+    <span class="k">struct</span> <span class="n">tm</span> <span class="o">*</span><span class="n">tmp</span><span class="p">;</span>                                        
+    <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>                                          
+    <span class="n">pthread_mutex_t</span> <span class="n">lock</span> <span class="o">=</span> <span class="n">PTHREAD_MUTEX_INITIALIZER</span><span class="p">;</span>      
+
+    <span class="n">pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>                             
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;the mutex now is locked</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>                   
+    <span class="n">clock_gettime</span><span class="p">(</span><span class="n">CLOCK_REALTIME</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">tout</span><span class="p">);</span>                  
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">localtime</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tout</span><span class="p">.</span><span class="n">tv_sec</span><span class="p">);</span>                         
+    <span class="n">strftime</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">),</span> <span class="s">&#34;%r&#34;</span><span class="p">,</span> <span class="n">tmp</span><span class="p">);</span>                 
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;current time is %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">buf</span><span class="p">);</span>                    
+
+    <span class="n">tout</span><span class="p">.</span><span class="n">tv_sec</span> <span class="o">+=</span> <span class="mi">10</span><span class="p">;</span>                                     
+    <span class="n">err</span> <span class="o">=</span> <span class="n">pthread_mutex_timedlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">,</span><span class="o">&amp;</span><span class="n">tout</span><span class="p">);</span>            
+
+    <span class="n">clock_gettime</span><span class="p">(</span><span class="n">CLOCK_REALTIME</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">tout</span><span class="p">);</span>                  
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">localtime</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tout</span><span class="p">.</span><span class="n">tv_sec</span><span class="p">);</span>                         
+    <span class="n">strftime</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">),</span> <span class="s">&#34;%r&#34;</span><span class="p">,</span> <span class="n">tmp</span><span class="p">);</span>                  
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;the time is now %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">buf</span><span class="p">);</span>                    
+
+    <span class="k">if</span><span class="p">(</span><span class="n">err</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>                                           
+      <span class="n">printf</span><span class="p">(</span><span class="s">&#34;mutex locked again!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>                     
+    <span class="k">else</span>                                                   
+      <span class="n">printf</span><span class="p">(</span><span class="s">&#34;can&#39;t lock mutex again:%s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">strerror</span><span class="p">(</span><span class="n">err</span><span class="p">));</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>                                               
+<span class="p">}</span>                                                          
+
+
+</code></pre></td></tr></table>
+</div>
+</div><p>运行结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">the mutex now is locked
+current time is 01:08:51 PM
+the time is now 01:09:01 PM
+can&#39;t lock mutex again:Connection timed out
+</code></pre></td></tr></table>
+</div>
+</div><p>读写锁，三种状态读加锁、写加锁和不加锁</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="kt">int</span> <span class="nf">pthread_rwlock_init</span><span class="p">(</span><span class="n">pthread_rwlock_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">rwlock</span><span class="p">,</span>
+                                      <span class="k">const</span> <span class="n">pthread_rwlockattr_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">attr</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">pthread_rwlock_destory</span><span class="p">(</span><span class="n">pthread_rwlock_t</span> <span class="o">*</span><span class="n">rwlock</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="n">pthread_rwlock_rdlock</span><span class="p">(</span><span class="n">pthread_rwlock_t</span> <span class="o">*</span><span class="n">rwlock</span><span class="p">)</span>
+<span class="kt">int</span> <span class="n">pthread_rwlock_wrlock</span><span class="p">(</span><span class="n">pthread_rwlock_t</span> <span class="o">*</span><span class="n">rwlock</span><span class="p">)</span>
+<span class="kt">int</span> <span class="n">pthread_rwlock_unlock</span><span class="p">(</span><span class="n">pthread_rwlock_t</span> <span class="o">*</span><span class="n">rwlock</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如上，函数名可以很好的反映函数的功能。</p>
+<ul>
+<li>写锁阻塞其他加锁</li>
+<li>读锁阻塞写锁但不阻塞读锁</li>
+<li>写锁在阻塞时，不再响应其他读锁请求。</li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">lclei</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-12-09
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/linux/">linux</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/thread2/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">线程同步1</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/thread4/">
+            <span class="next-text nav-default">线程同步3</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:lclei@mail.ustc.edu.cn" class="iconfont icon-email" title="email"></a>
+      <a href="https://gitee.com/lclei" class="iconfont icon-gitee" title="gitee"></a>
+      <a href="https://github.com/lclei" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

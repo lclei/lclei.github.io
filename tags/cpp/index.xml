@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cpp on lclei blog</title>
+    <link>http://localhost:1313/tags/cpp/</link>
+    <description>Recent content in cpp on lclei blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 09 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/cpp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>allocator</title>
+      <link>http://localhost:1313/post/allocator/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/allocator/</guid>
+      <description>allocator #include &amp;lt;memory&amp;gt; allocator&amp;lt;T&amp;gt; a 定义一个名为a的allocator对象，它可以为类型为T的对象分配内存 a.allocate(n) 分配一段原始的、未构造的内存，保存n个类型为T的对象 a.deallocate(p,n) 释放</description>
+    </item>
+    
+    <item>
+      <title>lambda表达式</title>
+      <link>http://localhost:1313/post/lambda/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/lambda/</guid>
+      <description>&lt;h1 id=&#34;lambda表达式&#34;&gt;lambda表达式&lt;/h1&gt;
+&lt;h2 id=&#34;介绍&#34;&gt;介绍&lt;/h2&gt;
+&lt;p&gt;一个lambda表达式表示一个可调用的代码单元，可以将其理解为一个未命名的内联函数。形式为&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[capture list](parameter list) -&amp;gt; return type { function body}
+//必须使用尾置返回
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;几个特点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;必须使用尾置返回&lt;/li&gt;
+&lt;li&gt;在创建时捕获&lt;/li&gt;
+&lt;li&gt;只有一行return语句时可省略返回类型，否则默认为void&lt;/li&gt;
+&lt;li&gt;一般在给算法传递谓词时可以使用&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>右值引用</title>
+      <link>http://localhost:1313/post/rvalue/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/rvalue/</guid>
+      <description>&lt;h1 id=&#34;右值引用&#34;&gt;右值引用&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;使用&amp;amp;&amp;amp;表示&lt;/li&gt;
+&lt;li&gt;只能绑定到一个将要销毁的对象&lt;/li&gt;
+&lt;li&gt;左值持久，右值短暂&lt;/li&gt;
+&lt;li&gt;将左值转换为对应的右值使用std::move&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>多态 polymorphism</title>
+      <link>http://localhost:1313/post/polymorphism/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/polymorphism/</guid>
+      <description>&lt;h1 id=&#34;多态-polymorphism&#34;&gt;多态 polymorphism&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;一个接口，多种方法&lt;/li&gt;
+&lt;li&gt;使用虚函数实现&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;基类成员函数添加了virtual关键字，该函数在执行时绑定。否则在编译时绑定。所以&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;基类希望其派生类进行覆盖的函数，定义为虚函数&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>插入迭代器</title>
+      <link>http://localhost:1313/post/inserter/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/inserter/</guid>
+      <description>&lt;h1 id=&#34;插入迭代器&#34;&gt;插入迭代器&lt;/h1&gt;
+&lt;p&gt;接受一个容器，生成一个迭代器，实现向给定容器插入元素&lt;/p&gt;
+&lt;h2 id=&#34;操作&#34;&gt;操作&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;it = t&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在it指定的当前位置插入值t，且根据插入迭代器的类型不同，分别调用c.push_back(t), c.oush_front(t), c.insert(t,p)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;*it, it++, ++it&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;有这些形式，但是什么都不做&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>智能指针</title>
+      <link>http://localhost:1313/post/smartpointer/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/smartpointer/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;#include &amp;lt;memory&amp;gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;三种智能指针&lt;/p&gt;
+&lt;h2 id=&#34;shared_ptr&#34;&gt;shared_ptr&lt;/h2&gt;
+&lt;p&gt;有引用计数，当最后一个shared_ptr被销毁，其指向的对象将被析构。&lt;/p&gt;
+&lt;p&gt;例子：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;memory&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;iterator&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Foo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;public&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;Foo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;new@&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;}&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Foo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;release@&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;delete&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;nullptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;}&lt;/span&gt;
+    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+
+&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;smartptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;shared_ptr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Foo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sp1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;make_shared&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Foo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sp2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;make_shared&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Foo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Foo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[])&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;smartptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;其输出结果为&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>输入输出流迭代器</title>
+      <link>http://localhost:1313/post/iostreamiterator/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/iostreamiterator/</guid>
+      <description>&lt;h1 id=&#34;输入输出流迭代器&#34;&gt;输入输出流迭代器&lt;/h1&gt;
+&lt;h2 id=&#34;istream_iterator&#34;&gt;istream_iterator&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;创建一个istream_iterator，然后把它绑定到一个流&lt;/li&gt;
+&lt;li&gt;如果默认初始化，则是一个尾后值的迭代器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;ostream_iterator&#34;&gt;ostream_iterator&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;ostream_iterator&amp;lt;T&amp;gt; out(os)  //out将类型为T的值写到os流中
+ostream_iterator&amp;lt;T&amp;gt; out(os, d)  //out将类型为T的值写到os流中，且在后面加上字符串d
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;有了输入输出流迭代器，我们可以把输入输出流当作容器来使用，在拷贝，初始化等等有和容器操作相同的形式，代码比较好看&lt;/p&gt;
+&lt;p&gt;例子&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/bind/</link>
+      <pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/bind/</guid>
+      <description>&lt;h1 id=&#34;bind&#34;&gt;bind&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;auto g = bind(f, arg_list)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;用我自己的话来说，就是把原来函数f的参数重新安排，可以直接绑定值，也可以使用占位符placeholder，达到减少参数或者调换参数顺序的作用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>穷举搜索</title>
+      <link>http://localhost:1313/post/%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/</link>
+      <pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/</guid>
+      <description>&lt;p&gt;实质是创建一个状态树，边建立边剪枝，得到最终状态输出
+步骤有：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;列出表示状态的数据结构&lt;/li&gt;
+&lt;li&gt;列出在状态之间迁移的动作的数据结构&lt;/li&gt;
+&lt;li&gt;列出两个状态转换的所有动作列表&lt;/li&gt;
+&lt;li&gt;创建一个deque存储搜索的状态&lt;/li&gt;
+&lt;li&gt;从deque尾端取出状态，判断是否是最终状态，是的话打印当前deque，进行搜索search，循环所有动作，执行动作searchOnOneAction&lt;/li&gt;
+&lt;li&gt;判断新状态是否有效，有效则加入deque，继续递归调用搜索&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

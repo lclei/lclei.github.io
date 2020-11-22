@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>线程同步3 - lclei blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="lclei" /><meta name="description" content="线程同步3 使用条件变量进行线程同步
+1 2 3 4 5 6 7  #include &amp;lt;pthread.h&amp;gt;int pthread_cond_init(pthread_cond_t *restrict cond; const pthread_condattr_t *restrict attr); int pthread_cond_destroy(pthread_cond_t *cond); int pthread_cond_wait(pthread_cond_t *restrict cond, pthread_mutex_t *restrict mutex, const struct timespec *restrict tsptr);   " /><meta name="keywords" content="lclei, blog, code" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/thread4/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="线程同步3" />
+<meta property="og:description" content="线程同步3
+使用条件变量进行线程同步
+
+
+1
+2
+3
+4
+5
+6
+7
+
+
+#include &lt;pthread.h&gt;
+int pthread_cond_init(pthread_cond_t *restrict cond;
+                                   const pthread_condattr_t *restrict attr);
+int pthread_cond_destroy(pthread_cond_t *cond);
+int pthread_cond_wait(pthread_cond_t *restrict cond,
+                                     pthread_mutex_t *restrict mutex,
+                                     const struct timespec *restrict tsptr);
+
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/thread4/" />
+<meta property="article:published_time" content="2019-12-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-12-09T00:00:00+00:00" />
+<meta itemprop="name" content="线程同步3">
+<meta itemprop="description" content="线程同步3
+使用条件变量进行线程同步
+
+
+1
+2
+3
+4
+5
+6
+7
+
+
+#include &lt;pthread.h&gt;
+int pthread_cond_init(pthread_cond_t *restrict cond;
+                                   const pthread_condattr_t *restrict attr);
+int pthread_cond_destroy(pthread_cond_t *cond);
+int pthread_cond_wait(pthread_cond_t *restrict cond,
+                                     pthread_mutex_t *restrict mutex,
+                                     const struct timespec *restrict tsptr);
+
+
+">
+<meta itemprop="datePublished" content="2019-12-09T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-12-09T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="548">
+
+
+
+<meta itemprop="keywords" content="linux," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="线程同步3"/>
+<meta name="twitter:description" content="线程同步3
+使用条件变量进行线程同步
+
+
+1
+2
+3
+4
+5
+6
+7
+
+
+#include &lt;pthread.h&gt;
+int pthread_cond_init(pthread_cond_t *restrict cond;
+                                   const pthread_condattr_t *restrict attr);
+int pthread_cond_destroy(pthread_cond_t *cond);
+int pthread_cond_wait(pthread_cond_t *restrict cond,
+                                     pthread_mutex_t *restrict mutex,
+                                     const struct timespec *restrict tsptr);
+
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">lclei</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">lclei</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">线程同步3</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-12-09 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#线程同步3">线程同步3</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="线程同步3">线程同步3</h1>
+<p>使用条件变量进行线程同步</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="kt">int</span> <span class="n">pthread_cond_init</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">cond</span><span class="p">;</span>
+                                   <span class="k">const</span> <span class="n">pthread_condattr_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">attr</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">pthread_cond_destroy</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">pthread_cond_wait</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">cond</span><span class="p">,</span>
+                                     <span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">mutex</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="k">struct</span> <span class="n">timespec</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">tsptr</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"> <span class="c1">// APUE example 11-15                             
+</span><span class="c1"></span> <span class="c1">// using mutex and cond                           
+</span><span class="c1"></span> <span class="c1">// lcl 20190326                                   
+</span><span class="c1"></span> <span class="c1">//                                                
+</span><span class="c1"></span> <span class="cp">#include</span> <span class="cpf">&#34;../myapue/h&#34;                            </span><span class="cp">
+</span><span class="cp"></span> <span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;                              </span><span class="cp">
+</span><span class="cp"></span>
+ <span class="k">struct</span> <span class="n">msg</span><span class="p">{</span>                                       
+     <span class="k">struct</span> <span class="n">msg</span> <span class="o">*</span> <span class="n">m_next</span><span class="p">;</span>                          
+     <span class="cm">/* ...*/</span>                                      
+ <span class="p">};</span>                                                
+
+ <span class="k">struct</span> <span class="n">msg</span> <span class="o">*</span><span class="n">workq</span><span class="p">;</span>                                
+ <span class="n">pthread_cond_t</span> <span class="n">qready</span> <span class="o">=</span> <span class="n">PTHREAD_COND_INITIALIZER</span><span class="p">;</span>
+ <span class="n">pthread_mutex_t</span> <span class="n">qlock</span> <span class="o">=</span> <span class="n">PTHREAD_MUTEX_INITIALIZER</span><span class="p">;</span>
+
+ <span class="kt">void</span> <span class="nf">process_mag</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>                            
+ <span class="p">{</span>                                                 
+     <span class="k">struct</span> <span class="n">msg</span> <span class="o">*</span><span class="n">mp</span><span class="p">;</span>                               
+     <span class="k">for</span><span class="p">(;;)</span>                                       
+     <span class="p">{</span>                                             
+         <span class="n">pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">qlock</span><span class="p">);</span>               
+         <span class="k">while</span><span class="p">(</span><span class="n">workq</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>                      
+           <span class="n">pthread_cond_wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">qready</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">qlock</span><span class="p">);</span>     
+         <span class="n">mp</span> <span class="o">=</span> <span class="n">workq</span><span class="p">;</span>                               
+         <span class="n">workq</span> <span class="o">=</span> <span class="n">mp</span> <span class="o">-&gt;</span> <span class="n">m_next</span><span class="p">;</span>                     
+         <span class="n">phread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">qlock</span><span class="p">);</span>              
+         <span class="cm">/* noe process msg */</span>                     
+     <span class="p">}</span>                                             
+ <span class="p">}</span>                                                 
+ <span class="kt">void</span> <span class="nf">enqueue_msg</span><span class="p">(</span><span class="k">struct</span> <span class="n">msg</span> <span class="o">*</span><span class="n">mp</span><span class="p">)</span>                  
+ <span class="p">{</span>                                                 
+     <span class="n">pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">qlock</span><span class="p">);</span>                   
+     <span class="n">mp</span><span class="o">-&gt;</span><span class="n">m_next</span> <span class="o">=</span> <span class="n">workq</span><span class="p">;</span>                           
+     <span class="n">workq</span> <span class="o">=</span> <span class="n">mp</span><span class="p">;</span>                                   
+     <span class="n">pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">qlock</span><span class="p">);</span>                 
+     <span class="n">pthread_cond_signal</span><span class="p">(</span><span class="o">&amp;</span><span class="n">qready</span><span class="p">);</span>                 
+ <span class="p">}</span>                                                 
+
+</code></pre></td></tr></table>
+</div>
+</div><p>barrier，屏障</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">int pthread_barrier_init(pthread_barrier_t *restrict barrier,
+            const pthread_barrierattr_t *restrict attr,      
+            unsigned int count);                             
+int pthrerd_barrier_destroy(pthread_barrier_t *barrier);     
+int pthread_barrier_wait(pthread_barruer_t *barrier);        
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* APUE example 11-16                            
+</span><span class="cm"> * using barrier                                 
+</span><span class="cm"> * lcl 20190326                                  
+</span><span class="cm"> *                                               
+</span><span class="cm"> */</span>                                              
+
+<span class="cp">#include</span> <span class="cpf">&#34;../myapue.h&#34;                           </span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;                             </span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;limits.h&gt;                              </span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;sys/time.h&gt;                            </span><span class="cp">
+</span><span class="cp"></span>
+<span class="cp">#define NTHR 8                                   
+</span><span class="cp">#define NUMNUM 8000000L                          
+</span><span class="cp">#define TNUM (NUMNUM/NTHR)                       
+</span><span class="cp"></span>
+<span class="kt">long</span> <span class="n">nums</span><span class="p">[</span><span class="n">NUMNUM</span><span class="p">];</span>                               
+<span class="kt">long</span> <span class="n">snums</span><span class="p">[</span><span class="n">NUMNUM</span><span class="p">];</span>                              
+
+<span class="n">pthread_barrier_t</span> <span class="n">b</span><span class="p">;</span>                             
+
+<span class="c1">//extern int qsort(void *, size_t, size_t,       
+</span><span class="c1">//          int (*)(const void*, const void *));
+</span><span class="c1"></span>
+<span class="kt">int</span> <span class="nf">complong</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">arg1</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">arg2</span><span class="p">)</span>
+<span class="p">{</span>                                                
+    <span class="kt">long</span> <span class="n">l1</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="kt">long</span> <span class="o">*</span><span class="p">)</span><span class="n">arg1</span><span class="p">;</span>                     
+    <span class="kt">long</span> <span class="n">l2</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="kt">long</span> <span class="o">*</span><span class="p">)</span><span class="n">arg2</span><span class="p">;</span>                     
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">l1</span> <span class="o">==</span> <span class="n">l2</span><span class="p">)</span>                                
+      <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>                                  
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">l1</span> <span class="o">&lt;</span><span class="n">l2</span><span class="p">)</span>                             
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>                               
+    <span class="k">else</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>                               
+<span class="p">}</span>                                                
+
+ <span class="kt">void</span> <span class="o">*</span><span class="nf">thr_fn</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">)</span>                         
+<span class="p">{</span>                                                
+    <span class="kt">long</span> <span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="n">arg</span><span class="p">;</span>                                       
+
+    <span class="n">qsort</span><span class="p">(</span><span class="o">&amp;</span><span class="n">nums</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">TNUM</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">long</span><span class="p">),</span> <span class="n">complong</span><span class="p">);</span>            
+    <span class="n">pthread_barrier_wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>                                   
+    <span class="k">return</span> <span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="mi">0</span><span class="p">);</span>                                          
+<span class="p">}</span>                                                               
+
+<span class="kt">void</span> <span class="nf">merge</span><span class="p">()</span>                                                    
+<span class="p">{</span>                                                               
+    <span class="kt">long</span> <span class="n">idx</span><span class="p">[</span><span class="n">NTHR</span><span class="p">];</span>                                             
+    <span class="kt">long</span> <span class="n">i</span><span class="p">,</span><span class="n">minidx</span><span class="p">,</span> <span class="n">sidx</span><span class="p">,</span> <span class="n">num</span><span class="p">;</span>                                   
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">NTHR</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>                                     
+      <span class="n">idx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">*</span><span class="n">TNUM</span><span class="p">;</span>                                          
+    <span class="k">for</span> <span class="p">(</span><span class="n">sidx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">sidx</span> <span class="o">&lt;</span> <span class="n">NUMNUM</span><span class="p">;</span> <span class="n">sidx</span><span class="o">++</span><span class="p">){</span>                       
+        <span class="n">num</span> <span class="o">=</span> <span class="n">LONG_MAX</span><span class="p">;</span>                                         
+        <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">NTHR</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>                               
+            <span class="k">if</span><span class="p">(</span> <span class="p">(</span><span class="n">idx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">TNUM</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">&lt;</span> <span class="n">num</span><span class="p">)){</span>
+                <span class="n">num</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="n">i</span><span class="p">]];</span>                             
+                <span class="n">minidx</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>                                     
+            <span class="p">}</span>                                                   
+        <span class="p">}</span>                                                       
+        <span class="n">snums</span><span class="p">[</span><span class="n">sidx</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="n">minidx</span><span class="p">]];</span>                        
+        <span class="n">idx</span><span class="p">[</span><span class="n">minidx</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>                                          
+    <span class="p">}</span>                                                           
+<span class="p">}</span>                                                               
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>                                                      
+<span class="p">{</span>                                                               
+    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">i</span><span class="p">;</span>                                            
+    <span class="k">struct</span> <span class="n">timeval</span> <span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">;</span>                                   
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">startusec</span><span class="p">,</span> <span class="n">endusec</span><span class="p">;</span>                               
+    <span class="kt">double</span> <span class="n">elapsed</span><span class="p">;</span>                                             
+    <span class="kt">int</span> <span class="n">err</span><span class="p">;</span>                                                    
+    <span class="n">pthread_t</span> <span class="n">tid</span><span class="p">;</span>                                              
+
+    <span class="c1">// create the initial set of numbers to sort.               
+</span><span class="c1"></span>    <span class="n">srandom</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>                                                 
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">NUMNUM</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>                                   
+        <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">random</span><span class="p">();</span>                                     
+    <span class="p">}</span>                                                           
+
+    <span class="c1">// create 8 threads to sort the numbers                     
+</span><span class="c1"></span>    <span class="n">gettimeofday</span><span class="p">(</span><span class="o">&amp;</span><span class="n">start</span><span class="p">,</span><span class="nb">NULL</span><span class="p">);</span>                                  
+    <span class="n">pthread_barrier_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">b</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">NTHR</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>                     
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">NTHR</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>                                      
+    <span class="p">{</span>                                                           
+        <span class="n">err</span> <span class="o">=</span> <span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tid</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">thr_fn</span><span class="p">,(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)(</span><span class="n">i</span><span class="o">*</span><span class="n">TNUM</span><span class="p">));</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">err</span><span class="o">!=</span><span class="mi">0</span><span class="p">)</span>                                              
+          <span class="n">printf</span><span class="p">(</span><span class="s">&#34;can&#39;t create thread&#34;</span><span class="p">);</span>                        
+    <span class="p">}</span>                                                           
+    <span class="n">pthread_barrier_wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>                                   
+    <span class="n">merge</span><span class="p">();</span>                                                    
+    <span class="n">gettimeofday</span><span class="p">(</span><span class="o">&amp;</span><span class="n">end</span><span class="p">,</span><span class="nb">NULL</span><span class="p">);</span>                                    
+
+    <span class="n">startusec</span> <span class="o">=</span> <span class="n">start</span><span class="p">.</span><span class="n">tv_sec</span> <span class="o">*</span> <span class="mi">1000000</span> <span class="o">+</span> <span class="n">start</span><span class="p">.</span><span class="n">tv_usec</span><span class="p">;</span>         
+
+    <span class="n">endusec</span> <span class="o">=</span> <span class="n">end</span><span class="p">.</span><span class="n">tv_sec</span> <span class="o">*</span> <span class="mi">1000000</span> <span class="o">+</span> <span class="n">end</span><span class="p">.</span><span class="n">tv_usec</span><span class="p">;</span>               
+    <span class="n">elapsed</span> <span class="o">=</span> <span class="p">(</span><span class="kt">double</span><span class="p">)(</span><span class="n">endusec</span> <span class="o">-</span> <span class="n">startusec</span><span class="p">)</span><span class="o">/</span><span class="mf">1000000.0</span><span class="p">;</span>          
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;sort using %.4f seconds</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">elapsed</span><span class="p">);</span>                
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">100</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>                                          
+      <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%ld</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">snums</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>                                 
+    <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>                                                    
+<span class="p">}</span>                                                               
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">lclei</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-12-09
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/linux/">linux</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/thread3/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">线程同步2</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/thread1/">
+            <span class="next-text nav-default">线程的创建及退出</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:lclei@mail.ustc.edu.cn" class="iconfont icon-email" title="email"></a>
+      <a href="https://gitee.com/lclei" class="iconfont icon-gitee" title="gitee"></a>
+      <a href="https://github.com/lclei" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

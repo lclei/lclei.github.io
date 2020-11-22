@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>codewar 题3 - lclei blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="lclei" /><meta name="description" content="CodeWar::Intervals  Write a function called sumIntervals/sum_intervals() that accepts an array of intervals, and returns the sum of all the interval lengths. Overlapping intervals should only be counted once.
+Intervals
+Intervals are represented by a pair of integers in the form of an array. The first value of the interval will always be less than the second value. Interval example: [1, 5] is an interval from 1 to 5. The length of this interval is 4.
+Overlapping Intervals
+List containing overlapping intervals:
+ [ [1,4], [7, 10], [3, 5] ]
+ The sum of the lengths of these intervals is 7. Since [1, 4] and [3, 5] overlap, we can treat the interval as [1, 5], which has a length of 4.
+Examples:
+ sum_intervals( { {1,2}, {6, 10}, {11, 15} } ); // =&amp;gt; 9
+  sum_intervals( { {1,4}, {7, 10}, {3, 5} } ); // =&amp;gt; 7
+  sum_intervals( { {1,5}, {10, 20}, {1, 6}, {16, 19}, {5, 11} } ); // =&amp;gt; 19
+ " /><meta name="keywords" content="lclei, blog, code" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/codewar3/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="codewar 题3" />
+<meta property="og:description" content="CodeWar::Intervals
+
+Write a function called sumIntervals/sum_intervals() that accepts an array of intervals, and returns the sum of all the interval lengths. Overlapping intervals should only be counted once.
+Intervals
+Intervals are represented by a pair of integers in the form of an array. The first value of the interval will always be less than the second value. Interval example: [1, 5] is an interval from 1 to 5. The length of this interval is 4.
+Overlapping Intervals
+List containing overlapping intervals:
+
+[
+[1,4],
+[7, 10],
+[3, 5]
+]
+
+The sum of the lengths of these intervals is 7. Since [1, 4] and [3, 5] overlap, we can treat the interval as [1, 5], which has a length of 4.
+Examples:
+
+sum_intervals( {
+{1,2},
+{6, 10},
+{11, 15}
+} ); // =&gt; 9
+
+
+sum_intervals( {
+{1,4},
+{7, 10},
+{3, 5}
+} ); // =&gt; 7
+
+
+sum_intervals( {
+{1,5},
+{10, 20},
+{1, 6},
+{16, 19},
+{5, 11}
+} ); // =&gt; 19
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/codewar3/" />
+<meta property="article:published_time" content="2019-12-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-12-08T00:00:00+00:00" />
+<meta itemprop="name" content="codewar 题3">
+<meta itemprop="description" content="CodeWar::Intervals
+
+Write a function called sumIntervals/sum_intervals() that accepts an array of intervals, and returns the sum of all the interval lengths. Overlapping intervals should only be counted once.
+Intervals
+Intervals are represented by a pair of integers in the form of an array. The first value of the interval will always be less than the second value. Interval example: [1, 5] is an interval from 1 to 5. The length of this interval is 4.
+Overlapping Intervals
+List containing overlapping intervals:
+
+[
+[1,4],
+[7, 10],
+[3, 5]
+]
+
+The sum of the lengths of these intervals is 7. Since [1, 4] and [3, 5] overlap, we can treat the interval as [1, 5], which has a length of 4.
+Examples:
+
+sum_intervals( {
+{1,2},
+{6, 10},
+{11, 15}
+} ); // =&gt; 9
+
+
+sum_intervals( {
+{1,4},
+{7, 10},
+{3, 5}
+} ); // =&gt; 7
+
+
+sum_intervals( {
+{1,5},
+{10, 20},
+{1, 6},
+{16, 19},
+{5, 11}
+} ); // =&gt; 19
+
+">
+<meta itemprop="datePublished" content="2019-12-08T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-12-08T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="835">
+
+
+
+<meta itemprop="keywords" content="codewar," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="codewar 题3"/>
+<meta name="twitter:description" content="CodeWar::Intervals
+
+Write a function called sumIntervals/sum_intervals() that accepts an array of intervals, and returns the sum of all the interval lengths. Overlapping intervals should only be counted once.
+Intervals
+Intervals are represented by a pair of integers in the form of an array. The first value of the interval will always be less than the second value. Interval example: [1, 5] is an interval from 1 to 5. The length of this interval is 4.
+Overlapping Intervals
+List containing overlapping intervals:
+
+[
+[1,4],
+[7, 10],
+[3, 5]
+]
+
+The sum of the lengths of these intervals is 7. Since [1, 4] and [3, 5] overlap, we can treat the interval as [1, 5], which has a length of 4.
+Examples:
+
+sum_intervals( {
+{1,2},
+{6, 10},
+{11, 15}
+} ); // =&gt; 9
+
+
+sum_intervals( {
+{1,4},
+{7, 10},
+{3, 5}
+} ); // =&gt; 7
+
+
+sum_intervals( {
+{1,5},
+{10, 20},
+{1, 6},
+{16, 19},
+{5, 11}
+} ); // =&gt; 19
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">lclei</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">lclei</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">codewar 题3</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-12-08 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#codewarintervals">CodeWar::Intervals</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="codewarintervals">CodeWar::Intervals</h1>
+<blockquote>
+<p>Write a function called sumIntervals/sum_intervals() that accepts an array of intervals, and returns the sum of all the interval lengths. Overlapping intervals should only be counted once.</p>
+<p>Intervals</p>
+<p>Intervals are represented by a pair of integers in the form of an array. The first value of the interval will always be less than the second value. Interval example: [1, 5] is an interval from 1 to 5. The length of this interval is 4.</p>
+<p>Overlapping Intervals</p>
+<p>List containing overlapping intervals:</p>
+<blockquote>
+<p>[
+[1,4],
+[7, 10],
+[3, 5]
+]</p>
+</blockquote>
+<p>The sum of the lengths of these intervals is 7. Since [1, 4] and [3, 5] overlap, we can treat the interval as [1, 5], which has a length of 4.</p>
+<p>Examples:</p>
+<blockquote>
+<p>sum_intervals( {
+{1,2},
+{6, 10},
+{11, 15}
+} ); // =&gt; 9</p>
+</blockquote>
+<blockquote>
+<p>sum_intervals( {
+{1,4},
+{7, 10},
+{3, 5}
+} ); // =&gt; 7</p>
+</blockquote>
+<blockquote>
+<p>sum_intervals( {
+{1,5},
+{10, 20},
+{1, 6},
+{16, 19},
+{5, 11}
+} ); // =&gt; 19</p>
+</blockquote>
+</blockquote>
+<p>我的思路是</p>
+<ol>
+<li>创建一个limits容器存储pair</li>
+<li>对输入每一条pair检查是否与limits里的pair有重叠的地方，如果有，记录下位置存入overlap</li>
+<li>将limits里对应的条目删去，在重合的条目中寻找最小的下限和最大的上限，插入limits中</li>
+<li>最后计算intervals</li>
+</ol>
+<p>我在自己的ide中运行正常，但是在codewars提交之后在某些情况下出错，code139，是越界之类的问题。
+一开始我是用vector来存储limits的，由于涉及到删除元素的问题，特意还用overlap来记录迭代器，循环之后一起删除，经过排除还是发现删除元素后迭代器失效的问题，如上第3步。于是改用list。
+这次的经历更深刻的告诉我要注意迭代器失效的问题。</p>
+<p>具体代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;utility&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;list&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">sum_intervals</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">intervals</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">list</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">limits</span><span class="p">,</span><span class="n">tmp</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">tmpmin</span><span class="p">,</span><span class="n">tmpmax</span><span class="p">,</span><span class="n">res</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">list</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;&gt;::</span><span class="n">iterator</span><span class="o">&gt;</span> <span class="n">overlap</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">intervals</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="nl">interval</span> <span class="p">:</span> <span class="n">intervals</span><span class="p">){</span>
+
+       <span class="n">overlap</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+       <span class="n">tmp</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+
+       <span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">limits</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="n">it</span><span class="o">!=</span><span class="n">limits</span><span class="p">.</span><span class="n">end</span><span class="p">();</span><span class="n">it</span><span class="o">++</span><span class="p">){</span>
+            <span class="k">if</span><span class="p">((</span><span class="n">interval</span><span class="p">.</span><span class="n">first</span><span class="o">&gt;=</span><span class="p">(</span><span class="o">*</span><span class="n">it</span><span class="p">).</span><span class="n">first</span> <span class="o">&amp;&amp;</span> <span class="n">interval</span><span class="p">.</span><span class="n">first</span><span class="o">&lt;</span><span class="p">(</span><span class="o">*</span><span class="n">it</span><span class="p">).</span><span class="n">second</span><span class="p">)</span> <span class="o">||</span>
+               <span class="p">(</span><span class="n">interval</span><span class="p">.</span><span class="n">second</span><span class="o">&gt;</span><span class="p">(</span><span class="o">*</span><span class="n">it</span><span class="p">).</span><span class="n">first</span> <span class="o">&amp;&amp;</span> <span class="n">interval</span><span class="p">.</span><span class="n">second</span><span class="o">&lt;=</span><span class="p">(</span><span class="o">*</span><span class="n">it</span><span class="p">).</span><span class="n">second</span><span class="p">)</span> <span class="o">||</span>
+               <span class="p">(</span><span class="n">interval</span><span class="p">.</span><span class="n">first</span><span class="o">&lt;=</span><span class="p">(</span><span class="o">*</span><span class="n">it</span><span class="p">).</span><span class="n">first</span> <span class="o">&amp;&amp;</span> <span class="n">interval</span><span class="p">.</span><span class="n">second</span><span class="o">&gt;=</span><span class="p">(</span><span class="o">*</span><span class="n">it</span><span class="p">).</span><span class="n">second</span><span class="p">)){</span>
+                <span class="n">overlap</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">it</span><span class="p">);</span>
+                <span class="n">tmp</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="o">*</span><span class="n">it</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">tmp</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">interval</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">overlap</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">!=</span><span class="mi">0</span><span class="p">){</span>
+            <span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="nl">del_it</span> <span class="p">:</span> <span class="n">overlap</span><span class="p">)</span> <span class="p">{</span><span class="n">limits</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">del_it</span><span class="p">);}</span>
+            <span class="n">tmpmin</span><span class="o">=</span><span class="p">(</span><span class="o">*</span><span class="n">tmp</span><span class="p">.</span><span class="n">begin</span><span class="p">()).</span><span class="n">first</span><span class="p">;</span>
+            <span class="n">tmpmax</span><span class="o">=</span><span class="p">(</span><span class="o">*</span><span class="n">tmp</span><span class="p">.</span><span class="n">begin</span><span class="p">()).</span><span class="n">second</span><span class="p">;</span>
+            <span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="n">tmp_it</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="n">tmp_it</span><span class="o">!=</span><span class="n">tmp</span><span class="p">.</span><span class="n">end</span><span class="p">();</span><span class="n">tmp_it</span><span class="o">++</span><span class="p">){</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">tmpmin</span><span class="o">&gt;</span><span class="p">(</span><span class="o">*</span><span class="n">tmp_it</span><span class="p">).</span><span class="n">first</span><span class="p">)</span> <span class="n">tmpmin</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">tmp_it</span><span class="p">).</span><span class="n">first</span><span class="p">;</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">tmpmax</span><span class="o">&lt;</span><span class="p">(</span><span class="o">*</span><span class="n">tmp_it</span><span class="p">).</span><span class="n">second</span><span class="p">)</span> <span class="n">tmpmax</span> <span class="o">=</span><span class="p">(</span><span class="o">*</span><span class="n">tmp_it</span><span class="p">).</span><span class="n">second</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">limits</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">make_pair</span><span class="p">(</span><span class="n">tmpmin</span><span class="p">,</span><span class="n">tmpmax</span><span class="p">));</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="n">limits</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">interval</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">limit</span><span class="p">:</span><span class="n">limits</span><span class="p">){</span>
+        <span class="n">res</span><span class="o">+=</span><span class="p">(</span><span class="n">limit</span><span class="p">.</span><span class="n">second</span><span class="o">-</span><span class="n">limit</span><span class="p">.</span><span class="n">first</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>·提交之后，欣赏一下其他人的解答：</p>
+<ol>
+<li>使用了set的无重复性，统计区间内的所有整数，最后返回set的size。如果数的范围大的话，浪费内存，将两个数表示的区间，生成了非常多元素的set。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;utility&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;unordered_set&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">sum_intervals</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">intervals</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">ints</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">interv</span> <span class="o">=</span> <span class="n">intervals</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">interv</span> <span class="o">!=</span> <span class="n">intervals</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">interv</span><span class="p">){</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">interv</span><span class="o">-&gt;</span><span class="n">first</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">interv</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+      <span class="n">ints</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+<span class="k">return</span> <span class="n">ints</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>先进行了排序，再维护一个max_right。即可计算结果。这个答案比较好。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;utility&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">sum_intervals</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">interavls</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">sort</span><span class="p">(</span><span class="n">interavls</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">interavls</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+  <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">max_right</span> <span class="o">=</span> <span class="n">interavls</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">first</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">i</span> <span class="p">:</span> <span class="n">interavls</span><span class="p">)</span>
+       <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">second</span> <span class="o">&gt;=</span> <span class="n">max_right</span><span class="p">)</span> <span class="p">{</span>
+           <span class="n">ret</span> <span class="o">+=</span> <span class="n">i</span><span class="p">.</span><span class="n">second</span> <span class="o">-</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">max_right</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">first</span><span class="p">);</span>
+           <span class="n">max_right</span> <span class="o">=</span> <span class="n">i</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+       <span class="p">}</span>
+  <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">lclei</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-12-08
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/codewar/">codewar</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/codewar2/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">CodeWar 题2</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/codewar/">
+            <span class="next-text nav-default">CodeWars</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:lclei@mail.ustc.edu.cn" class="iconfont icon-email" title="email"></a>
+      <a href="https://gitee.com/lclei" class="iconfont icon-gitee" title="gitee"></a>
+      <a href="https://github.com/lclei" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
