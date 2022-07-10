@@ -6,10 +6,19 @@
     <description>Recent content in cpp on lclei blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 09 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 10 Jul 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/tags/cpp/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>boost meta state machine</title>
+      <link>http://localhost:1313/post/msm/</link>
+      <pubDate>Sun, 10 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/msm/</guid>
+      <description>MSM Meta State Machine，是boost库的元状态机，使用了大量的模板元编程，让使用者轻松创建出好用，可阅读，效率高的状态机。它的特点是使用状态转</description>
+    </item>
     
     <item>
       <title>allocator</title>

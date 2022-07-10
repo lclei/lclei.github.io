@@ -37,7 +37,7 @@
 
 
 
-<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -86,12 +86,21 @@
         <li class="mobile-menu-item">About</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">lclei</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -108,12 +117,107 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/thread3/">线程同步2</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-12-09 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h1 id="线程同步2">线程同步2</h1>
+<p>时间锁</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">#include &lt;pthread.h&gt;
+#include &lt;time.h&gt;
+int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct timespec *restrict tsptr);
+</code></pre></td></tr></table>
+</div>
+</div><p>愿意等待timespec描述的时间，达到时间返回错误码ETIMEOUT
+一个例子</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/thread3/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/thread4/">线程同步3</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-12-09 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h1 id="线程同步3">线程同步3</h1>
+<p>使用条件变量进行线程同步</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="kt">int</span> <span class="n">pthread_cond_init</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">cond</span><span class="p">;</span>
+                                   <span class="k">const</span> <span class="n">pthread_condattr_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">attr</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">pthread_cond_destroy</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">pthread_cond_wait</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">cond</span><span class="p">,</span>
+                                     <span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">mutex</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="k">struct</span> <span class="n">timespec</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">tsptr</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+    <div class="read-more">
+      <a href="/post/thread4/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/thread1/">线程的创建及退出</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-12-09 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h1 id="线程的创建及退出">线程的创建及退出</h1>
+    </div>
+    <div class="read-more">
+      <a href="/post/thread1/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/iostreamiterator/">输入输出流迭代器</a></h1>
@@ -174,128 +278,6 @@ ostream_iterator&lt;T&gt; out(os, d)  //out将类型为T的值写到os流中，�
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/codewar1/">codewar 题1</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-08 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="大数阶乘小数位数">大数，阶乘，小数位数</h1>
-<p>在codewar的一道题</p>
-<blockquote>
-<p>Consider the following numbers (where n! is factorial(n)):</p>
-<p>u1 = (1 / 1!) * (1!)
-u2 = (1 / 2!) * (1! + 2!)
-u3 = (1 / 3!) * (1! + 2! + 3!)
-un = (1 / n!) * (1! + 2! + 3! + &hellip; + n!)
-Which will win: 1 / n! or (1! + 2! + 3! + &hellip; + n!)?</p>
-<p>Are these numbers going to 0 because of 1/n! or to infinity due to the sum of factorials or to another number?</p>
-<p>Task</p>
-<p>Calculate (1 / n!) * (1! + 2! + 3! + &hellip; + n!) for a given n, where n is an integer greater or equal to 1.</p>
-<p>To avoid discussions about rounding, return the result truncated to 6 decimal places, for example:</p>
-<p>1.0000989217538616 will be truncated to 1.000098<br>
-1.2125000000000001 will be truncated to 1.2125<br>
-Remark</p>
-<p>Keep in mind that factorials grow rather rapidly, and you need to handle large inputs.</p>
-</blockquote>
-    </div>
-    <div class="read-more">
-      <a href="/post/codewar1/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/codewar2/">CodeWar 题2</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-08 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="codewardoublecola">CodeWar::DoubleCola</h1>
-<p>CodeWar上的一道题</p>
-<blockquote>
-<p>Sheldon, Leonard, Penny, Rajesh and Howard are in the queue for a &ldquo;Double Cola&rdquo; drink vending machine; there are no other people in the queue. The first one in the queue (Sheldon) buys a can, drinks it and doubles! The resulting two Sheldons go to the end of the queue. Then the next in the queue (Leonard) buys a can, drinks it and gets to the end of the queue as two Leonards, and so on.</p>
-<p>For example, Penny drinks the third can of cola and the queue will look like this:</p>
-<blockquote>
-<p>Rajesh, Howard, Sheldon, Sheldon, Leonard, Leonard, Penny, Penny</p>
-</blockquote>
-<p>Write a program that will return the name of the person who will drink the n-th cola.</p>
-</blockquote>
-    </div>
-    <div class="read-more">
-      <a href="/post/codewar2/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/codewar3/">codewar 题3</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-08 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="codewarintervals">CodeWar::Intervals</h1>
-<blockquote>
-<p>Write a function called sumIntervals/sum_intervals() that accepts an array of intervals, and returns the sum of all the interval lengths. Overlapping intervals should only be counted once.</p>
-<p>Intervals</p>
-<p>Intervals are represented by a pair of integers in the form of an array. The first value of the interval will always be less than the second value. Interval example: [1, 5] is an interval from 1 to 5. The length of this interval is 4.</p>
-<p>Overlapping Intervals</p>
-<p>List containing overlapping intervals:</p>
-<blockquote>
-<p>[
-[1,4],
-[7, 10],
-[3, 5]
-]</p>
-</blockquote>
-<p>The sum of the lengths of these intervals is 7. Since [1, 4] and [3, 5] overlap, we can treat the interval as [1, 5], which has a length of 4.</p>
-<p>Examples:</p>
-<blockquote>
-<p>sum_intervals( {
-{1,2},
-{6, 10},
-{11, 15}
-} ); // =&gt; 9</p>
-</blockquote>
-<blockquote>
-<p>sum_intervals( {
-{1,4},
-{7, 10},
-{3, 5}
-} ); // =&gt; 7</p>
-</blockquote>
-<blockquote>
-<p>sum_intervals( {
-{1,5},
-{10, 20},
-{1, 6},
-{16, 19},
-{5, 11}
-} ); // =&gt; 19</p>
-</blockquote>
-</blockquote>
-    </div>
-    <div class="read-more">
-      <a href="/post/codewar3/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -318,7 +300,7 @@ Remark</p>
       <div class="social-links">
       <a href="mailto:lclei@mail.ustc.edu.cn" class="iconfont icon-email" title="email"></a>
       <a href="https://gitee.com/lclei" class="iconfont icon-gitee" title="gitee"></a>
-      <a href="https://github.com/lclei" class="iconfont icon-github" title="github"></a>
+      <a href="https://gitee.com/lclei" class="iconfont icon-github" title="github"></a>
   <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
@@ -337,7 +319,7 @@ Remark</p>
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
   </span>
 </div>
 

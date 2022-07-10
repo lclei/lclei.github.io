@@ -37,7 +37,7 @@
 
 
 
-<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -86,12 +86,21 @@
         <li class="mobile-menu-item">About</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">lclei</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -108,12 +117,99 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/polymorphism/">多态 polymorphism</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-12-09 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h1 id="多态-polymorphism">多态 polymorphism</h1>
+<ul>
+<li>一个接口，多种方法</li>
+<li>使用虚函数实现</li>
+</ul>
+<p>基类成员函数添加了virtual关键字，该函数在执行时绑定。否则在编译时绑定。所以</p>
+<p><strong>基类希望其派生类进行覆盖的函数，定义为虚函数</strong></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/polymorphism/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/daemon/">守护进程</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-12-09 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h1 id="守护进程">守护进程</h1>
+<ul>
+<li>生存期长，常常在系统引导装入时启动，仅在系统关闭时终止</li>
+<li>没有控制终端</li>
+</ul>
+<h2 id="如何编写">如何编写</h2>
+<ol>
+<li>umask(0)</li>
+<li>调用fork，使父进程exit</li>
+<li>setsid创建一个新会话</li>
+<li>工作目录改为根目录</li>
+<li>关闭不需要的文件描述符</li>
+<li>关闭标准输入输出</li>
+</ol>
+    </div>
+    <div class="read-more">
+      <a href="/post/daemon/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/inserter/">插入迭代器</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-12-09 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h1 id="插入迭代器">插入迭代器</h1>
+<p>接受一个容器，生成一个迭代器，实现向给定容器插入元素</p>
+<h2 id="操作">操作</h2>
+<blockquote>
+<p>it = t</p>
+</blockquote>
+<p>在it指定的当前位置插入值t，且根据插入迭代器的类型不同，分别调用c.push_back(t), c.oush_front(t), c.insert(t,p)</p>
+<blockquote>
+<p>*it, it++, ++it</p>
+</blockquote>
+<p>有这些形式，但是什么都不做</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/inserter/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/smartpointer/">智能指针</a></h1>
@@ -251,100 +347,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/thread3/">线程同步2</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="线程同步2">线程同步2</h1>
-<p>时间锁</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">#include &lt;pthread.h&gt;
-#include &lt;time.h&gt;
-int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct timespec *restrict tsptr);
-</code></pre></td></tr></table>
-</div>
-</div><p>愿意等待timespec描述的时间，达到时间返回错误码ETIMEOUT
-一个例子</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/thread3/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/thread4/">线程同步3</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="线程同步3">线程同步3</h1>
-<p>使用条件变量进行线程同步</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
-</span><span class="cp"></span><span class="kt">int</span> <span class="n">pthread_cond_init</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">cond</span><span class="p">;</span>
-                                   <span class="k">const</span> <span class="n">pthread_condattr_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">attr</span><span class="p">);</span>
-<span class="kt">int</span> <span class="nf">pthread_cond_destroy</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span>
-<span class="kt">int</span> <span class="nf">pthread_cond_wait</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">cond</span><span class="p">,</span>
-                                     <span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">mutex</span><span class="p">,</span>
-                                     <span class="k">const</span> <span class="k">struct</span> <span class="n">timespec</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">tsptr</span><span class="p">);</span>
-</code></pre></td></tr></table>
-</div>
-</div>
-    </div>
-    <div class="read-more">
-      <a href="/post/thread4/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/thread1/">线程的创建及退出</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="线程的创建及退出">线程的创建及退出</h1>
-    </div>
-    <div class="read-more">
-      <a href="/post/thread1/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -367,7 +369,7 @@ int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct times
       <div class="social-links">
       <a href="mailto:lclei@mail.ustc.edu.cn" class="iconfont icon-email" title="email"></a>
       <a href="https://gitee.com/lclei" class="iconfont icon-gitee" title="gitee"></a>
-      <a href="https://github.com/lclei" class="iconfont icon-github" title="github"></a>
+      <a href="https://gitee.com/lclei" class="iconfont icon-github" title="github"></a>
   <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
@@ -386,7 +388,7 @@ int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct times
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
   </span>
 </div>
 

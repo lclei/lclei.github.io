@@ -37,7 +37,7 @@
 
 
 
-<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -86,12 +86,21 @@
         <li class="mobile-menu-item">About</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">lclei</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -108,12 +117,104 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/wbcurrency/">并发服务器</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-12-10 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <ol>
+<li>fork进程</li>
+<li>IO复用</li>
+<li>线程</li>
+</ol>
+<hr>
+<h2 id="多进程">多进程</h2>
+<p>主进程监听，在循环中接受连接请求，当连接建立后，fork一个子进程，在子进程中进行处理。</p>
+<ul>
+<li>
+<p>主进程：listen -&gt; while(1) -&gt; accept -&gt; fork -&gt; close connfd</p>
+</li>
+<li>
+<p>子进程：close listenfd -&gt; handle -&gt; close connfd</p>
+</li>
+</ul>
+    </div>
+    <div class="read-more">
+      <a href="/post/wbcurrency/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/allocator/">allocator</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-12-09 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      allocator #include &lt;memory&gt; allocator&lt;T&gt; a 定义一个名为a的allocator对象，它可以为类型为T的对象分配内存 a.allocate(n) 分配一段原始的、未构造的内存，保存n个类型为T的对象 a.deallocate(p,n) 释放
+    </div>
+    <div class="read-more">
+      <a href="/post/allocator/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/lambda/">lambda表达式</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-12-09 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h1 id="lambda表达式">lambda表达式</h1>
+<h2 id="介绍">介绍</h2>
+<p>一个lambda表达式表示一个可调用的代码单元，可以将其理解为一个未命名的内联函数。形式为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[capture list](parameter list) -&gt; return type { function body}
+//必须使用尾置返回
+</code></pre></td></tr></table>
+</div>
+</div><p>几个特点</p>
+<ul>
+<li>必须使用尾置返回</li>
+<li>在创建时捕获</li>
+<li>只有一行return语句时可省略返回类型，否则默认为void</li>
+<li>一般在给算法传递谓词时可以使用</li>
+</ul>
+    </div>
+    <div class="read-more">
+      <a href="/post/lambda/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/socket/">socket编程</a></h1>
@@ -159,92 +260,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/polymorphism/">多态 polymorphism</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="多态-polymorphism">多态 polymorphism</h1>
-<ul>
-<li>一个接口，多种方法</li>
-<li>使用虚函数实现</li>
-</ul>
-<p>基类成员函数添加了virtual关键字，该函数在执行时绑定。否则在编译时绑定。所以</p>
-<p><strong>基类希望其派生类进行覆盖的函数，定义为虚函数</strong></p>
-    </div>
-    <div class="read-more">
-      <a href="/post/polymorphism/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/daemon/">守护进程</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="守护进程">守护进程</h1>
-<ul>
-<li>生存期长，常常在系统引导装入时启动，仅在系统关闭时终止</li>
-<li>没有控制终端</li>
-</ul>
-<h2 id="如何编写">如何编写</h2>
-<ol>
-<li>umask(0)</li>
-<li>调用fork，使父进程exit</li>
-<li>setsid创建一个新会话</li>
-<li>工作目录改为根目录</li>
-<li>关闭不需要的文件描述符</li>
-<li>关闭标准输入输出</li>
-</ol>
-    </div>
-    <div class="read-more">
-      <a href="/post/daemon/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/inserter/">插入迭代器</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="插入迭代器">插入迭代器</h1>
-<p>接受一个容器，生成一个迭代器，实现向给定容器插入元素</p>
-<h2 id="操作">操作</h2>
-<blockquote>
-<p>it = t</p>
-</blockquote>
-<p>在it指定的当前位置插入值t，且根据插入迭代器的类型不同，分别调用c.push_back(t), c.oush_front(t), c.insert(t,p)</p>
-<blockquote>
-<p>*it, it++, ++it</p>
-</blockquote>
-<p>有这些形式，但是什么都不做</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/inserter/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -267,7 +282,7 @@
       <div class="social-links">
       <a href="mailto:lclei@mail.ustc.edu.cn" class="iconfont icon-email" title="email"></a>
       <a href="https://gitee.com/lclei" class="iconfont icon-gitee" title="gitee"></a>
-      <a href="https://github.com/lclei" class="iconfont icon-github" title="github"></a>
+      <a href="https://gitee.com/lclei" class="iconfont icon-github" title="github"></a>
   <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
@@ -286,7 +301,7 @@
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
   </span>
 </div>
 

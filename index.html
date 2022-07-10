@@ -37,7 +37,7 @@
 
 
 
-<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -86,12 +86,21 @@
         <li class="mobile-menu-item">About</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">lclei</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -108,12 +117,136 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/msm/">boost meta state machine</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2022-07-10 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      MSM Meta State Machine，是boost库的元状态机，使用了大量的模板元编程，让使用者轻松创建出好用，可阅读，效率高的状态机。它的特点是使用状态转
+    </div>
+    <div class="read-more">
+      <a href="/post/msm/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/hugo_and_git_submodule/">Hugo and git submodule</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2021-09-13 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      介绍 hugo + gitee搭建个人博客，使用gitee代替github是因为国内访问速度问题。 hugo直接在仓库可以安装sudo apt install hugo，这个链
+    </div>
+    <div class="read-more">
+      <a href="/post/hugo_and_git_submodule/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/non_cursive_tree_traversal/">二叉树的非递归遍历</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2021-01-31 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>二叉树的遍历有前序，中序，后序以及层次遍历，其中前序，中序和后序遍历使用递归来写非常简单。
+例如</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">void</span> <span class="nf">tree_preorder_re</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">node</span><span class="p">,</span> <span class="n">Tree</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">visit</span><span class="p">)(</span><span class="n">Tree</span> <span class="o">*</span><span class="p">,</span> <span class="n">TreeNode</span> <span class="o">*</span><span class="p">))</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">node</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="n">visit</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">node</span><span class="p">);</span>
+    <span class="n">tree_preorder_re</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span> <span class="n">visit</span><span class="p">);</span>
+    <span class="n">tree_preorder_re</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span> <span class="n">visit</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>中序和后序，不过是调整一下visit的位置，如果不用递归的写法，改用栈来实现，其实没有那么直观。
+首先按照函数调用的关系，入栈的套路都是一样的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c">    <span class="n">Stack</span> <span class="o">*</span><span class="n">s</span> <span class="o">=</span> <span class="n">stack_new</span><span class="p">();</span>
+    <span class="n">TreeNode</span> <span class="o">*</span><span class="n">tNode</span> <span class="o">=</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">root</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">stack_depth</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">tNode</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">tNode</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">stack_push</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">tNode</span><span class="p">);</span>
+            <span class="n">tNode</span> <span class="o">=</span> <span class="n">tNode</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">stack_is_empty</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">tNode</span> <span class="o">=</span> <span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="p">)</span><span class="n">stack_pop</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+            <span class="n">tNode</span> <span class="o">=</span> <span class="n">tNode</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">stack_free</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+    <div class="read-more">
+      <a href="/post/non_cursive_tree_traversal/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/udisk-grub/">使用grub创建多系统u盘安装盘</a></h1>
@@ -157,97 +290,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/wbcurrency/">并发服务器</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-10 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <ol>
-<li>fork进程</li>
-<li>IO复用</li>
-<li>线程</li>
-</ol>
-<hr>
-<h2 id="多进程">多进程</h2>
-<p>主进程监听，在循环中接受连接请求，当连接建立后，fork一个子进程，在子进程中进行处理。</p>
-<ul>
-<li>
-<p>主进程：listen -&gt; while(1) -&gt; accept -&gt; fork -&gt; close connfd</p>
-</li>
-<li>
-<p>子进程：close listenfd -&gt; handle -&gt; close connfd</p>
-</li>
-</ul>
-    </div>
-    <div class="read-more">
-      <a href="/post/wbcurrency/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/allocator/">allocator</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      allocator #include &lt;memory&gt; allocator&lt;T&gt; a 定义一个名为a的allocator对象，它可以为类型为T的对象分配内存 a.allocate(n) 分配一段原始的、未构造的内存，保存n个类型为T的对象 a.deallocate(p,n) 释放
-    </div>
-    <div class="read-more">
-      <a href="/post/allocator/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/lambda/">lambda表达式</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="lambda表达式">lambda表达式</h1>
-<h2 id="介绍">介绍</h2>
-<p>一个lambda表达式表示一个可调用的代码单元，可以将其理解为一个未命名的内联函数。形式为</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[capture list](parameter list) -&gt; return type { function body}
-//必须使用尾置返回
-</code></pre></td></tr></table>
-</div>
-</div><p>几个特点</p>
-<ul>
-<li>必须使用尾置返回</li>
-<li>在创建时捕获</li>
-<li>只有一行return语句时可省略返回类型，否则默认为void</li>
-<li>一般在给算法传递谓词时可以使用</li>
-</ul>
-    </div>
-    <div class="read-more">
-      <a href="/post/lambda/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -267,7 +309,7 @@
       <div class="social-links">
       <a href="mailto:lclei@mail.ustc.edu.cn" class="iconfont icon-email" title="email"></a>
       <a href="https://gitee.com/lclei" class="iconfont icon-gitee" title="gitee"></a>
-      <a href="https://github.com/lclei" class="iconfont icon-github" title="github"></a>
+      <a href="https://gitee.com/lclei" class="iconfont icon-github" title="github"></a>
   <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
@@ -286,7 +328,7 @@
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
   </span>
 </div>
 

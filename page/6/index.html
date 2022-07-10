@@ -37,7 +37,7 @@
 
 
 
-<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -86,12 +86,21 @@
         <li class="mobile-menu-item">About</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">lclei</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -108,12 +117,102 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/docker2/">docker2</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-12-08 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h1 id="搭建开发环境">搭建开发环境</h1>
+<p>首先还是从centos入手吧</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">C:\Users\Administrator&gt;docker search centos
+NAME                               DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
+centos                             The official build of CentOS.                   5221                [OK]
+</code></pre></td></tr></table>
+</div>
+</div><p>选择一个官方的版本，pull下来</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker run -it centos
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+    <div class="read-more">
+      <a href="/post/docker2/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/docker3/">docker3</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-12-08 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      docker容器操作 让我们再梳理一遍这样的事实：镜像image运行产生容器container，镜像可以保存为镜像 查看容器 1 2 3 4 C:\WINDOWS\system32&gt;docker ps -a CONTAINER ID IMAGE
+    </div>
+    <div class="read-more">
+      <a href="/post/docker3/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/">穷举搜索</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-12-08 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>实质是创建一个状态树，边建立边剪枝，得到最终状态输出
+步骤有：</p>
+<ol>
+<li>列出表示状态的数据结构</li>
+<li>列出在状态之间迁移的动作的数据结构</li>
+<li>列出两个状态转换的所有动作列表</li>
+<li>创建一个deque存储搜索的状态</li>
+<li>从deque尾端取出状态，判断是否是最终状态，是的话打印当前deque，进行搜索search，循环所有动作，执行动作searchOnOneAction</li>
+<li>判断新状态是否有效，有效则加入deque，继续递归调用搜索</li>
+</ol>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/hello-world/">Hello World</a></h1>
@@ -155,7 +254,7 @@ Generate static files 1  $ hexo generate   More info: Generating
       <div class="social-links">
       <a href="mailto:lclei@mail.ustc.edu.cn" class="iconfont icon-email" title="email"></a>
       <a href="https://gitee.com/lclei" class="iconfont icon-gitee" title="gitee"></a>
-      <a href="https://github.com/lclei" class="iconfont icon-github" title="github"></a>
+      <a href="https://gitee.com/lclei" class="iconfont icon-github" title="github"></a>
   <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
@@ -174,7 +273,7 @@ Generate static files 1  $ hexo generate   More info: Generating
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
   </span>
 </div>
 

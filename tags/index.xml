@@ -6,10 +6,46 @@
     <description>Recent content in Tags on lclei blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 15 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 10 Jul 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>boost</title>
+      <link>http://localhost:1313/tags/boost/</link>
+      <pubDate>Sun, 10 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/boost/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>c</title>
+      <link>http://localhost:1313/tags/c/</link>
+      <pubDate>Sun, 10 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cpp</title>
+      <link>http://localhost:1313/tags/cpp/</link>
+      <pubDate>Sun, 10 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/cpp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>data_struct</title>
+      <link>http://localhost:1313/tags/data_struct/</link>
+      <pubDate>Sun, 31 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/data_struct/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>linux</title>
@@ -26,15 +62,6 @@
       <pubDate>Wed, 11 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/tags/net/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>cpp</title>
-      <link>http://localhost:1313/tags/cpp/</link>
-      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/tags/cpp/</guid>
       <description></description>
     </item>
     
