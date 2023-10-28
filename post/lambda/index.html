@@ -25,7 +25,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.68.3 with theme even" />
+<meta name="generator" content="Hugo 0.92.2 with theme even" />
 
 
 <link rel="canonical" href="http://localhost:1313/post/lambda/" />
@@ -37,7 +37,7 @@
 
 
 
-<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -63,9 +63,10 @@
 一般在给算法传递谓词时可以使用
 " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/post/lambda/" />
+<meta property="og:url" content="http://localhost:1313/post/lambda/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-12-09T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-12-09T00:00:00+00:00" />
+
 <meta itemprop="name" content="lambda表达式">
 <meta itemprop="description" content="lambda表达式
 介绍
@@ -86,13 +87,9 @@
 在创建时捕获
 只有一行return语句时可省略返回类型，否则默认为void
 一般在给算法传递谓词时可以使用
-">
-<meta itemprop="datePublished" content="2019-12-09T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-12-09T00:00:00&#43;00:00" />
+"><meta itemprop="datePublished" content="2019-12-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-12-09T00:00:00+00:00" />
 <meta itemprop="wordCount" content="573">
-
-
-
 <meta itemprop="keywords" content="cpp," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="lambda表达式"/>
 <meta name="twitter:description" content="lambda表达式
@@ -223,11 +220,11 @@
 <p>一个lambda表达式表示一个可调用的代码单元，可以将其理解为一个未命名的内联函数。形式为</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[capture list](parameter list) -&gt; return type { function body}
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[capture list](parameter list) -&gt; return type { function body}
 //必须使用尾置返回
 </code></pre></td></tr></table>
 </div>
@@ -244,7 +241,7 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -253,7 +250,7 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">fun1</span><span class="p">()</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">fun1</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="n">size_t</span> <span class="n">v1</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span>
     <span class="k">auto</span> <span class="n">f</span> <span class="o">=</span> <span class="p">[</span><span class="n">v1</span><span class="p">]{</span><span class="k">return</span> <span class="n">v1</span><span class="p">;};</span> <span class="c1">//省略了参数列表
@@ -268,7 +265,7 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -277,7 +274,7 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">fun2</span><span class="p">()</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">fun2</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="n">size_t</span> <span class="n">v2</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span>
     <span class="k">auto</span> <span class="n">f2</span> <span class="o">=</span> <span class="p">[</span><span class="o">&amp;</span><span class="n">v2</span><span class="p">]</span> <span class="p">{</span><span class="k">return</span> <span class="n">v2</span><span class="p">;};</span>
@@ -293,7 +290,7 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -302,7 +299,7 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">fun3</span><span class="p">()</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">fun3</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="n">size_t</span> <span class="n">v3</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span>
     <span class="k">auto</span> <span class="n">f3</span> <span class="o">=</span> <span class="p">[</span><span class="o">&amp;</span><span class="p">]</span> <span class="p">{</span><span class="k">return</span> <span class="n">v3</span><span class="p">;};</span>
@@ -320,7 +317,7 @@
 <p>对于值捕获，lambda表达式不能改变捕获的参数，如</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -328,7 +325,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">fun4</span><span class="p">()</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">fun4</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="n">size_t</span> <span class="n">v4</span> <span class="o">=</span><span class="mi">21</span><span class="p">;</span>
     <span class="k">auto</span> <span class="n">f4</span> <span class="o">=</span> <span class="p">[</span><span class="o">=</span><span class="p">]</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span>  <span class="p">{</span><span class="k">return</span> <span class="p">(</span><span class="o">++</span><span class="n">v4</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span><span class="p">;};</span>
@@ -338,12 +335,12 @@
 </div>
 </div><p>编译错误</p>
 <blockquote>
-<p>error: increment of read-only variable &lsquo;v4'|</p>
+<p>error: increment of read-only variable &lsquo;v4&rsquo;|</p>
 </blockquote>
 <p>可以在参数列表后面加mutable，同时即使没有参数，参数列表也不能省略了。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -351,7 +348,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">fun4</span><span class="p">()</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">fun4</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="n">size_t</span> <span class="n">v4</span> <span class="o">=</span><span class="mi">21</span><span class="p">;</span>
     <span class="k">auto</span> <span class="n">f4</span> <span class="o">=</span> <span class="p">[</span><span class="o">=</span><span class="p">]</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="k">mutable</span> <span class="p">{</span><span class="k">return</span> <span class="p">(</span><span class="o">++</span><span class="n">v4</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span><span class="p">;};</span>
@@ -362,7 +359,7 @@
 </div><p>而用引用捕获时就不需要了</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -370,7 +367,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">fun4</span><span class="p">()</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">fun4</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="n">size_t</span> <span class="n">v4</span> <span class="o">=</span><span class="mi">21</span><span class="p">;</span>
     <span class="k">auto</span> <span class="n">f4</span> <span class="o">=</span> <span class="p">[</span><span class="o">&amp;</span><span class="p">]</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span>  <span class="p">{</span><span class="k">return</span> <span class="p">(</span><span class="o">++</span><span class="n">v4</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span><span class="p">;};</span>
@@ -448,7 +445,7 @@
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
   </span>
 </div>
 
@@ -465,7 +462,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
 
 
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>lclei blog</title>
+  <title>flock · lclei blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -26,9 +26,9 @@
 <meta name="generator" content="Hugo 0.92.2 with theme even" />
 
 
-<link rel="canonical" href="http://localhost:1313/" />
-  <link href="http://localhost:1313/index.xml" rel="alternate" type="application/rss+xml" title="lclei blog" />
-  <link href="http://localhost:1313/index.xml" rel="feed" type="application/rss+xml" title="lclei blog" />
+<link rel="canonical" href="http://localhost:1313/tags/flock/" />
+  <link href="http://localhost:1313/tags/flock/index.xml" rel="alternate" type="application/rss+xml" title="lclei blog" />
+  <link href="http://localhost:1313/tags/flock/index.xml" rel="feed" type="application/rss+xml" title="lclei blog" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -41,14 +41,14 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="lclei blog" />
+<meta property="og:title" content="flock" />
 <meta property="og:description" content="lclei&#39;s blog." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://localhost:1313/" />
+<meta property="og:url" content="http://localhost:1313/tags/flock/" />
 
-<meta itemprop="name" content="lclei blog">
+<meta itemprop="name" content="flock">
 <meta itemprop="description" content="lclei&#39;s blog."><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="lclei blog"/>
+<meta name="twitter:title" content="flock"/>
 <meta name="twitter:description" content="lclei&#39;s blog."/>
 
 <!--[if lte IE 9]>
@@ -123,153 +123,27 @@
     <main id="main" class="main">
       <div class="content-wrapper">
         <div id="content" class="content">
-          <section id="posts" class="posts">
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/webserver/">web服务器</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-11 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>首先创建几个函数以方便我们调用</p>
-<ul>
-<li>open_clinetfd: 创建一个网络socket，作为客户端，并且尝试连接主机</li>
-<li>open_listenfd: 创建socket，作为主机，并开始监听</li>
-</ul>
-    </div>
-    <div class="read-more">
-      <a href="/post/webserver/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
+          <section id="archive" class="archive">
+  <div class="archive-title tag">
+        <h2 class="archive-name">flock</h2>
+      </div>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/wbcurrency/">并发服务器</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-10 </span>
-      
+  <div class="archive-post">
+      <span class="archive-post-time">
+        2023-10-25
+      </span>
+      <span class="archive-post-title">
+        <a href="/post/flock/" class="archive-post-link">
+          记一次文件锁死锁问题
+        </a>
+      </span>
     </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <ol>
-<li>fork进程</li>
-<li>IO复用</li>
-<li>线程</li>
-</ol>
-<hr>
-<h2 id="多进程">多进程</h2>
-<p>主进程监听，在循环中接受连接请求，当连接建立后，fork一个子进程，在子进程中进行处理。</p>
-<ul>
-<li>
-<p>主进程：listen -&gt; while(1) -&gt; accept -&gt; fork -&gt; close connfd</p>
-</li>
-<li>
-<p>子进程：close listenfd -&gt; handle -&gt; close connfd</p>
-</li>
-</ul>
-    </div>
-    <div class="read-more">
-      <a href="/post/wbcurrency/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
+</section>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/allocator/">allocator</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
-      
-    </div>
-  </header>
+<nav class="pagination">
   
-  <div class="post-content">
-    <div class="post-summary">
-      allocator #include &lt;memory&gt; allocator&lt;T&gt; a 定义一个名为a的allocator对象，它可以为类型为T的对象分配内存 a.allocate(n) 分配一段原始的、未构造的内存，保存n个类型为T的对象 a.deallocate(p,n) 释放
-    </div>
-    <div class="read-more">
-      <a href="/post/allocator/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/lambda/">lambda表达式</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
-      
-    </div>
-  </header>
   
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="lambda表达式">lambda表达式</h1>
-<h2 id="介绍">介绍</h2>
-<p>一个lambda表达式表示一个可调用的代码单元，可以将其理解为一个未命名的内联函数。形式为</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[capture list](parameter list) -&gt; return type { function body}
-//必须使用尾置返回
-</code></pre></td></tr></table>
-</div>
-</div><p>几个特点</p>
-<ul>
-<li>必须使用尾置返回</li>
-<li>在创建时捕获</li>
-<li>只有一行return语句时可省略返回类型，否则默认为void</li>
-<li>一般在给算法传递谓词时可以使用</li>
-</ul>
-    </div>
-    <div class="read-more">
-      <a href="/post/lambda/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/socket/">socket编程</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="socket编程">socket编程</h1>
-<p><img src="https://upload-images.jianshu.io/upload_images/13808395-a7a891ec7646660b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="思维导图.jpg"></p>
-    </div>
-    <div class="read-more">
-      <a href="/post/socket/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    </section>
-  
-  <nav class="pagination">
-    <a class="prev" href="/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text">Prev</span>
-      </a>
-    <a class="next" href="/page/3/">
-        <span class="next-text">Next</span>
-        <i class="iconfont icon-right"></i>
-      </a>
-  </nav>
+</nav>
         </div>
         
 

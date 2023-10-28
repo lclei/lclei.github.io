@@ -6,11 +6,7 @@
     <description>Recent content in boost on lclei blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 10 Jul 2022 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://localhost:1313/tags/boost/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 10 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/boost/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>boost meta state machine</title>
       <link>http://localhost:1313/post/msm/</link>

@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.68.3 with theme even" />
+<meta name="generator" content="Hugo 0.92.2 with theme even" />
 
 
 <link rel="canonical" href="http://localhost:1313/post/udisk-grub/" />
@@ -36,7 +36,7 @@
 
 
 
-<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -44,18 +44,15 @@
 <meta property="og:description" content="现在装系统都是用u盘安装了，一个u盘只能安装一个系统有些浪费了，因为空间足够大，可以装下好几个iso文件。
 在linux环境中，使用dd命令只能制作一个引导盘，且其他空间不能再使用。从网上看用YUMI可以比较方便的制作多系统引导。然而实测发现是linux系统上实在太难用，装WINE也用不了。后来看到grub的方法成功实现了。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/post/udisk-grub/" />
+<meta property="og:url" content="http://localhost:1313/post/udisk-grub/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2020-11-15T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-11-15T00:00:00+00:00" />
+
 <meta itemprop="name" content="使用grub创建多系统u盘安装盘">
 <meta itemprop="description" content="现在装系统都是用u盘安装了，一个u盘只能安装一个系统有些浪费了，因为空间足够大，可以装下好几个iso文件。
-在linux环境中，使用dd命令只能制作一个引导盘，且其他空间不能再使用。从网上看用YUMI可以比较方便的制作多系统引导。然而实测发现是linux系统上实在太难用，装WINE也用不了。后来看到grub的方法成功实现了。">
-<meta itemprop="datePublished" content="2020-11-15T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-11-15T00:00:00&#43;00:00" />
+在linux环境中，使用dd命令只能制作一个引导盘，且其他空间不能再使用。从网上看用YUMI可以比较方便的制作多系统引导。然而实测发现是linux系统上实在太难用，装WINE也用不了。后来看到grub的方法成功实现了。"><meta itemprop="datePublished" content="2020-11-15T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-11-15T00:00:00+00:00" />
 <meta itemprop="wordCount" content="820">
-
-
-
 <meta itemprop="keywords" content="linux," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="使用grub创建多系统u盘安装盘"/>
 <meta name="twitter:description" content="现在装系统都是用u盘安装了，一个u盘只能安装一个系统有些浪费了，因为空间足够大，可以装下好几个iso文件。
@@ -173,7 +170,7 @@
 <p>下面还是给出fdisk的命令来复盘整个过程。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -185,7 +182,7 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sudo su  <span class="c1"># 提升权限方便后续操作</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo su  <span class="c1"># 提升权限方便后续操作</span>
 fdisk -l <span class="c1"># 查看当前分区，查找到u盘对应的位置，比如/dev/sdb</span>
 mkfs /dev/sdb <span class="c1"># 格式化</span>
 fdisk /dev/sdb <span class="c1"># 分区开始</span>
@@ -199,7 +196,7 @@ m <span class="c1"># 看help</span>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -223,7 +220,7 @@ m <span class="c1"># 看help</span>
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">I. Format your USB Flash Drive to use a Single Partition:
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">I. Format your USB Flash Drive to use a Single Partition:
 
     Open a terminal and type sudo su
     Type fdisk -l (and note which device is your USB Drive)
@@ -251,18 +248,18 @@ II. Create a Fat32 Filesystem on the USB Flash Drive:
 <p>挂载，安装grub</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mount /dev/sdb1 /mnt/udisk/linux/
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">mount /dev/sdb1 /mnt/udisk/linux/
 grub-install --root-directory<span class="o">=</span>/mnt/udisk/linux/ --boot-directory<span class="o">=</span>/mnt/udisk/linux/boot/ --no-floppy /dev/sdb
 </code></pre></td></tr></table>
 </div>
 </div><p>grub配置，各linux发行版的grub menu都不太一样，需要从网上查找以及和iso中的文件进行比对，我现在用的manjaro和ubuntu的配置如下，亲测可以使用</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -310,7 +307,7 @@ grub-install --root-directory<span class="o">=</span>/mnt/udisk/linux/ --boot-di
 </span><span class="lnt">46
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">set</span> <span class="nv">timeout</span><span class="o">=</span><span class="m">10</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">set</span> <span class="nv">timeout</span><span class="o">=</span><span class="m">10</span>
 insmod fat
 <span class="nb">set</span> <span class="nv">default</span><span class="o">=</span><span class="m">0</span>
 loadfont /boot/grub/fonts/unicode.pf2
@@ -427,7 +424,7 @@ reboot
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
   </span>
 </div>
 
@@ -444,7 +441,7 @@ reboot
 
 
 
-<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
 
 
 

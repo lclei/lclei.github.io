@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.68.3 with theme even" />
+<meta name="generator" content="Hugo 0.92.2 with theme even" />
 
 
 <link rel="canonical" href="http://localhost:1313/" />
@@ -37,7 +37,7 @@
 
 
 
-<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -45,7 +45,7 @@
 <meta property="og:description" content="lclei&#39;s blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://localhost:1313/" />
-<meta property="og:updated_time" content="2017-08-20T21:38:52+08:00" />
+
 <meta itemprop="name" content="lclei blog">
 <meta itemprop="description" content="lclei&#39;s blog."><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="lclei blog"/>
@@ -126,6 +126,42 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/flock/">记一次文件锁死锁问题</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2023-10-25 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>flock是Linux系统提供的一个系统级的锁，可以用作进程间的同步，man 2 flock，显示其用法是</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">NAME
+       flock - apply or remove an advisory lock on an open file
+SYNOPSIS
+       #include &lt;sys/file.h&gt;
+       int flock(int fd, int operation);
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+    <div class="read-more">
+      <a href="/post/flock/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/msm/">boost meta state machine</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2022-07-10 </span>
@@ -177,7 +213,7 @@
 例如</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -186,7 +222,7 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">void</span> <span class="nf">tree_preorder_re</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">node</span><span class="p">,</span> <span class="n">Tree</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">visit</span><span class="p">)(</span><span class="n">Tree</span> <span class="o">*</span><span class="p">,</span> <span class="n">TreeNode</span> <span class="o">*</span><span class="p">))</span>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="kt">void</span> <span class="nf">tree_preorder_re</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">node</span><span class="p">,</span> <span class="n">Tree</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">visit</span><span class="p">)(</span><span class="n">Tree</span> <span class="o">*</span><span class="p">,</span> <span class="n">TreeNode</span> <span class="o">*</span><span class="p">))</span>
 <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">node</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
     <span class="n">visit</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">node</span><span class="p">);</span>
@@ -199,7 +235,7 @@
 首先按照函数调用的关系，入栈的套路都是一样的。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -219,7 +255,7 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c">    <span class="n">Stack</span> <span class="o">*</span><span class="n">s</span> <span class="o">=</span> <span class="n">stack_new</span><span class="p">();</span>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c">    <span class="n">Stack</span> <span class="o">*</span><span class="n">s</span> <span class="o">=</span> <span class="n">stack_new</span><span class="p">();</span>
     <span class="n">TreeNode</span> <span class="o">*</span><span class="n">tNode</span> <span class="o">=</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">root</span><span class="p">;</span>
     <span class="k">while</span> <span class="p">(</span><span class="n">stack_depth</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">tNode</span><span class="p">)</span>
     <span class="p">{</span>
@@ -267,29 +303,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/webserver/">web服务器</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-11 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>首先创建几个函数以方便我们调用</p>
-<ul>
-<li>open_clinetfd: 创建一个网络socket，作为客户端，并且尝试连接主机</li>
-<li>open_listenfd: 创建socket，作为主机，并开始监听</li>
-</ul>
-    </div>
-    <div class="read-more">
-      <a href="/post/webserver/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -328,7 +341,7 @@
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
   </span>
 </div>
 
@@ -345,7 +358,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
 
 
 

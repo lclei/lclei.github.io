@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.68.3 with theme even" />
+<meta name="generator" content="Hugo 0.92.2 with theme even" />
 
 
 <link rel="canonical" href="http://localhost:1313/post/thread4/" />
@@ -36,7 +36,7 @@
 
 
 
-<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -65,9 +65,10 @@ int pthread_cond_wait(pthread_cond_t *restrict cond,
 
 " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/post/thread4/" />
+<meta property="og:url" content="http://localhost:1313/post/thread4/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-12-09T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-12-09T00:00:00+00:00" />
+
 <meta itemprop="name" content="线程同步3">
 <meta itemprop="description" content="线程同步3
 使用条件变量进行线程同步
@@ -91,13 +92,9 @@ int pthread_cond_wait(pthread_cond_t *restrict cond,
                                      const struct timespec *restrict tsptr);
 
 
-">
-<meta itemprop="datePublished" content="2019-12-09T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-12-09T00:00:00&#43;00:00" />
+"><meta itemprop="datePublished" content="2019-12-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-12-09T00:00:00+00:00" />
 <meta itemprop="wordCount" content="548">
-
-
-
 <meta itemprop="keywords" content="linux," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="线程同步3"/>
 <meta name="twitter:description" content="线程同步3
@@ -223,7 +220,7 @@ int pthread_cond_wait(pthread_cond_t *restrict cond,
 <p>使用条件变量进行线程同步</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -232,7 +229,7 @@ int pthread_cond_wait(pthread_cond_t *restrict cond,
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
 </span><span class="cp"></span><span class="kt">int</span> <span class="n">pthread_cond_init</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">cond</span><span class="p">;</span>
                                    <span class="k">const</span> <span class="n">pthread_condattr_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">attr</span><span class="p">);</span>
 <span class="kt">int</span> <span class="nf">pthread_cond_destroy</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span>
@@ -243,7 +240,7 @@ int pthread_cond_wait(pthread_cond_t *restrict cond,
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -284,7 +281,7 @@ int pthread_cond_wait(pthread_cond_t *restrict cond,
 </span><span class="lnt">39
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"> <span class="c1">// APUE example 11-15                             
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"> <span class="c1">// APUE example 11-15                             
 </span><span class="c1"></span> <span class="c1">// using mutex and cond                           
 </span><span class="c1"></span> <span class="c1">// lcl 20190326                                   
 </span><span class="c1"></span> <span class="c1">//                                                
@@ -328,14 +325,14 @@ int pthread_cond_wait(pthread_cond_t *restrict cond,
 </div><p>barrier，屏障</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">int pthread_barrier_init(pthread_barrier_t *restrict barrier,
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">int pthread_barrier_init(pthread_barrier_t *restrict barrier,
             const pthread_barrierattr_t *restrict attr,      
             unsigned int count);                             
 int pthrerd_barrier_destroy(pthread_barrier_t *barrier);     
@@ -344,7 +341,7 @@ int pthread_barrier_wait(pthread_barruer_t *barrier);
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -447,7 +444,7 @@ int pthread_barrier_wait(pthread_barruer_t *barrier);
 </span><span class="lnt">101
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* APUE example 11-16                            
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* APUE example 11-16                            
 </span><span class="cm"> * using barrier                                 
 </span><span class="cm"> * lcl 20190326                                  
 </span><span class="cm"> *                                               
@@ -619,7 +616,7 @@ int pthread_barrier_wait(pthread_barruer_t *barrier);
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
   </span>
 </div>
 
@@ -636,7 +633,7 @@ int pthread_barrier_wait(pthread_barruer_t *barrier);
 
 
 
-<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
 
 
 

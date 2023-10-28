@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.68.3 with theme even" />
+<meta name="generator" content="Hugo 0.92.2 with theme even" />
 
 
 <link rel="canonical" href="http://localhost:1313/post/webserver/" />
@@ -36,7 +36,7 @@
 
 
 
-<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -47,21 +47,18 @@ open_clinetfd: 创建一个网络socket，作为客户端，并且尝试连接�
 open_listenfd: 创建socket，作为主机，并开始监听
 " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/post/webserver/" />
+<meta property="og:url" content="http://localhost:1313/post/webserver/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-12-11T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-12-11T00:00:00+00:00" />
+
 <meta itemprop="name" content="web服务器">
 <meta itemprop="description" content="首先创建几个函数以方便我们调用
 
 open_clinetfd: 创建一个网络socket，作为客户端，并且尝试连接主机
 open_listenfd: 创建socket，作为主机，并开始监听
-">
-<meta itemprop="datePublished" content="2019-12-11T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-12-11T00:00:00&#43;00:00" />
+"><meta itemprop="datePublished" content="2019-12-11T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-12-11T00:00:00+00:00" />
 <meta itemprop="wordCount" content="1112">
-
-
-
 <meta itemprop="keywords" content="linux,net," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="web服务器"/>
 <meta name="twitter:description" content="首先创建几个函数以方便我们调用
@@ -168,7 +165,7 @@ open_listenfd: 创建socket，作为主机，并开始监听
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -222,7 +219,7 @@ open_listenfd: 创建socket，作为主机，并开始监听
 </span><span class="lnt">52
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&#34;mynet.h&#34;</span><span class="cp">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&#34;mynet.h&#34;</span><span class="cp">
 </span><span class="cp"></span>
 <span class="kt">int</span> <span class="nf">open_clientfd</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">hostname</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">port</span><span class="p">){</span>
 	<span class="kt">int</span> <span class="n">clientfd</span><span class="p">;</span>
@@ -286,7 +283,7 @@ open_listenfd: 创建socket，作为主机，并开始监听
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -461,7 +458,7 @@ open_listenfd: 创建socket，作为主机，并开始监听
 </span><span class="lnt">173
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&#34;mynet.h&#34;</span><span class="cp">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&#34;mynet.h&#34;</span><span class="cp">
 </span><span class="cp"></span>
 <span class="kt">void</span> <span class="nf">doit</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">);</span>
 <span class="kt">void</span> <span class="nf">read_requesthdrs</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">);</span>
@@ -706,7 +703,7 @@ open_listenfd: 创建socket，作为主机，并开始监听
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
   </span>
 </div>
 
@@ -723,7 +720,7 @@ open_listenfd: 创建socket，作为主机，并开始监听
 
 
 
-<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
 
 
 

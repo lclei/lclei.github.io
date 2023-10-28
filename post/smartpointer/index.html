@@ -28,7 +28,7 @@ shared_ptr 有引用计数，当最后一个shared_ptr被销毁，其指向的�
 
 
 
-<meta name="generator" content="Hugo 0.68.3 with theme even" />
+<meta name="generator" content="Hugo 0.92.2 with theme even" />
 
 
 <link rel="canonical" href="http://localhost:1313/post/smartpointer/" />
@@ -40,7 +40,7 @@ shared_ptr 有引用计数，当最后一个shared_ptr被销毁，其指向的�
 
 
 
-<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -116,9 +116,10 @@ int main(int argc,char* argv[])
 
 其输出结果为" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/post/smartpointer/" />
+<meta property="og:url" content="http://localhost:1313/post/smartpointer/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-12-09T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-12-09T00:00:00+00:00" />
+
 <meta itemprop="name" content="智能指针">
 <meta itemprop="description" content="
 #include &lt;memory&gt;
@@ -189,13 +190,9 @@ int main(int argc,char* argv[])
 }
 
 
-其输出结果为">
-<meta itemprop="datePublished" content="2019-12-09T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-12-09T00:00:00&#43;00:00" />
+其输出结果为"><meta itemprop="datePublished" content="2019-12-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-12-09T00:00:00+00:00" />
 <meta itemprop="wordCount" content="773">
-
-
-
 <meta itemprop="keywords" content="cpp," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="智能指针"/>
 <meta name="twitter:description" content="
@@ -379,7 +376,7 @@ int main(int argc,char* argv[])
 <p>例子：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -409,7 +406,7 @@ int main(int argc,char* argv[])
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span><span class="cp">#include</span> <span class="cpf">&lt;memory&gt;</span><span class="cp">
 </span><span class="cp">#include</span> <span class="cpf">&lt;iterator&gt;</span><span class="cp">
 </span><span class="cp"></span>
@@ -456,7 +453,7 @@ new@0x1001368</p>
 <p>使用智能指针还可以定义自己的释放操作，这是针对那些没有合适析构函数的对象或是c语言的代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -489,7 +486,7 @@ new@0x1001368</p>
 </span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;memory&gt;</span><span class="cp">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;memory&gt;</span><span class="cp">
 </span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 
@@ -533,47 +530,47 @@ close 0</p>
 <p>可以直接初始化</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">p1</span><span class="p">(</span><span class="k">new</span> <span class="n">string</span><span class="p">(</span><span class="s">&#34;I am unique&#34;</span><span class="p">))</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">p1</span><span class="p">(</span><span class="k">new</span> <span class="n">string</span><span class="p">(</span><span class="s">&#34;I am unique&#34;</span><span class="p">))</span>
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">p2</span><span class="p">(</span><span class="n">p1</span><span class="p">);</span> <span class="c1">//错误，不支持拷贝
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">p2</span><span class="p">(</span><span class="n">p1</span><span class="p">);</span> <span class="c1">//错误，不支持拷贝
 </span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">p2</span><span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">p2</span><span class="p">;</span>
 <span class="n">p2</span><span class="o">=</span><span class="n">p1</span><span class="p">;</span><span class="c1">//错误，不支持赋值
 </span></code></pre></td></tr></table>
 </div>
 </div><p>需要转移控制权的话，可以用</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">p2</span><span class="p">(</span><span class="n">p1</span><span class="p">.</span><span class="n">release</span><span class="p">())</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">p2</span><span class="p">(</span><span class="n">p1</span><span class="p">.</span><span class="n">release</span><span class="p">())</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>或者</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">p2</span><span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">p2</span><span class="p">;</span>
 <span class="n">p2</span><span class="p">.</span><span class="n">reset</span><span class="p">(</span><span class="n">p1</span><span class="p">.</span><span class="n">release</span><span class="p">());</span>
 </code></pre></td></tr></table>
 </div>
@@ -581,22 +578,22 @@ close 0</p>
 <p>需要一个shared_ptr来初始化它，不影响shared_ptr的计数</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">weak_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">wp</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">weak_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">wp</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>操作</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">wp</span><span class="p">.</span><span class="n">reset</span><span class="p">()</span>  <span class="c1">//置为空
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">wp</span><span class="p">.</span><span class="n">reset</span><span class="p">()</span>  <span class="c1">//置为空
 </span><span class="c1"></span><span class="n">wp</span><span class="p">.</span><span class="n">use_count</span><span class="p">()</span>  <span class="c1">//返回指向对象的shared_ptr的数量
 </span><span class="c1"></span><span class="n">wp</span><span class="p">.</span><span class="n">expired</span><span class="p">()</span> <span class="c1">//wp.use_count()为0，返回true
 </span><span class="c1"></span><span class="n">wp</span><span class="p">.</span><span class="n">lock</span><span class="p">()</span>  <span class="c1">//wp.expired()为true，则返回一个共享的shared_ptr，否则返回一个空的shared_ptr
@@ -671,7 +668,7 @@ close 0</p>
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
   </span>
 </div>
 
@@ -688,7 +685,7 @@ close 0</p>
 
 
 
-<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
 
 
 

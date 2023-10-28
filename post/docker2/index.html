@@ -25,7 +25,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.68.3 with theme even" />
+<meta name="generator" content="Hugo 0.92.2 with theme even" />
 
 
 <link rel="canonical" href="http://localhost:1313/post/docker2/" />
@@ -37,7 +37,7 @@
 
 
 
-<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -67,9 +67,10 @@ docker run -it centos
 
 " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/post/docker2/" />
+<meta property="og:url" content="http://localhost:1313/post/docker2/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-12-08T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-12-08T00:00:00+00:00" />
+
 <meta itemprop="name" content="docker2">
 <meta itemprop="description" content="搭建开发环境
 首先还是从centos入手吧
@@ -94,13 +95,9 @@ centos                             The official build of CentOS.                
 docker run -it centos
 
 
-">
-<meta itemprop="datePublished" content="2019-12-08T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-12-08T00:00:00&#43;00:00" />
+"><meta itemprop="datePublished" content="2019-12-08T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-12-08T00:00:00+00:00" />
 <meta itemprop="wordCount" content="419">
-
-
-
 <meta itemprop="keywords" content="docker," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="docker2"/>
 <meta name="twitter:description" content="搭建开发环境
@@ -227,12 +224,12 @@ docker run -it centos
 <p>首先还是从centos入手吧</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">C:\Users\Administrator&gt;docker search centos
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">C:\Users\Administrator&gt;docker search centos
 NAME                               DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
 centos                             The official build of CentOS.                   5221                [OK]
 </code></pre></td></tr></table>
@@ -240,21 +237,21 @@ centos                             The official build of CentOS.                
 </div><p>选择一个官方的版本，pull下来</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker run -it centos
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">docker run -it centos
 </code></pre></td></tr></table>
 </div>
 </div><p>这是一个没有vim，没有gcc，没有gdb的世界，安装他们</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">yum install vim
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">yum install vim
 yum install gcc
 yum install gdb
 </code></pre></td></tr></table>
@@ -264,7 +261,7 @@ yum install gdb
 实测发现gdb不能用</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -290,7 +287,7 @@ yum install gdb
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@1bb163f86a43 lcl]# gdb hello
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@1bb163f86a43 lcl]# gdb hello
 GNU gdb (GDB) Red Hat Enterprise Linux 7.6.1-114.el7
 Copyright (C) 2013 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
@@ -320,12 +317,12 @@ During startup program exited with code 127.
 <a href="https://blog.csdn.net/snipercai/article/details/80408569">https://blog.csdn.net/snipercai/article/details/80408569</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">C:\Users\Administrator&gt;docker ps -l
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">C:\Users\Administrator&gt;docker ps -l
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES
 1bb163f86a43        centos/gcc          &#34;/bin/bash&#34;         45 minutes ago      Exited (0) 16 minutes ago                       pensive_ramanujan
 </code></pre></td></tr></table>
@@ -333,7 +330,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 </div><p>记住这个ID，commit它</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -344,7 +341,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">C:\Users\Administrator&gt;docker commit 1bb develop
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">C:\Users\Administrator&gt;docker commit 1bb develop
 sha256:30f0327ebe65560ebd78daf868c1835c0d97ee1c2ff95450ec1ebd848cb57cc7
 
 C:\Users\Administrator&gt;docker images
@@ -424,7 +421,7 @@ learn/tutorial      latest              a7876479f1aa        5 years ago         
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
   </span>
 </div>
 
@@ -441,7 +438,7 @@ learn/tutorial      latest              a7876479f1aa        5 years ago         
 
 
 
-<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
 
 
 

@@ -25,7 +25,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.68.3 with theme even" />
+<meta name="generator" content="Hugo 0.92.2 with theme even" />
 
 
 <link rel="canonical" href="http://localhost:1313/post/thread3/" />
@@ -37,7 +37,7 @@
 
 
 
-<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -59,9 +59,10 @@ int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct times
 愿意等待timespec描述的时间，达到时间返回错误码ETIMEOUT
 一个例子" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/post/thread3/" />
+<meta property="og:url" content="http://localhost:1313/post/thread3/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-12-09T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-12-09T00:00:00+00:00" />
+
 <meta itemprop="name" content="线程同步2">
 <meta itemprop="description" content="线程同步2
 时间锁
@@ -78,13 +79,9 @@ int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct times
 
 
 愿意等待timespec描述的时间，达到时间返回错误码ETIMEOUT
-一个例子">
-<meta itemprop="datePublished" content="2019-12-09T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-12-09T00:00:00&#43;00:00" />
+一个例子"><meta itemprop="datePublished" content="2019-12-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-12-09T00:00:00+00:00" />
 <meta itemprop="wordCount" content="323">
-
-
-
 <meta itemprop="keywords" content="linux," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="线程同步2"/>
 <meta name="twitter:description" content="线程同步2
@@ -203,12 +200,12 @@ int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct times
 <p>时间锁</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">#include &lt;pthread.h&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">#include &lt;pthread.h&gt;
 #include &lt;time.h&gt;
 int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct timespec *restrict tsptr);
 </code></pre></td></tr></table>
@@ -217,7 +214,7 @@ int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct times
 一个例子</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -258,7 +255,7 @@ int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct times
 </span><span class="lnt">39
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="c1">// APUE example11-13                                       
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="c1">// APUE example11-13                                       
 </span><span class="c1">// pthread_mutex_timedlock                                 
 </span><span class="c1">// lcl 20190325                                            
 </span><span class="c1">//                                                         
@@ -302,13 +299,13 @@ int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct times
 </div><p>运行结果：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">the mutex now is locked
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">the mutex now is locked
 current time is 01:08:51 PM
 the time is now 01:09:01 PM
 can&#39;t lock mutex again:Connection timed out
@@ -317,7 +314,7 @@ can&#39;t lock mutex again:Connection timed out
 </div><p>读写锁，三种状态读加锁、写加锁和不加锁</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -327,7 +324,7 @@ can&#39;t lock mutex again:Connection timed out
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
 </span><span class="cp"></span><span class="kt">int</span> <span class="nf">pthread_rwlock_init</span><span class="p">(</span><span class="n">pthread_rwlock_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">rwlock</span><span class="p">,</span>
                                       <span class="k">const</span> <span class="n">pthread_rwlockattr_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">attr</span><span class="p">);</span>
 <span class="kt">int</span> <span class="nf">pthread_rwlock_destory</span><span class="p">(</span><span class="n">pthread_rwlock_t</span> <span class="o">*</span><span class="n">rwlock</span><span class="p">);</span>
@@ -411,7 +408,7 @@ can&#39;t lock mutex again:Connection timed out
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
   </span>
 </div>
 
@@ -428,7 +425,7 @@ can&#39;t lock mutex again:Connection timed out
 
 
 
-<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
 
 
 
