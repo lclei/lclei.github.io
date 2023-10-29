@@ -126,9 +126,84 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/thread3/">线程同步2</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-06-10 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h1 id="线程同步2">线程同步2</h1>
+<p>时间锁</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">#include &lt;pthread.h&gt;
+#include &lt;time.h&gt;
+int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct timespec *restrict tsptr);
+</code></pre></td></tr></table>
+</div>
+</div><p>愿意等待timespec描述的时间，达到时间返回错误码ETIMEOUT
+一个例子</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/thread3/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/thread4/">线程同步3</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-06-10 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h1 id="线程同步3">线程同步3</h1>
+<p>使用条件变量进行线程同步</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="kt">int</span> <span class="n">pthread_cond_init</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">cond</span><span class="p">;</span>
+                                   <span class="k">const</span> <span class="n">pthread_condattr_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">attr</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">pthread_cond_destroy</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">pthread_cond_wait</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">cond</span><span class="p">,</span>
+                                     <span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">mutex</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="k">struct</span> <span class="n">timespec</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">tsptr</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+    <div class="read-more">
+      <a href="/post/thread4/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/thread2/">线程同步1</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
+      <span class="post-time"> 2019-06-09 </span>
       
     </div>
   </header>
@@ -175,84 +250,9 @@
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/thread3/">线程同步2</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="线程同步2">线程同步2</h1>
-<p>时间锁</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">#include &lt;pthread.h&gt;
-#include &lt;time.h&gt;
-int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct timespec *restrict tsptr);
-</code></pre></td></tr></table>
-</div>
-</div><p>愿意等待timespec描述的时间，达到时间返回错误码ETIMEOUT
-一个例子</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/thread3/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/thread4/">线程同步3</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="线程同步3">线程同步3</h1>
-<p>使用条件变量进行线程同步</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
-</span><span class="cp"></span><span class="kt">int</span> <span class="n">pthread_cond_init</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">cond</span><span class="p">;</span>
-                                   <span class="k">const</span> <span class="n">pthread_condattr_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">attr</span><span class="p">);</span>
-<span class="kt">int</span> <span class="nf">pthread_cond_destroy</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span>
-<span class="kt">int</span> <span class="nf">pthread_cond_wait</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">cond</span><span class="p">,</span>
-                                     <span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">mutex</span><span class="p">,</span>
-                                     <span class="k">const</span> <span class="k">struct</span> <span class="n">timespec</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">tsptr</span><span class="p">);</span>
-</code></pre></td></tr></table>
-</div>
-</div>
-    </div>
-    <div class="read-more">
-      <a href="/post/thread4/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/thread1/">线程的创建及退出</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
+      <span class="post-time"> 2019-06-09 </span>
       
     </div>
   </header>
@@ -269,37 +269,20 @@ int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct times
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/iostreamiterator/">输入输出流迭代器</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/socket/">socket编程</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
+      <span class="post-time"> 2019-04-20 </span>
       
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      <h1 id="输入输出流迭代器">输入输出流迭代器</h1>
-<h2 id="istream_iterator">istream_iterator</h2>
-<ul>
-<li>创建一个istream_iterator，然后把它绑定到一个流</li>
-<li>如果默认初始化，则是一个尾后值的迭代器</li>
-</ul>
-<h2 id="ostream_iterator">ostream_iterator</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ostream_iterator&lt;T&gt; out(os)  //out将类型为T的值写到os流中
-ostream_iterator&lt;T&gt; out(os, d)  //out将类型为T的值写到os流中，且在后面加上字符串d
-</code></pre></td></tr></table>
-</div>
-</div><p>有了输入输出流迭代器，我们可以把输入输出流当作容器来使用，在拷贝，初始化等等有和容器操作相同的形式，代码比较好看</p>
-<p>例子</p>
+      <h1 id="socket编程">socket编程</h1>
+<p><img src="https://upload-images.jianshu.io/upload_images/13808395-a7a891ec7646660b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="思维导图.jpg"></p>
     </div>
     <div class="read-more">
-      <a href="/post/iostreamiterator/" class="read-more-link">Read more...</a>
+      <a href="/post/socket/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>

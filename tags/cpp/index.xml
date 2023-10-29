@@ -17,46 +17,9 @@
     </item>
     
     <item>
-      <title>allocator</title>
-      <link>http://localhost:1313/post/allocator/</link>
-      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/post/allocator/</guid>
-      <description>allocator #include &amp;lt;memory&amp;gt; allocator&amp;lt;T&amp;gt; a 定义一个名为a的allocator对象，它可以为类型为T的对象分配内存 a.allocate(n) 分配一段原始的、未构造的内存，保存n个类型为T的对象 a.deallocate(p,n) 释放</description>
-    </item>
-    
-    <item>
-      <title>lambda表达式</title>
-      <link>http://localhost:1313/post/lambda/</link>
-      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/post/lambda/</guid>
-      <description>&lt;h1 id=&#34;lambda表达式&#34;&gt;lambda表达式&lt;/h1&gt;
-&lt;h2 id=&#34;介绍&#34;&gt;介绍&lt;/h2&gt;
-&lt;p&gt;一个lambda表达式表示一个可调用的代码单元，可以将其理解为一个未命名的内联函数。形式为&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[capture list](parameter list) -&amp;gt; return type { function body}
-//必须使用尾置返回
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;几个特点&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;必须使用尾置返回&lt;/li&gt;
-&lt;li&gt;在创建时捕获&lt;/li&gt;
-&lt;li&gt;只有一行return语句时可省略返回类型，否则默认为void&lt;/li&gt;
-&lt;li&gt;一般在给算法传递谓词时可以使用&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
       <title>右值引用</title>
       <link>http://localhost:1313/post/rvalue/</link>
-      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 11 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/post/rvalue/</guid>
       <description>&lt;h1 id=&#34;右值引用&#34;&gt;右值引用&lt;/h1&gt;
@@ -71,7 +34,7 @@
     <item>
       <title>多态 polymorphism</title>
       <link>http://localhost:1313/post/polymorphism/</link>
-      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 11 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/post/polymorphism/</guid>
       <description>&lt;h1 id=&#34;多态-polymorphism&#34;&gt;多态 polymorphism&lt;/h1&gt;
@@ -84,28 +47,9 @@
     </item>
     
     <item>
-      <title>插入迭代器</title>
-      <link>http://localhost:1313/post/inserter/</link>
-      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/post/inserter/</guid>
-      <description>&lt;h1 id=&#34;插入迭代器&#34;&gt;插入迭代器&lt;/h1&gt;
-&lt;p&gt;接受一个容器，生成一个迭代器，实现向给定容器插入元素&lt;/p&gt;
-&lt;h2 id=&#34;操作&#34;&gt;操作&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;it = t&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;在it指定的当前位置插入值t，且根据插入迭代器的类型不同，分别调用c.push_back(t), c.oush_front(t), c.insert(t,p)&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;*it, it++, ++it&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;有这些形式，但是什么都不做&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>智能指针</title>
       <link>http://localhost:1313/post/smartpointer/</link>
-      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 11 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/post/smartpointer/</guid>
       <description>&lt;blockquote&gt;
@@ -181,9 +125,96 @@
     </item>
     
     <item>
+      <title>穷举搜索</title>
+      <link>http://localhost:1313/post/%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/</link>
+      <pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/</guid>
+      <description>&lt;p&gt;实质是创建一个状态树，边建立边剪枝，得到最终状态输出
+步骤有：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;列出表示状态的数据结构&lt;/li&gt;
+&lt;li&gt;列出在状态之间迁移的动作的数据结构&lt;/li&gt;
+&lt;li&gt;列出两个状态转换的所有动作列表&lt;/li&gt;
+&lt;li&gt;创建一个deque存储搜索的状态&lt;/li&gt;
+&lt;li&gt;从deque尾端取出状态，判断是否是最终状态，是的话打印当前deque，进行搜索search，循环所有动作，执行动作searchOnOneAction&lt;/li&gt;
+&lt;li&gt;判断新状态是否有效，有效则加入deque，继续递归调用搜索&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+    <item>
+      <title>lambda表达式</title>
+      <link>http://localhost:1313/post/lambda/</link>
+      <pubDate>Sun, 09 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/lambda/</guid>
+      <description>&lt;h1 id=&#34;lambda表达式&#34;&gt;lambda表达式&lt;/h1&gt;
+&lt;h2 id=&#34;介绍&#34;&gt;介绍&lt;/h2&gt;
+&lt;p&gt;一个lambda表达式表示一个可调用的代码单元，可以将其理解为一个未命名的内联函数。形式为&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[capture list](parameter list) -&amp;gt; return type { function body}
+//必须使用尾置返回
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;几个特点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;必须使用尾置返回&lt;/li&gt;
+&lt;li&gt;在创建时捕获&lt;/li&gt;
+&lt;li&gt;只有一行return语句时可省略返回类型，否则默认为void&lt;/li&gt;
+&lt;li&gt;一般在给算法传递谓词时可以使用&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>allocator</title>
+      <link>http://localhost:1313/post/allocator/</link>
+      <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/allocator/</guid>
+      <description>allocator #include &amp;lt;memory&amp;gt; allocator&amp;lt;T&amp;gt; a 定义一个名为a的allocator对象，它可以为类型为T的对象分配内存 a.allocate(n) 分配一段原始的、未构造的内存，保存n个类型为T的对象 a.deallocate(p,n) 释放</description>
+    </item>
+    
+    <item>
+      <title>bind</title>
+      <link>http://localhost:1313/post/bind/</link>
+      <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/bind/</guid>
+      <description>&lt;h1 id=&#34;bind&#34;&gt;bind&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;auto g = bind(f, arg_list)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;用我自己的话来说，就是把原来函数f的参数重新安排，可以直接绑定值，也可以使用占位符placeholder，达到减少参数或者调换参数顺序的作用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>插入迭代器</title>
+      <link>http://localhost:1313/post/inserter/</link>
+      <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/inserter/</guid>
+      <description>&lt;h1 id=&#34;插入迭代器&#34;&gt;插入迭代器&lt;/h1&gt;
+&lt;p&gt;接受一个容器，生成一个迭代器，实现向给定容器插入元素&lt;/p&gt;
+&lt;h2 id=&#34;操作&#34;&gt;操作&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;it = t&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在it指定的当前位置插入值t，且根据插入迭代器的类型不同，分别调用c.push_back(t), c.oush_front(t), c.insert(t,p)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;*it, it++, ++it&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;有这些形式，但是什么都不做&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>输入输出流迭代器</title>
       <link>http://localhost:1313/post/iostreamiterator/</link>
-      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/post/iostreamiterator/</guid>
       <description>&lt;h1 id=&#34;输入输出流迭代器&#34;&gt;输入输出流迭代器&lt;/h1&gt;
@@ -205,37 +236,6 @@ ostream_iterator&amp;lt;T&amp;gt; out(os, d)  //out将类型为T的值写到os�
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;有了输入输出流迭代器，我们可以把输入输出流当作容器来使用，在拷贝，初始化等等有和容器操作相同的形式，代码比较好看&lt;/p&gt;
 &lt;p&gt;例子&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://localhost:1313/post/bind/</link>
-      <pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/post/bind/</guid>
-      <description>&lt;h1 id=&#34;bind&#34;&gt;bind&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;auto g = bind(f, arg_list)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;用我自己的话来说，就是把原来函数f的参数重新安排，可以直接绑定值，也可以使用占位符placeholder，达到减少参数或者调换参数顺序的作用。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>穷举搜索</title>
-      <link>http://localhost:1313/post/%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/</link>
-      <pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/post/%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/</guid>
-      <description>&lt;p&gt;实质是创建一个状态树，边建立边剪枝，得到最终状态输出
-步骤有：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;列出表示状态的数据结构&lt;/li&gt;
-&lt;li&gt;列出在状态之间迁移的动作的数据结构&lt;/li&gt;
-&lt;li&gt;列出两个状态转换的所有动作列表&lt;/li&gt;
-&lt;li&gt;创建一个deque存储搜索的状态&lt;/li&gt;
-&lt;li&gt;从deque尾端取出状态，判断是否是最终状态，是的话打印当前deque，进行搜索search，循环所有动作，执行动作searchOnOneAction&lt;/li&gt;
-&lt;li&gt;判断新状态是否有效，有效则加入deque，继续递归调用搜索&lt;/li&gt;
-&lt;/ol&gt;</description>
     </item>
     
   </channel>

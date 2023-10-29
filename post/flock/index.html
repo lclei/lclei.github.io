@@ -84,7 +84,7 @@ SYNOPSIS
 
 "><meta itemprop="datePublished" content="2023-10-25T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-10-25T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1318">
+<meta itemprop="wordCount" content="1322">
 <meta itemprop="keywords" content="linux,flock," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="记一次文件锁死锁问题"/>
 <meta name="twitter:description" content="flock是Linux系统提供的一个系统级的锁，可以用作进程间的同步，man 2 flock，显示其用法是
@@ -542,7 +542,7 @@ lr-x------ 1 lcl lcl 64 Oct 28 20:01 4 -&gt; /home/lcl/repo/c/flock/f.lock
 所以这是一个文件锁、多进程多线程文件继承的问题。在线程中打开的文件，被子进程继承，当关闭文件时，执行了exec的子进程已经断开和原主进程的关系，打开的文件得以保留。因此f.lock这个文件并没有被所有进程关闭，挂在这个文件上的锁也没有被解锁，导致了死锁问题。</p>
 <p>其过程如下：
 <img src="//www.plantuml.com/plantuml/png/TT11pi8W40NWFQTu_m7-bJiMfiTmYp0KufHf08t7jtMQs9Ywcxn-azTXQDtLVf_O_FL44s5cbuifqWdoe8h85ir4nlyPFLLo0HQpJZkcWONCL10p4rn333WTc94wMdAL0YABlnsG86WoKK-vZ5kvJvdNxYXrjw6nrIebYxswbc11J_AyiskyqNLSfFu0xFlJHsfiVntWMHhfbIg-zovce1AMLtq1" alt=""></p>
-<p>其解决方案时，使用显式的UNLOCK进行解锁，已经设置文件的close_on_exec属性。</p>
+<p>其解决方案是，使用显式的UNLOCK进行解锁，再设置文件的close_on_exec属性加一重保险。</p>
     </div>
 
     <div class="post-copyright">

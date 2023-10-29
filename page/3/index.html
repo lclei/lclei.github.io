@@ -126,50 +126,104 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/rvalue/">右值引用</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/docker3/">docker3</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
+      <span class="post-time"> 2019-12-08 </span>
       
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      <h1 id="右值引用">右值引用</h1>
-<ul>
-<li>使用&amp;&amp;表示</li>
-<li>只能绑定到一个将要销毁的对象</li>
-<li>左值持久，右值短暂</li>
-<li>将左值转换为对应的右值使用std::move</li>
-</ul>
+      docker容器操作 让我们再梳理一遍这样的事实：镜像image运行产生容器container，镜像可以保存为镜像 查看容器 1 2 3 4 C:\WINDOWS\system32&gt;docker ps -a CONTAINER ID IMAGE
     </div>
     <div class="read-more">
-      <a href="/post/rvalue/" class="read-more-link">Read more...</a>
+      <a href="/post/docker3/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/polymorphism/">多态 polymorphism</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/">穷举搜索</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
+      <span class="post-time"> 2019-12-08 </span>
       
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      <h1 id="多态-polymorphism">多态 polymorphism</h1>
-<ul>
-<li>一个接口，多种方法</li>
-<li>使用虚函数实现</li>
-</ul>
-<p>基类成员函数添加了virtual关键字，该函数在执行时绑定。否则在编译时绑定。所以</p>
-<p><strong>基类希望其派生类进行覆盖的函数，定义为虚函数</strong></p>
+      <p>实质是创建一个状态树，边建立边剪枝，得到最终状态输出
+步骤有：</p>
+<ol>
+<li>列出表示状态的数据结构</li>
+<li>列出在状态之间迁移的动作的数据结构</li>
+<li>列出两个状态转换的所有动作列表</li>
+<li>创建一个deque存储搜索的状态</li>
+<li>从deque尾端取出状态，判断是否是最终状态，是的话打印当前deque，进行搜索search，循环所有动作，执行动作searchOnOneAction</li>
+<li>判断新状态是否有效，有效则加入deque，继续递归调用搜索</li>
+</ol>
     </div>
     <div class="read-more">
-      <a href="/post/polymorphism/" class="read-more-link">Read more...</a>
+      <a href="/post/%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/wbcurrency/">并发服务器</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-07-27 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <ol>
+<li>fork进程</li>
+<li>IO复用</li>
+<li>线程</li>
+</ol>
+<hr>
+<h2 id="多进程">多进程</h2>
+<p>主进程监听，在循环中接受连接请求，当连接建立后，fork一个子进程，在子进程中进行处理。</p>
+<ul>
+<li>
+<p>主进程：listen -&gt; while(1) -&gt; accept -&gt; fork -&gt; close connfd</p>
+</li>
+<li>
+<p>子进程：close listenfd -&gt; handle -&gt; close connfd</p>
+</li>
+</ul>
+    </div>
+    <div class="read-more">
+      <a href="/post/wbcurrency/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/webserver/">web服务器</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-07-10 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>首先创建几个函数以方便我们调用</p>
+<ul>
+<li>open_clinetfd: 创建一个网络socket，作为客户端，并且尝试连接主机</li>
+<li>open_listenfd: 创建socket，作为主机，并开始监听</li>
+</ul>
+    </div>
+    <div class="read-more">
+      <a href="/post/webserver/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>
@@ -178,7 +232,7 @@
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/daemon/">守护进程</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
+      <span class="post-time"> 2019-06-20 </span>
       
     </div>
   </header>
@@ -202,123 +256,6 @@
     </div>
     <div class="read-more">
       <a href="/post/daemon/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/inserter/">插入迭代器</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="插入迭代器">插入迭代器</h1>
-<p>接受一个容器，生成一个迭代器，实现向给定容器插入元素</p>
-<h2 id="操作">操作</h2>
-<blockquote>
-<p>it = t</p>
-</blockquote>
-<p>在it指定的当前位置插入值t，且根据插入迭代器的类型不同，分别调用c.push_back(t), c.oush_front(t), c.insert(t,p)</p>
-<blockquote>
-<p>*it, it++, ++it</p>
-</blockquote>
-<p>有这些形式，但是什么都不做</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/inserter/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/smartpointer/">智能指针</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <blockquote>
-<p>#include &lt;memory&gt;</p>
-</blockquote>
-<p>三种智能指针</p>
-<h2 id="shared_ptr">shared_ptr</h2>
-<p>有引用计数，当最后一个shared_ptr被销毁，其指向的对象将被析构。</p>
-<p>例子：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&lt;memory&gt;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&lt;iterator&gt;</span><span class="cp">
-</span><span class="cp"></span>
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">Foo</span><span class="p">{</span>
-    <span class="k">public</span><span class="o">:</span>
-    <span class="n">Foo</span><span class="p">()</span> <span class="p">{</span><span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;new@&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">p</span> <span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;}</span>
-    <span class="o">~</span><span class="n">Foo</span><span class="p">()</span> <span class="p">{</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;release@&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">p</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span><span class="k">delete</span> <span class="p">[]</span> <span class="n">p</span><span class="p">;</span><span class="n">p</span><span class="o">=</span><span class="k">nullptr</span><span class="p">;}</span>
-    <span class="kt">int</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="kt">void</span> <span class="nf">smartptr</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Foo</span><span class="o">&gt;</span> <span class="n">sp1</span> <span class="o">=</span> <span class="n">make_shared</span><span class="o">&lt;</span><span class="n">Foo</span><span class="o">&gt;</span><span class="p">();</span>
-    <span class="k">auto</span> <span class="n">sp2</span> <span class="o">=</span> <span class="n">make_shared</span><span class="o">&lt;</span><span class="n">Foo</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="p">}</span>
-<span class="kt">void</span> <span class="nf">ptr</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="k">auto</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Foo</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span><span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
-<span class="p">{</span>
-    <span class="n">smartptr</span><span class="p">();</span>
-    <span class="n">ptr</span><span class="p">();</span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>其输出结果为</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/smartpointer/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>

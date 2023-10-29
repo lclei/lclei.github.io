@@ -126,134 +126,200 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/webserver/">web服务器</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/rvalue/">右值引用</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2019-12-11 </span>
+      <span class="post-time"> 2020-01-11 </span>
       
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      <p>首先创建几个函数以方便我们调用</p>
+      <h1 id="右值引用">右值引用</h1>
 <ul>
-<li>open_clinetfd: 创建一个网络socket，作为客户端，并且尝试连接主机</li>
-<li>open_listenfd: 创建socket，作为主机，并开始监听</li>
+<li>使用&amp;&amp;表示</li>
+<li>只能绑定到一个将要销毁的对象</li>
+<li>左值持久，右值短暂</li>
+<li>将左值转换为对应的右值使用std::move</li>
 </ul>
     </div>
     <div class="read-more">
-      <a href="/post/webserver/" class="read-more-link">Read more...</a>
+      <a href="/post/rvalue/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/wbcurrency/">并发服务器</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/polymorphism/">多态 polymorphism</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2019-12-10 </span>
+      <span class="post-time"> 2020-01-11 </span>
       
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      <ol>
-<li>fork进程</li>
-<li>IO复用</li>
-<li>线程</li>
-</ol>
-<hr>
-<h2 id="多进程">多进程</h2>
-<p>主进程监听，在循环中接受连接请求，当连接建立后，fork一个子进程，在子进程中进行处理。</p>
+      <h1 id="多态-polymorphism">多态 polymorphism</h1>
 <ul>
-<li>
-<p>主进程：listen -&gt; while(1) -&gt; accept -&gt; fork -&gt; close connfd</p>
-</li>
-<li>
-<p>子进程：close listenfd -&gt; handle -&gt; close connfd</p>
-</li>
+<li>一个接口，多种方法</li>
+<li>使用虚函数实现</li>
 </ul>
+<p>基类成员函数添加了virtual关键字，该函数在执行时绑定。否则在编译时绑定。所以</p>
+<p><strong>基类希望其派生类进行覆盖的函数，定义为虚函数</strong></p>
     </div>
     <div class="read-more">
-      <a href="/post/wbcurrency/" class="read-more-link">Read more...</a>
+      <a href="/post/polymorphism/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/allocator/">allocator</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/smartpointer/">智能指针</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
+      <span class="post-time"> 2020-01-11 </span>
       
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      allocator #include &lt;memory&gt; allocator&lt;T&gt; a 定义一个名为a的allocator对象，它可以为类型为T的对象分配内存 a.allocate(n) 分配一段原始的、未构造的内存，保存n个类型为T的对象 a.deallocate(p,n) 释放
+      <blockquote>
+<p>#include &lt;memory&gt;</p>
+</blockquote>
+<p>三种智能指针</p>
+<h2 id="shared_ptr">shared_ptr</h2>
+<p>有引用计数，当最后一个shared_ptr被销毁，其指向的对象将被析构。</p>
+<p>例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;memory&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;iterator&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Foo</span><span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+    <span class="n">Foo</span><span class="p">()</span> <span class="p">{</span><span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;new@&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">p</span> <span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;}</span>
+    <span class="o">~</span><span class="n">Foo</span><span class="p">()</span> <span class="p">{</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;release@&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">p</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span><span class="k">delete</span> <span class="p">[]</span> <span class="n">p</span><span class="p">;</span><span class="n">p</span><span class="o">=</span><span class="k">nullptr</span><span class="p">;}</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">void</span> <span class="nf">smartptr</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Foo</span><span class="o">&gt;</span> <span class="n">sp1</span> <span class="o">=</span> <span class="n">make_shared</span><span class="o">&lt;</span><span class="n">Foo</span><span class="o">&gt;</span><span class="p">();</span>
+    <span class="k">auto</span> <span class="n">sp2</span> <span class="o">=</span> <span class="n">make_shared</span><span class="o">&lt;</span><span class="n">Foo</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">ptr</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">auto</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Foo</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span><span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="n">smartptr</span><span class="p">();</span>
+    <span class="n">ptr</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>其输出结果为</p>
     </div>
     <div class="read-more">
-      <a href="/post/allocator/" class="read-more-link">Read more...</a>
+      <a href="/post/smartpointer/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/lambda/">lambda表达式</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/docker1/">docker1</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
+      <span class="post-time"> 2019-12-08 </span>
       
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      <h1 id="lambda表达式">lambda表达式</h1>
-<h2 id="介绍">介绍</h2>
-<p>一个lambda表达式表示一个可调用的代码单元，可以将其理解为一个未命名的内联函数。形式为</p>
+      <h1 id="初探docker">初探docker</h1>
+<p>我的centos挂掉了，折腾了一两天没有成效，暂时不做他想，可能需要重装了吧。之前在win10上用VMware，老破电脑太卡，机缘巧合之下，我了解到docker是轻量级的虚拟机，来试一下。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/docker1/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/docker2/">docker2</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-12-08 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h1 id="搭建开发环境">搭建开发环境</h1>
+<p>首先还是从centos入手吧</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[capture list](parameter list) -&gt; return type { function body}
-//必须使用尾置返回
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">C:\Users\Administrator&gt;docker search centos
+NAME                               DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
+centos                             The official build of CentOS.                   5221                [OK]
 </code></pre></td></tr></table>
 </div>
-</div><p>几个特点</p>
-<ul>
-<li>必须使用尾置返回</li>
-<li>在创建时捕获</li>
-<li>只有一行return语句时可省略返回类型，否则默认为void</li>
-<li>一般在给算法传递谓词时可以使用</li>
-</ul>
+</div><p>选择一个官方的版本，pull下来</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">docker run -it centos
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
     <div class="read-more">
-      <a href="/post/lambda/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/socket/">socket编程</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-09 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="socket编程">socket编程</h1>
-<p><img src="https://upload-images.jianshu.io/upload_images/13808395-a7a891ec7646660b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="思维导图.jpg"></p>
-    </div>
-    <div class="read-more">
-      <a href="/post/socket/" class="read-more-link">Read more...</a>
+      <a href="/post/docker2/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>

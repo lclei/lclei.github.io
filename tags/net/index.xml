@@ -6,24 +6,11 @@
     <description>Recent content in net on lclei blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 11 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/net/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>web服务器</title>
-      <link>http://localhost:1313/post/webserver/</link>
-      <pubDate>Wed, 11 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/post/webserver/</guid>
-      <description>&lt;p&gt;首先创建几个函数以方便我们调用&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;open_clinetfd: 创建一个网络socket，作为客户端，并且尝试连接主机&lt;/li&gt;
-&lt;li&gt;open_listenfd: 创建socket，作为主机，并开始监听&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
+    <lastBuildDate>Sat, 27 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/net/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>并发服务器</title>
       <link>http://localhost:1313/post/wbcurrency/</link>
-      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/post/wbcurrency/</guid>
       <description>&lt;ol&gt;
@@ -45,9 +32,22 @@
     </item>
     
     <item>
+      <title>web服务器</title>
+      <link>http://localhost:1313/post/webserver/</link>
+      <pubDate>Wed, 10 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/webserver/</guid>
+      <description>&lt;p&gt;首先创建几个函数以方便我们调用&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;open_clinetfd: 创建一个网络socket，作为客户端，并且尝试连接主机&lt;/li&gt;
+&lt;li&gt;open_listenfd: 创建socket，作为主机，并开始监听&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
       <title>socket编程</title>
       <link>http://localhost:1313/post/socket/</link>
-      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/post/socket/</guid>
       <description>&lt;h1 id=&#34;socket编程&#34;&gt;socket编程&lt;/h1&gt;
