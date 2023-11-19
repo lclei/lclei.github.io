@@ -126,6 +126,26 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/udisk-grub/">使用grub创建多系统u盘安装盘</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-11-15 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>现在装系统都是用u盘安装了，一个u盘只能安装一个系统有些浪费了，因为空间足够大，可以装下好几个iso文件。
+在linux环境中，使用dd命令只能制作一个引导盘，且其他空间不能再使用。从网上看用YUMI可以比较方便的制作多系统引导。然而实测发现是linux系统上实在太难用，装WINE也用不了。后来看到grub的方法成功实现了。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/udisk-grub/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/rvalue/">右值引用</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2020-01-11 </span>
@@ -278,48 +298,6 @@
     </div>
     <div class="read-more">
       <a href="/post/docker1/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/docker2/">docker2</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-08 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="搭建开发环境">搭建开发环境</h1>
-<p>首先还是从centos入手吧</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">C:\Users\Administrator&gt;docker search centos
-NAME                               DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
-centos                             The official build of CentOS.                   5221                [OK]
-</code></pre></td></tr></table>
-</div>
-</div><p>选择一个官方的版本，pull下来</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">docker run -it centos
-</code></pre></td></tr></table>
-</div>
-</div>
-    </div>
-    <div class="read-more">
-      <a href="/post/docker2/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>

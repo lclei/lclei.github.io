@@ -6,7 +6,7 @@
     <description>Recent content on lclei blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 25 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
       <link>http://localhost:1313/about/</link>
@@ -16,6 +16,15 @@
       <description>Hugo is a static site engine written in Go.
 It makes use of a variety of open source projects including:
  Cobra Viper J Walter Weatherman Cast  Learn more and contribute on GitHub.</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;函数式编程与Rust对比</title>
+      <link>http://localhost:1313/post/fp_compare_cpp_rust/</link>
+      <pubDate>Sat, 18 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/fp_compare_cpp_rust/</guid>
+      <description>在刷leetcode的时候，想使用c++20的范围库，体验一下函数式编程的快乐。这一题是leetcode 300题。 300. Longest Increasing Subsequence Given an integer array nums, return the length of</description>
     </item>
     
     <item>
