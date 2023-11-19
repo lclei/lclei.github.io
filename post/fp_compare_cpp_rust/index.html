@@ -49,7 +49,7 @@
 <meta itemprop="name" content="C&#43;&#43;函数式编程与Rust对比">
 <meta itemprop="description" content="在刷leetcode的时候，想使用c&#43;&#43;20的范围库，体验一下函数式编程的快乐。这一题是leetcode 300题。 300. Longest Increasing Subsequence Given an integer array nums, return the length of"><meta itemprop="datePublished" content="2023-11-18T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-11-18T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1262">
+<meta itemprop="wordCount" content="1367">
 <meta itemprop="keywords" content="cpp,rust,fp," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="C&#43;&#43;函数式编程与Rust对比"/>
 <meta name="twitter:description" content="在刷leetcode的时候，想使用c&#43;&#43;20的范围库，体验一下函数式编程的快乐。这一题是leetcode 300题。 300. Longest Increasing Subsequence Given an integer array nums, return the length of"/>
@@ -358,7 +358,8 @@ concept borrowed_range =
 </span><span class="w"></span><span class="p">}</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><p>更进一步，显然会遭遇了闭包捕获不可变引用与已有可变引用冲突的问题</p>
+</div><p>Rust中迭代器的fp风格就比较自然，最后消费迭代器的max方法，也是能返回Option(T)，可以直接处理容器为空的情况了。
+更进一步，如果不想两次循环dp的话，希望直接在第一次给dp赋值时，直接求出最大值，但是这样写显然会遭遇了闭包捕获不可变引用与已有可变引用冲突的问题：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -403,7 +404,7 @@ concept borrowed_range =
 </span><span class="w"></span><span class="p">}</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><p>虽然对这个问题，两个语言写法都挺奇怪的。但是Rust明显对函数式编程的支持更好。然而也可以看到现在的编程语言相互融合，越来越像。除了C。</p>
+</div><p>可见对这个问题，两个语言写法都挺奇怪的。但是Rust明显对函数式编程的支持更好。然而也可以看到现在的编程语言相互融合，越来越像。除了C。</p>
 <p>回到这个问题，还有另一种方法，新建一个subseq的vector。对于每个num，如果大于subseq最后的元素，则放入subseq。否则找到subseq中第一个大于等于num的位置，替换为num。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
