@@ -37,7 +37,7 @@
 
 
 
-<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link href="/sass/main.min.07cd396beabaa8e7888dfdeb1981afff139a5394f3cb79465e70008be0d583a5.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -124,6 +124,29 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/webserver/">web服务器</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-07-10 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>首先创建几个函数以方便我们调用</p>
+<ul>
+<li>open_clinetfd: 创建一个网络socket，作为客户端，并且尝试连接主机</li>
+<li>open_listenfd: 创建socket，作为主机，并开始监听</li>
+</ul>
+    </div>
+    <div class="read-more">
+      <a href="/post/webserver/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/daemon/">守护进程</a></h1>
@@ -280,25 +303,6 @@ int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct times
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/thread1/">线程的创建及退出</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-06-09 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="线程的创建及退出">线程的创建及退出</h1>
-    </div>
-    <div class="read-more">
-      <a href="/post/thread1/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -364,6 +368,23 @@ int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct times
 
 
 
+
+
+
+
+<script src="https://cdn.jsdelivr.net/gh/jmnote/plantuml-encoder@1.2.4/dist/plantuml-encoder.min.js" integrity="sha256-Qsk2KRBCN5qVZX7B+8+2IvQl1Aqc723qV1tBCQaVoqo=" crossorigin="anonymous"></script>
+<script>
+  (function(){
+    let plantumlPrefix = "language-plantuml";
+    Array.prototype.forEach.call(document.querySelectorAll("[class^=" + plantumlPrefix + "]"), function(code){
+      let image = document.createElement("IMG");
+      image.loading = 'lazy'; 
+      image.src = 'http://www.plantuml.com/plantuml/svg/~1' + plantumlEncoder.encode(code.innerText);
+      code.parentNode.insertBefore(image, code);
+      code.style.display = 'none';
+    });
+  })();
+</script>
 
 
 </body>

@@ -6,7 +6,17 @@
     <description>Recent content in Posts on lclei blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 18 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 26 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>最大堆操作</title>
+      <link>http://localhost:1313/post/maxheap/</link>
+      <pubDate>Sun, 26 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/maxheap/</guid>
+      <description>&lt;h2 id=&#34;最大堆的应用&#34;&gt;最大堆的应用&lt;/h2&gt;
+&lt;p&gt;在刷题时遇到一个适合使用最大堆来解决的问题，刚好在C++标准库的算法库中有堆操作的相关算法，可以直接应用在容器上。回忆一下最大堆的原理，简单实现一下堆操作。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>C&#43;&#43;函数式编程与Rust对比</title>
       <link>http://localhost:1313/post/fp_compare_cpp_rust/</link>

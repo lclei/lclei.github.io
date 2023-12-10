@@ -37,7 +37,7 @@
 
 
 
-<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link href="/sass/main.min.07cd396beabaa8e7888dfdeb1981afff139a5394f3cb79465e70008be0d583a5.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -124,6 +124,91 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/non_cursive_tree_traversal/">二叉树的非递归遍历</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2021-01-31 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>二叉树的遍历有前序，中序，后序以及层次遍历，其中前序，中序和后序遍历使用递归来写非常简单。
+例如</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="kt">void</span> <span class="nf">tree_preorder_re</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">node</span><span class="p">,</span> <span class="n">Tree</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">visit</span><span class="p">)(</span><span class="n">Tree</span> <span class="o">*</span><span class="p">,</span> <span class="n">TreeNode</span> <span class="o">*</span><span class="p">))</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">node</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="n">visit</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">node</span><span class="p">);</span>
+    <span class="n">tree_preorder_re</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span> <span class="n">visit</span><span class="p">);</span>
+    <span class="n">tree_preorder_re</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span> <span class="n">visit</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>中序和后序，不过是调整一下visit的位置，如果不用递归的写法，改用栈来实现，其实没有那么直观。
+首先按照函数调用的关系，入栈的套路都是一样的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c">    <span class="n">Stack</span> <span class="o">*</span><span class="n">s</span> <span class="o">=</span> <span class="n">stack_new</span><span class="p">();</span>
+    <span class="n">TreeNode</span> <span class="o">*</span><span class="n">tNode</span> <span class="o">=</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">root</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">stack_depth</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">tNode</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">tNode</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">stack_push</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">tNode</span><span class="p">);</span>
+            <span class="n">tNode</span> <span class="o">=</span> <span class="n">tNode</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">stack_is_empty</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">tNode</span> <span class="o">=</span> <span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="p">)</span><span class="n">stack_pop</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+            <span class="n">tNode</span> <span class="o">=</span> <span class="n">tNode</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">stack_free</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+    <div class="read-more">
+      <a href="/post/non_cursive_tree_traversal/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/udisk-grub/">使用grub创建多系统u盘安装盘</a></h1>
@@ -282,26 +367,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/docker1/">docker1</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-08 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="初探docker">初探docker</h1>
-<p>我的centos挂掉了，折腾了一两天没有成效，暂时不做他想，可能需要重装了吧。之前在win10上用VMware，老破电脑太卡，机缘巧合之下，我了解到docker是轻量级的虚拟机，来试一下。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/docker1/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -367,6 +432,23 @@
 
 
 
+
+
+
+
+<script src="https://cdn.jsdelivr.net/gh/jmnote/plantuml-encoder@1.2.4/dist/plantuml-encoder.min.js" integrity="sha256-Qsk2KRBCN5qVZX7B+8+2IvQl1Aqc723qV1tBCQaVoqo=" crossorigin="anonymous"></script>
+<script>
+  (function(){
+    let plantumlPrefix = "language-plantuml";
+    Array.prototype.forEach.call(document.querySelectorAll("[class^=" + plantumlPrefix + "]"), function(code){
+      let image = document.createElement("IMG");
+      image.loading = 'lazy'; 
+      image.src = 'http://www.plantuml.com/plantuml/svg/~1' + plantumlEncoder.encode(code.innerText);
+      code.parentNode.insertBefore(image, code);
+      code.style.display = 'none';
+    });
+  })();
+</script>
 
 
 </body>
