@@ -438,10 +438,10 @@ int main(int argc,char* argv[])
 </div>
 </div><p>其输出结果为</p>
 <blockquote>
-<p>new@0x1001370
-new@0x10013b8
-release@0x10013b8
-release@0x1001370
+<p>new@0x1001370<br>
+new@0x10013b8<br>
+release@0x10013b8<br>
+release@0x1001370<br>
 new@0x1001368</p>
 </blockquote>
 <p>make_shared&lt;&gt;是库函数，将会new一个对象，然后绑定到shared_ptr</p>
@@ -521,7 +521,7 @@ new@0x1001368</p>
 </div>
 </div><p>输出</p>
 <blockquote>
-<p>open 0
+<p>open 0<br>
 close 0</p>
 </blockquote>
 <p>需要注意的是传入的删除器函数的参数必须是智能指针保存的指针类型才可以通过编译。</p>
@@ -686,6 +686,15 @@ close 0</p>
 
 
 <script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        tags: 'ams',
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
 
 
 

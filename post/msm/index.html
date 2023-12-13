@@ -499,9 +499,9 @@ Leaving State1
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="transition_table">transition_table</h2>
-<p>状态转移表的完整形态是5个元素：
-fromState， Event， ToState， Action， Guard
-一般使用functor_row里的boost::msm::front::Row来定义转移表的每一行。其中空的要素使用boost::msm::front::none来表示。
+<p>状态转移表的完整形态是5个元素：<br>
+fromState， Event， ToState， Action， Guard<br>
+一般使用functor_row里的boost::msm::front::Row来定义转移表的每一行。其中空的要素使用boost::msm::front::none来表示。<br>
 可以使用using来简化这个两个类型</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -842,8 +842,8 @@ fromState， Event， ToState， Action， Guard
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="exception">exception</h2>
-<p>状态机的on_entry, on_exit, Action, Guard都可能抛出异常，不自己处理的话，程序会异常退出。可以通过自己定义exception_caught方法来自定义异常处理。
-另外我们可以重载no_transition的方法来处理没有对应状态转移规则的情况。
+<p>状态机的on_entry, on_exit, Action, Guard都可能抛出异常，不自己处理的话，程序会异常退出。可以通过自己定义exception_caught方法来自定义异常处理。<br>
+另外我们可以重载no_transition的方法来处理没有对应状态转移规则的情况。<br>
 例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1009,7 +1009,7 @@ catch exception vector::_M_range_check: __n (which is 2) &gt;= this-&gt;size() (
 No transition item for 2 while Event1
 </code></pre></td></tr></table>
 </div>
-</div><p>可以总结：
+</div><p>可以总结：<br>
 一次状态迁移的过程分为guard-&gt;on_exit-&gt;action-&gt;on_entry。其中某一步抛出异常时，状态都会回到sourceState。</p>
 
     </div>
@@ -1099,6 +1099,15 @@ No transition item for 2 while Event1
 
 
 <script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        tags: 'ams',
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
 
 
 

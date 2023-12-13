@@ -6,7 +6,7 @@
     <description>Recent content on lclei blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 26 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
       <link>http://localhost:1313/about/</link>
@@ -16,6 +16,15 @@
       <description>Hugo is a static site engine written in Go.
 It makes use of a variety of open source projects including:
  Cobra Viper J Walter Weatherman Cast  Learn more and contribute on GitHub.</description>
+    </item>
+    
+    <item>
+      <title>IFS生成分形图案</title>
+      <link>http://localhost:1313/post/fractal_ifs/</link>
+      <pubDate>Tue, 12 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/fractal_ifs/</guid>
+      <description>最近看到一种分形图案hexaflask，其介绍可以在wiki看到，尝试使用python来生成这个图案。 IFS 生成方法叫做IFS，迭代函数系统。I</description>
     </item>
     
     <item>
@@ -87,7 +96,7 @@ SYNOPSIS
       <pubDate>Sun, 31 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/post/non_cursive_tree_traversal/</guid>
-      <description>&lt;p&gt;二叉树的遍历有前序，中序，后序以及层次遍历，其中前序，中序和后序遍历使用递归来写非常简单。
+      <description>&lt;p&gt;二叉树的遍历有前序，中序，后序以及层次遍历，其中前序，中序和后序遍历使用递归来写非常简单。&lt;br&gt;
 例如&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -109,7 +118,7 @@ SYNOPSIS
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;中序和后序，不过是调整一下visit的位置，如果不用递归的写法，改用栈来实现，其实没有那么直观。
+&lt;/div&gt;&lt;p&gt;中序和后序，不过是调整一下visit的位置，如果不用递归的写法，改用栈来实现，其实没有那么直观。&lt;br&gt;
 首先按照函数调用的关系，入栈的套路都是一样的。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -162,7 +171,7 @@ SYNOPSIS
       <pubDate>Sun, 15 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/post/udisk-grub/</guid>
-      <description>&lt;p&gt;现在装系统都是用u盘安装了，一个u盘只能安装一个系统有些浪费了，因为空间足够大，可以装下好几个iso文件。
+      <description>&lt;p&gt;现在装系统都是用u盘安装了，一个u盘只能安装一个系统有些浪费了，因为空间足够大，可以装下好几个iso文件。&lt;br&gt;
 在linux环境中，使用dd命令只能制作一个引导盘，且其他空间不能再使用。从网上看用YUMI可以比较方便的制作多系统引导。然而实测发现是linux系统上实在太难用，装WINE也用不了。后来看到grub的方法成功实现了。&lt;/p&gt;</description>
     </item>
     
@@ -331,7 +340,7 @@ centos                             The official build of CentOS.                
       <pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/post/%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/</guid>
-      <description>&lt;p&gt;实质是创建一个状态树，边建立边剪枝，得到最终状态输出
+      <description>&lt;p&gt;实质是创建一个状态树，边建立边剪枝，得到最终状态输出&lt;br&gt;
 步骤有：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;列出表示状态的数据结构&lt;/li&gt;
@@ -422,7 +431,7 @@ centos                             The official build of CentOS.                
 int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct timespec *restrict tsptr);
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;愿意等待timespec描述的时间，达到时间返回错误码ETIMEOUT
+&lt;/div&gt;&lt;p&gt;愿意等待timespec描述的时间，达到时间返回错误码ETIMEOUT&lt;br&gt;
 一个例子&lt;/p&gt;</description>
     </item>
     
@@ -621,10 +630,10 @@ ostream_iterator&amp;lt;T&amp;gt; out(os, d)  //out将类型为T的值写到os�
 &lt;p&gt;在codewar的一道题&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Consider the following numbers (where n! is factorial(n)):&lt;/p&gt;
-&lt;p&gt;u1 = (1 / 1!) * (1!)
-u2 = (1 / 2!) * (1! + 2!)
-u3 = (1 / 3!) * (1! + 2! + 3!)
-un = (1 / n!) * (1! + 2! + 3! + &amp;hellip; + n!)
+&lt;p&gt;u1 = (1 / 1!) * (1!)&lt;br&gt;
+u2 = (1 / 2!) * (1! + 2!)&lt;br&gt;
+u3 = (1 / 3!) * (1! + 2! + 3!)&lt;br&gt;
+un = (1 / n!) * (1! + 2! + 3! + &amp;hellip; + n!)&lt;br&gt;
 Which will win: 1 / n! or (1! + 2! + 3! + &amp;hellip; + n!)?&lt;/p&gt;
 &lt;p&gt;Are these numbers going to 0 because of 1/n! or to infinity due to the sum of factorials or to another number?&lt;/p&gt;
 &lt;p&gt;Task&lt;/p&gt;
@@ -669,35 +678,35 @@ Remark&lt;/p&gt;
 &lt;p&gt;Overlapping Intervals&lt;/p&gt;
 &lt;p&gt;List containing overlapping intervals:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;[
-[1,4],
-[7, 10],
-[3, 5]
+&lt;p&gt;[&lt;br&gt;
+[1,4],&lt;br&gt;
+[7, 10],&lt;br&gt;
+[3, 5]&lt;br&gt;
 ]&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;The sum of the lengths of these intervals is 7. Since [1, 4] and [3, 5] overlap, we can treat the interval as [1, 5], which has a length of 4.&lt;/p&gt;
 &lt;p&gt;Examples:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;sum_intervals( {
-{1,2},
-{6, 10},
-{11, 15}
+&lt;p&gt;sum_intervals( {&lt;br&gt;
+{1,2},&lt;br&gt;
+{6, 10},&lt;br&gt;
+{11, 15}&lt;br&gt;
 } ); // =&amp;gt; 9&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;sum_intervals( {
-{1,4},
-{7, 10},
-{3, 5}
+&lt;p&gt;sum_intervals( {&lt;br&gt;
+{1,4},&lt;br&gt;
+{7, 10},&lt;br&gt;
+{3, 5}&lt;br&gt;
 } ); // =&amp;gt; 7&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;sum_intervals( {
-{1,5},
-{10, 20},
-{1, 6},
-{16, 19},
-{5, 11}
+&lt;p&gt;sum_intervals( {&lt;br&gt;
+{1,5},&lt;br&gt;
+{10, 20},&lt;br&gt;
+{1, 6},&lt;br&gt;
+{16, 19},&lt;br&gt;
+{5, 11}&lt;br&gt;
 } ); // =&amp;gt; 19&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/blockquote&gt;</description>

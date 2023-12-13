@@ -18,7 +18,11 @@
 
 <meta name="author" content="lclei" /><meta name="description" content="大数，阶乘，小数位数 在codewar的一道题
  Consider the following numbers (where n! is factorial(n)):
-u1 = (1 / 1!) * (1!) u2 = (1 / 2!) * (1! &#43; 2!) u3 = (1 / 3!) * (1! &#43; 2! &#43; 3!) un = (1 / n!) * (1! &#43; 2! &#43; 3! &#43; &amp;hellip; &#43; n!) Which will win: 1 / n! or (1! &#43; 2! &#43; 3! &#43; &amp;hellip; &#43; n!)?
+u1 = (1 / 1!) * (1!)
+u2 = (1 / 2!) * (1! &#43; 2!)
+u3 = (1 / 3!) * (1! &#43; 2! &#43; 3!)
+un = (1 / n!) * (1! &#43; 2! &#43; 3! &#43; &amp;hellip; &#43; n!)
+Which will win: 1 / n! or (1! &#43; 2! &#43; 3! &#43; &amp;hellip; &#43; n!)?
 Are these numbers going to 0 because of 1/n! or to infinity due to the sum of factorials or to another number?
 Task
 Calculate (1 / n!) * (1! &#43; 2! &#43; 3! &#43; &amp;hellip; &#43; n!) for a given n, where n is an integer greater or equal to 1.
@@ -215,10 +219,10 @@ Keep in mind that factorials grow rather rapidly, and you need to handle large i
 <p>在codewar的一道题</p>
 <blockquote>
 <p>Consider the following numbers (where n! is factorial(n)):</p>
-<p>u1 = (1 / 1!) * (1!)
-u2 = (1 / 2!) * (1! + 2!)
-u3 = (1 / 3!) * (1! + 2! + 3!)
-un = (1 / n!) * (1! + 2! + 3! + &hellip; + n!)
+<p>u1 = (1 / 1!) * (1!)<br>
+u2 = (1 / 2!) * (1! + 2!)<br>
+u3 = (1 / 3!) * (1! + 2! + 3!)<br>
+un = (1 / n!) * (1! + 2! + 3! + &hellip; + n!)<br>
 Which will win: 1 / n! or (1! + 2! + 3! + &hellip; + n!)?</p>
 <p>Are these numbers going to 0 because of 1/n! or to infinity due to the sum of factorials or to another number?</p>
 <p>Task</p>
@@ -319,9 +323,9 @@ Expected: false<br>
 Actual: 1</p>
 </blockquote>
 <p>很明显是阶乘结果太大，超出了long long的界限。</p>
-<p>20190401更：
+<p>20190401更：<br>
 原本想着使用大数的处理方法，如https://blog.csdn.net/qq_39445165/article/details/88377252</p>
-<p>但是发现即使使用了数组表示很大的数，后面的也不好处理。
+<p>但是发现即使使用了数组表示很大的数，后面的也不好处理。<br>
 现在把式子转化成1+1/n+1/n(n-1)+&hellip;+1/n(n-1)&hellip;2+1/n!，若分母很大比如大于10的8次方，那么这一项对于和没有意义，因为精度限制在六位小数，于是新的处理方法</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -456,6 +460,15 @@ Actual: 1</p>
 
 
 <script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        tags: 'ams',
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
 
 
 

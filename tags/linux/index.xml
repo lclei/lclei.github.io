@@ -39,7 +39,7 @@ SYNOPSIS
       <pubDate>Sun, 15 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/post/udisk-grub/</guid>
-      <description>&lt;p&gt;现在装系统都是用u盘安装了，一个u盘只能安装一个系统有些浪费了，因为空间足够大，可以装下好几个iso文件。
+      <description>&lt;p&gt;现在装系统都是用u盘安装了，一个u盘只能安装一个系统有些浪费了，因为空间足够大，可以装下好几个iso文件。&lt;br&gt;
 在linux环境中，使用dd命令只能制作一个引导盘，且其他空间不能再使用。从网上看用YUMI可以比较方便的制作多系统引导。然而实测发现是linux系统上实在太难用，装WINE也用不了。后来看到grub的方法成功实现了。&lt;/p&gt;</description>
     </item>
     
@@ -122,7 +122,7 @@ SYNOPSIS
 int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct timespec *restrict tsptr);
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;愿意等待timespec描述的时间，达到时间返回错误码ETIMEOUT
+&lt;/div&gt;&lt;p&gt;愿意等待timespec描述的时间，达到时间返回错误码ETIMEOUT&lt;br&gt;
 一个例子&lt;/p&gt;</description>
     </item>
     

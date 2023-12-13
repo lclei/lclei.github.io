@@ -231,7 +231,7 @@ SYNOPSIS
 </code></pre></td></tr></table>
 </div>
 </div><p>本文记录一次死锁的问题，程序是多线程的，同时需要fork一个子进程去执行脚本。我们希望执行脚本与程序本身的函数调用互斥。于是在脚本中获取互斥锁，在函数执行前获取共享锁，从而达到互斥的目的。</p>
-<p>刚开始测试时运行良好，后来出现程序卡死的问题。下面来模拟一下当时的情况：
+<p>刚开始测试时运行良好，后来出现程序卡死的问题。下面来模拟一下当时的情况：<br>
 demo.c</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -492,7 +492,7 @@ strace: Process <span class="m">15644</span> attached
 flock<span class="o">(</span>4, LOCK_EX
 </code></pre></td></tr></table>
 </div>
-</div><p>fl主程序卡在wait，shell脚本的flock命令卡在等待文件锁上。但是我们的程序中文件已经关闭了，为什么flock会被卡住呢？
+</div><p>fl主程序卡在wait，shell脚本的flock命令卡在等待文件锁上。但是我们的程序中文件已经关闭了，为什么flock会被卡住呢？<br>
 通过proc信息查看</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -538,9 +538,9 @@ l-wx------ 1 lcl lcl 64 Oct 28 20:01 3 -&gt; /home/lcl/repo/c/flock/f.lock
 lr-x------ 1 lcl lcl 64 Oct 28 20:01 4 -&gt; /home/lcl/repo/c/flock/f.lock
 </code></pre></td></tr></table>
 </div>
-</div><p>可以看到在PID15643和PID15644中，指向f.lock的fd 3依然存在，只是在PID15641中被关闭了。
+</div><p>可以看到在PID15643和PID15644中，指向f.lock的fd 3依然存在，只是在PID15641中被关闭了。<br>
 所以这是一个文件锁、多进程多线程文件继承的问题。在线程中打开的文件，被子进程继承，当关闭文件时，执行了exec的子进程已经断开和原主进程的关系，打开的文件得以保留。因此f.lock这个文件并没有被所有进程关闭，挂在这个文件上的锁也没有被解锁，导致了死锁问题。</p>
-<p>其过程如下：
+<p>其过程如下：<br>
 <img src="//www.plantuml.com/plantuml/png/TT11pi8W40NWFQTu_m7-bJiMfiTmYp0KufHf08t7jtMQs9Ywcxn-azTXQDtLVf_O_FL44s5cbuifqWdoe8h85ir4nlyPFLLo0HQpJZkcWONCL10p4rn333WTc94wMdAL0YABlnsG86WoKK-vZ5kvJvdNxYXrjw6nrIebYxswbc11J_AyiskyqNLSfFu0xFlJHsfiVntWMHhfbIg-zovce1AMLtq1" alt=""></p>
 <p>其解决方案是，使用显式的UNLOCK进行解锁，再设置文件的close_on_exec属性加一重保险。</p>
     </div>
@@ -630,6 +630,15 @@ lr-x------ 1 lcl lcl 64 Oct 28 20:01 4 -&gt; /home/lcl/repo/c/flock/f.lock
 
 
 <script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        tags: 'ams',
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
 
 
 

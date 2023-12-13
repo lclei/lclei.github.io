@@ -13,7 +13,7 @@
       <pubDate>Sun, 31 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/post/non_cursive_tree_traversal/</guid>
-      <description>&lt;p&gt;二叉树的遍历有前序，中序，后序以及层次遍历，其中前序，中序和后序遍历使用递归来写非常简单。
+      <description>&lt;p&gt;二叉树的遍历有前序，中序，后序以及层次遍历，其中前序，中序和后序遍历使用递归来写非常简单。&lt;br&gt;
 例如&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -35,7 +35,7 @@
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;中序和后序，不过是调整一下visit的位置，如果不用递归的写法，改用栈来实现，其实没有那么直观。
+&lt;/div&gt;&lt;p&gt;中序和后序，不过是调整一下visit的位置，如果不用递归的写法，改用栈来实现，其实没有那么直观。&lt;br&gt;
 首先按照函数调用的关系，入栈的套路都是一样的。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;

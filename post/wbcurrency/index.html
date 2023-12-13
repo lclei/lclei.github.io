@@ -227,25 +227,25 @@ IO复用
 </ul>
 <p>server:</p>
 <blockquote>
-<p>[root@linuxkit-00155ddc0103 inet]# ./echoserverfork 6667
-Parent: waitting&hellip;
-name[localhost] port[38276]connected! Child No.1 will handle it!
-Parent: waitting&hellip;
-server recived 6 bytes
-name[localhost] port[38280]connected! Child No.2 will handle it!
-Parent: waitting&hellip;
+<p>[root@linuxkit-00155ddc0103 inet]# ./echoserverfork 6667<br>
+Parent: waitting&hellip;<br>
+name[localhost] port[38276]connected! Child No.1 will handle it!<br>
+Parent: waitting&hellip;<br>
+server recived 6 bytes<br>
+name[localhost] port[38280]connected! Child No.2 will handle it!<br>
+Parent: waitting&hellip;<br>
 server recived 7 bytes</p>
 </blockquote>
 <p>client1:</p>
 <blockquote>
-<p>[root@linuxkit-00155ddc0103 inet]# ./echoclient localhost 6667
-first
+<p>[root@linuxkit-00155ddc0103 inet]# ./echoclient localhost 6667<br>
+first<br>
 first</p>
 </blockquote>
 <p>client2:</p>
 <blockquote>
-<p>[root@linuxkit-00155ddc0103 inet]# ./echoclient localhost 6667
-second
+<p>[root@linuxkit-00155ddc0103 inet]# ./echoclient localhost 6667<br>
+second<br>
 second</p>
 </blockquote>
 <p>code</p>
@@ -363,11 +363,11 @@ second</p>
 <h2 id="io复用">IO复用</h2>
 <p>IO复用即使用select函数</p>
 <blockquote>
-<p>#include &lt;sys/select.h&gt;
-int select(int n, fd_set *fdset, NULL, NULL, NULL) //等待一组描述符准备好读
-FD_ZERO(fd_set *fdset);
-FD_CLR(int fd, fd_set *fdset);
-FD_SET(int fd, fd_set *fdset);
+<p>#include &lt;sys/select.h&gt;<br>
+int select(int n, fd_set *fdset, NULL, NULL, NULL) //等待一组描述符准备好读<br>
+FD_ZERO(fd_set *fdset);<br>
+FD_CLR(int fd, fd_set *fdset);<br>
+FD_SET(int fd, fd_set *fdset);<br>
 FD_ISSET(int fd, fd_set *fdset);</p>
 </blockquote>
 <h3 id="stdio与connfd的复用">stdio与connfd的复用</h3>
@@ -503,27 +503,27 @@ FD_ISSET(int fd, fd_set *fdset);</p>
 </div>
 </div><p>server behavior:</p>
 <blockquote>
-<p>[root@linuxkit-00155ddc0103 inet]# ./select 6667
-do something
-stdin is ready.
-do something
-hello
-stdin is ready.
-hello
-client connetted.
-server recived 12 bytes
-ccd  //no response here becuse client is connecting
-stdin is ready.  //client close now
-ccd
-f
-stdin is ready.
-f
+<p>[root@linuxkit-00155ddc0103 inet]# ./select 6667<br>
+do something<br>
+stdin is ready.<br>
+do something<br>
+hello<br>
+stdin is ready.<br>
+hello<br>
+client connetted.<br>
+server recived 12 bytes<br>
+ccd  //no response here becuse client is connecting<br>
+stdin is ready.  //client close now<br>
+ccd<br>
+f<br>
+stdin is ready.<br>
+f<br>
 stdin is ready.  //ctrl+D here</p>
 </blockquote>
 <p>client behavior:</p>
 <blockquote>
-<p>[root@linuxkit-00155ddc0103 inet]# ./echoclient localhost 6667
-i am client
+<p>[root@linuxkit-00155ddc0103 inet]# ./echoclient localhost 6667<br>
+i am client<br>
 i am client</p>
 </blockquote>
 <h3 id="基于io多路复用的并发事件驱动器">基于I/O多路复用的并发事件驱动器</h3>
@@ -536,41 +536,41 @@ i am client</p>
 </ul>
 <p>server:</p>
 <blockquote>
-<p>[root@linuxkit-00155ddc0103 inet]# ./echoserverselect 6667
-localhost:38334 connected!
-Server recived 5 (5 total) bytes on fd 4
-Server recived 4 (9 total) bytes on fd 4
-Server recived 7 (16 total) bytes on fd 4
-localhost:38338 connected!
-Server recived 4 (20 total) bytes on fd 5
-Server recived 6 (26 total) bytes on fd 5
-Server recived 2 (28 total) bytes on fd 5
-Close connfd 4
-Server recived 7 (35 total) bytes on fd 5
+<p>[root@linuxkit-00155ddc0103 inet]# ./echoserverselect 6667<br>
+localhost:38334 connected!<br>
+Server recived 5 (5 total) bytes on fd 4<br>
+Server recived 4 (9 total) bytes on fd 4<br>
+Server recived 7 (16 total) bytes on fd 4<br>
+localhost:38338 connected!<br>
+Server recived 4 (20 total) bytes on fd 5<br>
+Server recived 6 (26 total) bytes on fd 5<br>
+Server recived 2 (28 total) bytes on fd 5<br>
+Close connfd 4<br>
+Server recived 7 (35 total) bytes on fd 5<br>
 Close connfd 5</p>
 </blockquote>
 <p>client1:</p>
 <blockquote>
-<p>[root@linuxkit-00155ddc0103 inet]# ./echoclient localhost 6667
-1234
-1234
-123
-123
-123456
-123456
+<p>[root@linuxkit-00155ddc0103 inet]# ./echoclient localhost 6667<br>
+1234<br>
+1234<br>
+123<br>
+123<br>
+123456<br>
+123456<br>
 [root@linuxkit-00155ddc0103 inet]#</p>
 </blockquote>
 <p>client2:</p>
 <blockquote>
-<p>[root@linuxkit-00155ddc0103 inet]# ./echoclient localhost 6667
-123
-123
-12345
-12345
-1
-1
-123456
-123456
+<p>[root@linuxkit-00155ddc0103 inet]# ./echoclient localhost 6667<br>
+123<br>
+123<br>
+12345<br>
+12345<br>
+1<br>
+1<br>
+123456<br>
+123456<br>
 [root@linuxkit-00155ddc0103 inet]#</p>
 </blockquote>
 <p>code</p>
@@ -790,12 +790,12 @@ Close connfd 5</p>
 <h2 id="多线程">多线程</h2>
 <p>server:</p>
 <blockquote>
-<p>[root@linuxkit-00155ddc0103 inet]# ./echoserverthread 6667
-name[localhost] port[38362]connected! Thread id:140562122241792 will serve it!
-name[localhost] port[38366]connected! Thread id:140562113849088 will serve it!
-server recived 6 bytes from fd 4
-server recived 4 bytes from fd 4
-server recived 7 bytes from fd 5
+<p>[root@linuxkit-00155ddc0103 inet]# ./echoserverthread 6667<br>
+name[localhost] port[38362]connected! Thread id:140562122241792 will serve it!<br>
+name[localhost] port[38366]connected! Thread id:140562113849088 will serve it!<br>
+server recived 6 bytes from fd 4<br>
+server recived 4 bytes from fd 4<br>
+server recived 7 bytes from fd 5<br>
 server recived 4 bytes from fd 5</p>
 </blockquote>
 <p>client1:</p>
@@ -814,7 +814,7 @@ server recived 4 bytes from fd 5</p>
 321                                                             <br>
 321</p>
 </blockquote>
-<p>注意传递connfd时是新申请空间，并在thread里释放
+<p>注意传递connfd时是新申请空间，并在thread里释放<br>
 code</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -930,7 +930,7 @@ code</p>
 </ul>
 <p>server</p>
 <blockquote>
-<p>[root@linuxkit-00155ddc0103 inet]# ./echoserver_pre_thread 6667
+<p>[root@linuxkit-00155ddc0103 inet]# ./echoserver_pre_thread 6667<br>
 client[localhost:38376] connected! connfd 4!                 <br>
 server recived 7 (7 total) bytes on fd 4                     <br>
 client[localhost:38380] connected! connfd 5!                 <br>
@@ -939,16 +939,16 @@ server recived 4 (20 total) bytes on fd 4</p>
 </blockquote>
 <p>client1</p>
 <blockquote>
-<p>[root@linuxkit-00155ddc0103 inet]# ./echoclient localhost 6667
-123456
-123456
-123
+<p>[root@linuxkit-00155ddc0103 inet]# ./echoclient localhost 6667<br>
+123456<br>
+123456<br>
+123<br>
 123</p>
 </blockquote>
 <p>client2</p>
 <blockquote>
-<p>[root@linuxkit-00155ddc0103 inet]# ./echoclient localhost 6667
-87654321
+<p>[root@linuxkit-00155ddc0103 inet]# ./echoclient localhost 6667<br>
+87654321<br>
 87654321</p>
 </blockquote>
 <p>sbuf.c fd池，插入，取出操作</p>
@@ -1317,6 +1317,15 @@ server recived 4 (20 total) bytes on fd 4</p>
 
 
 <script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        tags: 'ams',
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
 
 
 

@@ -168,7 +168,7 @@
     <div class="post-content">
       <h2 id="最大堆的应用">最大堆的应用</h2>
 <p>在刷题时遇到一个适合使用最大堆来解决的问题，刚好在C++标准库的算法库中有堆操作的相关算法，可以直接应用在容器上。回忆一下最大堆的原理，简单实现一下堆操作。</p>
-<p><a href="https://leetcode.cn/problems/kth-largest-element-in-an-array/description/">215. Kth Largest Element in an Array
+<p><a href="https://leetcode.cn/problems/kth-largest-element-in-an-array/description/">215. Kth Largest Element in an Array<br>
 </a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -198,10 +198,10 @@ Input: nums = [3,2,3,1,2,4,5,5,6], k = 4
 Output: 4
 </code></pre></td></tr></table>
 </div>
-</div><p>思路
-定义一个长度为k的vector，遍历nums里的每一个数，如果比vector中最小的数大，则替换掉最小的数。最后vector里最小的数就是nums里第k大的数。
+</div><p>思路<br>
+定义一个长度为k的vector，遍历nums里的每一个数，如果比vector中最小的数大，则替换掉最小的数。最后vector里最小的数就是nums里第k大的数。<br>
 这个长度为k的vector，需要快速的找到最小的数，则标准库里的堆操作可以用。</p>
-<p>解题方法
+<p>解题方法<br>
 熟悉标准库的算法库里的堆操作。<a href="https://zh.cppreference.com/w/cpp/algorithm#.E5.A0.86.E6.93.8D.E4.BD.9C">cppreference</a> 页面。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -683,7 +683,7 @@ std::make_heap
 </div><h2 id="priority_queue">priority_queue</h2>
 <p>在STL中，优先级队列是基于vector的实现的最大堆。参考<a href="https://zh.cppreference.com/w/cpp/container/priority_queue">priority_queue</a></p>
 <h2 id="参考">参考</h2>
-<p>数据结构、算法与应用
+<p>数据结构、算法与应用<br>
 cppreference</p>
     </div>
 
@@ -708,7 +708,11 @@ cppreference</p>
           <a href="/tags/algorithm/">algorithm</a>
           </div>
       <nav class="post-nav">
-        
+        <a class="prev" href="/post/fractal_ifs/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">IFS生成分形图案</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
         <a class="next" href="/post/fp_compare_cpp_rust/">
             <span class="next-text nav-default">C&#43;&#43;函数式编程与Rust对比</span>
             <span class="next-text nav-mobile">Next</span>
@@ -768,6 +772,15 @@ cppreference</p>
 
 
 <script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        tags: 'ams',
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
 
 
 

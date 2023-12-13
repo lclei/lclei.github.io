@@ -16,8 +16,10 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="lclei" /><meta name="description" content="二叉树的遍历有前序，中序，后序以及层次遍历，其中前序，中序和后序遍历使用递归来写非常简单。 例如
-1 2 3 4 5 6 7  void tree_preorder_re(TreeNode *node, Tree *tree, void (*visit)(Tree *, TreeNode *)) { if (!node) return; visit(tree, node); tree_preorder_re(node-&amp;gt;left, tree, visit); tree_preorder_re(node-&amp;gt;right, tree, visit); }   中序和后序，不过是调整一下visit的位置，如果不用递归的写法，改用栈来实现，其实没有那么直观。 首先按照函数调用的关系，入栈的套路都是一样的。
+<meta name="author" content="lclei" /><meta name="description" content="二叉树的遍历有前序，中序，后序以及层次遍历，其中前序，中序和后序遍历使用递归来写非常简单。
+例如
+1 2 3 4 5 6 7  void tree_preorder_re(TreeNode *node, Tree *tree, void (*visit)(Tree *, TreeNode *)) { if (!node) return; visit(tree, node); tree_preorder_re(node-&amp;gt;left, tree, visit); tree_preorder_re(node-&amp;gt;right, tree, visit); }   中序和后序，不过是调整一下visit的位置，如果不用递归的写法，改用栈来实现，其实没有那么直观。
+首先按照函数调用的关系，入栈的套路都是一样的。
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  Stack *s = stack_new(); TreeNode *tNode = tree-&amp;gt;root; while (stack_depth(s) != 0 || tNode) { while (tNode != NULL) { stack_push(s, tNode); tNode = tNode-&amp;gt;left; } if (!stack_is_empty(s)) { tNode = (TreeNode *)stack_pop(s); tNode = tNode-&amp;gt;right; } } stack_free(s);   " /><meta name="keywords" content="lclei, blog, code" />
 
 
@@ -355,7 +357,7 @@ void tree_preorder_re(TreeNode *node, Tree *tree, void (*visit)(Tree *, TreeNode
   </div>
 </div>
     <div class="post-content">
-      <p>二叉树的遍历有前序，中序，后序以及层次遍历，其中前序，中序和后序遍历使用递归来写非常简单。
+      <p>二叉树的遍历有前序，中序，后序以及层次遍历，其中前序，中序和后序遍历使用递归来写非常简单。<br>
 例如</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -377,7 +379,7 @@ void tree_preorder_re(TreeNode *node, Tree *tree, void (*visit)(Tree *, TreeNode
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>中序和后序，不过是调整一下visit的位置，如果不用递归的写法，改用栈来实现，其实没有那么直观。
+</div><p>中序和后序，不过是调整一下visit的位置，如果不用递归的写法，改用栈来实现，其实没有那么直观。<br>
 首先按照函数调用的关系，入栈的套路都是一样的。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -714,6 +716,15 @@ main(266): __debug postorder non_ecursive---
 
 
 <script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        tags: 'ams',
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
 
 
 

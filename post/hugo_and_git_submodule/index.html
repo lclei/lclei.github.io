@@ -158,7 +158,7 @@
       <h2 id="介绍">介绍</h2>
 <p>hugo + gitee搭建个人博客，使用gitee代替github是因为国内访问速度问题。</p>
 <p>hugo直接在仓库可以安装<code>sudo apt install hugo</code>，这个<a href="https://www.gohugo.org/">链接</a>是它的官方网页。</p>
-<p><code>hugo new xxx.md</code>在post中新建Markdown格式的文章，注意此时在开头属性里有draft: true的标志，这会导致此篇文章不能发布。
+<p><code>hugo new xxx.md</code>在post中新建Markdown格式的文章，注意此时在开头属性里有draft: true的标志，这会导致此篇文章不能发布。<br>
 后期需要删除此行。</p>
 <p><code>hugo -t $theme</code>生成public文件夹中的静态网页。</p>
 <p><code>hugo server</code>可以本地起一个服务器，这时通过浏览器查看网页效果。</p>
@@ -354,6 +354,15 @@ git push origin master
 
 
 <script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        tags: 'ams',
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
 
 
 

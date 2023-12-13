@@ -154,23 +154,23 @@
 <p>#include &lt;memory&gt;</p>
 </blockquote>
 <blockquote>
-<p>allocator&lt;T&gt; a
+<p>allocator&lt;T&gt; a<br>
 定义一个名为a的allocator对象，它可以为类型为T的对象分配内存</p>
 </blockquote>
 <blockquote>
-<p>a.allocate(n)
+<p>a.allocate(n)<br>
 分配一段原始的、未构造的内存，保存n个类型为T的对象</p>
 </blockquote>
 <blockquote>
-<p>a.deallocate(p,n)
+<p>a.deallocate(p,n)<br>
 释放从T*指针p中地址开始的内存，这块内存保存了n个类型为T的对象，与a.allocate(n)对应</p>
 </blockquote>
 <blockquote>
-<p>a.construct(p, args)
+<p>a.construct(p, args)<br>
 p是指针，args是对象的构造函数，用来构造对象</p>
 </blockquote>
 <blockquote>
-<p>a.destroy(p)
+<p>a.destroy(p)<br>
 对p指向的对象执行析构函数</p>
 </blockquote>
 
@@ -260,6 +260,15 @@ p是指针，args是对象的构造函数，用来构造对象</p>
 
 
 <script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        tags: 'ams',
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
 
 
 

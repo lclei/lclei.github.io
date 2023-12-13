@@ -21,12 +21,30 @@ Intervals
 Intervals are represented by a pair of integers in the form of an array. The first value of the interval will always be less than the second value. Interval example: [1, 5] is an interval from 1 to 5. The length of this interval is 4.
 Overlapping Intervals
 List containing overlapping intervals:
- [ [1,4], [7, 10], [3, 5] ]
+ [
+[1,4],
+[7, 10],
+[3, 5]
+]
  The sum of the lengths of these intervals is 7. Since [1, 4] and [3, 5] overlap, we can treat the interval as [1, 5], which has a length of 4.
 Examples:
- sum_intervals( { {1,2}, {6, 10}, {11, 15} } ); // =&amp;gt; 9
-  sum_intervals( { {1,4}, {7, 10}, {3, 5} } ); // =&amp;gt; 7
-  sum_intervals( { {1,5}, {10, 20}, {1, 6}, {16, 19}, {5, 11} } ); // =&amp;gt; 19
+ sum_intervals( {
+{1,2},
+{6, 10},
+{11, 15}
+} ); // =&amp;gt; 9
+  sum_intervals( {
+{1,4},
+{7, 10},
+{3, 5}
+} ); // =&amp;gt; 7
+  sum_intervals( {
+{1,5},
+{10, 20},
+{1, 6},
+{16, 19},
+{5, 11}
+} ); // =&amp;gt; 19
  " /><meta name="keywords" content="lclei, blog, code" />
 
 
@@ -285,35 +303,35 @@ sum_intervals( {
 <p>Overlapping Intervals</p>
 <p>List containing overlapping intervals:</p>
 <blockquote>
-<p>[
-[1,4],
-[7, 10],
-[3, 5]
+<p>[<br>
+[1,4],<br>
+[7, 10],<br>
+[3, 5]<br>
 ]</p>
 </blockquote>
 <p>The sum of the lengths of these intervals is 7. Since [1, 4] and [3, 5] overlap, we can treat the interval as [1, 5], which has a length of 4.</p>
 <p>Examples:</p>
 <blockquote>
-<p>sum_intervals( {
-{1,2},
-{6, 10},
-{11, 15}
+<p>sum_intervals( {<br>
+{1,2},<br>
+{6, 10},<br>
+{11, 15}<br>
 } ); // =&gt; 9</p>
 </blockquote>
 <blockquote>
-<p>sum_intervals( {
-{1,4},
-{7, 10},
-{3, 5}
+<p>sum_intervals( {<br>
+{1,4},<br>
+{7, 10},<br>
+{3, 5}<br>
 } ); // =&gt; 7</p>
 </blockquote>
 <blockquote>
-<p>sum_intervals( {
-{1,5},
-{10, 20},
-{1, 6},
-{16, 19},
-{5, 11}
+<p>sum_intervals( {<br>
+{1,5},<br>
+{10, 20},<br>
+{1, 6},<br>
+{16, 19},<br>
+{5, 11}<br>
 } ); // =&gt; 19</p>
 </blockquote>
 </blockquote>
@@ -324,8 +342,8 @@ sum_intervals( {
 <li>将limits里对应的条目删去，在重合的条目中寻找最小的下限和最大的上限，插入limits中</li>
 <li>最后计算intervals</li>
 </ol>
-<p>我在自己的ide中运行正常，但是在codewars提交之后在某些情况下出错，code139，是越界之类的问题。
-一开始我是用vector来存储limits的，由于涉及到删除元素的问题，特意还用overlap来记录迭代器，循环之后一起删除，经过排除还是发现删除元素后迭代器失效的问题，如上第3步。于是改用list。
+<p>我在自己的ide中运行正常，但是在codewars提交之后在某些情况下出错，code139，是越界之类的问题。<br>
+一开始我是用vector来存储limits的，由于涉及到删除元素的问题，特意还用overlap来记录迭代器，循环之后一起删除，经过排除还是发现删除元素后迭代器失效的问题，如上第3步。于是改用list。<br>
 这次的经历更深刻的告诉我要注意迭代器失效的问题。</p>
 <p>具体代码：</p>
 <div class="highlight"><div class="chroma">
@@ -584,6 +602,15 @@ sum_intervals( {
 
 
 <script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        tags: 'ams',
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
 
 
 

@@ -146,19 +146,19 @@
 </div>
     <div class="post-content">
       <p>在刷leetcode的时候，想使用c++20的范围库，体验一下函数式编程的快乐。这一题是leetcode 300题。</p>
-<p><a href="https://leetcode.cn/problems/longest-increasing-subsequence/">300. Longest Increasing Subsequence</a>
+<p><a href="https://leetcode.cn/problems/longest-increasing-subsequence/">300. Longest Increasing Subsequence</a><br>
 Given an integer array <code>nums</code>, return <em>the length of the longest <strong>strictly increasing</strong></em> <em><strong>subsequence</strong></em></p>
 <p><strong>Example 1:</strong></p>
-<p><strong>Input:</strong> nums = [10,9,2,5,3,7,101,18]
-<strong>Output:</strong> 4
+<p><strong>Input:</strong> nums = [10,9,2,5,3,7,101,18]<br>
+<strong>Output:</strong> 4<br>
 <strong>Explanation:</strong> The longest increasing subsequence is [2,3,7,101], therefore the length is 4.</p>
 <p><strong>Example 2:</strong></p>
-<p><strong>Input:</strong> nums = [0,1,0,3,2,3]
+<p><strong>Input:</strong> nums = [0,1,0,3,2,3]<br>
 <strong>Output:</strong> 4</p>
 <p><strong>Example 3:</strong></p>
-<p><strong>Input:</strong> nums = [7,7,7,7,7,7,7]
+<p><strong>Input:</strong> nums = [7,7,7,7,7,7,7]<br>
 <strong>Output:</strong> 1</p>
-<p>有两种思路来做，现在用动态规划的方法实现：
+<p>有两种思路来做，现在用动态规划的方法实现：<br>
 dp[i]是<strong>以nums[i]结尾</strong>的最长递增子序列的长度，注意必须是以nums[i]结尾，那么递归公式是</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -276,7 +276,7 @@ dp4 -&gt; max : max_element
       |                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 </code></pre></td></tr></table>
 </div>
-</div><p>错误显示该类型<code>std::ranges::borrowed_iterator_t</code>是不能解引用的。
+</div><p>错误显示该类型<code>std::ranges::borrowed_iterator_t</code>是不能解引用的。<br>
 从cppreference网站上查询像<code>std::ranges::max_element</code>， <code>std::ranges::lower_bound</code>这一类的算法返回的都是<code>std::ranges::borrowed_iterator_t</code>类型。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -317,8 +317,8 @@ concept borrowed_range =
 <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="o">*</span><span class="n">ranges</span><span class="o">::</span><span class="n">max_element</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>这里还有一个问题，max_element在Range为空时，返回的是rangs::begin(r)。想在一行写完，这点逻辑也不好表示。
-因此C++的函数式编程在最后消费迭代器的时候，写法不是很便利。
+</div><p>这里还有一个问题，max_element在Range为空时，返回的是rangs::begin(r)。想在一行写完，这点逻辑也不好表示。<br>
+因此C++的函数式编程在最后消费迭代器的时候，写法不是很便利。<br>
 在Rust中，相似的写法是</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -358,7 +358,7 @@ concept borrowed_range =
 </span><span class="w"></span><span class="p">}</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><p>Rust中迭代器的fp风格就比较自然，最后消费迭代器的max方法，也是能返回Option(T)，可以直接处理容器为空的情况了。
+</div><p>Rust中迭代器的fp风格就比较自然，最后消费迭代器的max方法，也是能返回Option(T)，可以直接处理容器为空的情况了。<br>
 更进一步，如果不想两次循环dp的话，希望直接在第一次给dp赋值时，直接求出最大值，但是这样写显然会遭遇了闭包捕获不可变引用与已有可变引用冲突的问题：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -539,6 +539,15 @@ concept borrowed_range =
 
 
 <script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        tags: 'ams',
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
 
 
 

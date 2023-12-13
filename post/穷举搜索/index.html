@@ -16,7 +16,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="lclei" /><meta name="description" content="实质是创建一个状态树，边建立边剪枝，得到最终状态输出 步骤有：
+<meta name="author" content="lclei" /><meta name="description" content="实质是创建一个状态树，边建立边剪枝，得到最终状态输出
+步骤有：
  列出表示状态的数据结构 列出在状态之间迁移的动作的数据结构 列出两个状态转换的所有动作列表 创建一个deque存储搜索的状态 从deque尾端取出状态，判断是否是最终状态，是的话打印当前deque，进行搜索search，循环所有动作，执行动作searchOnOneAction 判断新状态是否有效，有效则加入deque，继续递归调用搜索 " /><meta name="keywords" content="lclei, blog, code" />
 
 
@@ -173,7 +174,7 @@
   </div>
 </div>
     <div class="post-content">
-      <p>实质是创建一个状态树，边建立边剪枝，得到最终状态输出
+      <p>实质是创建一个状态树，边建立边剪枝，得到最终状态输出<br>
 步骤有：</p>
 <ol>
 <li>列出表示状态的数据结构</li>
@@ -185,10 +186,10 @@
 </ol>
 <p>有很多问题用到穷举搜索，比如过河问题</p>
 <blockquote>
-<p>三个和尚和三个妖怪过河
-船只能载两个
-任何时候只要妖怪数量大于和尚数量
-妖怪就要吃掉和尚
+<p>三个和尚和三个妖怪过河<br>
+船只能载两个<br>
+任何时候只要妖怪数量大于和尚数量<br>
+妖怪就要吃掉和尚<br>
 求解过河方案</p>
 </blockquote>
 <p>这个问题首先确定状态的数据结构，状态就是两岸monk和monster的数量，同时有一些配套操作</p>
@@ -883,6 +884,15 @@ boat||
 
 
 <script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        tags: 'ams',
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
 
 
 

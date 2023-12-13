@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on lclei blog</title>
+    <link>http://localhost:1313/tags/python/</link>
+    <description>Recent content in python on lclei blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 12 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>IFS生成分形图案</title>
+      <link>http://localhost:1313/post/fractal_ifs/</link>
+      <pubDate>Tue, 12 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/fractal_ifs/</guid>
+      <description>最近看到一种分形图案hexaflask，其介绍可以在wiki看到，尝试使用python来生成这个图案。 IFS 生成方法叫做IFS，迭代函数系统。I</description>
+    </item>
+    
+  </channel>
+</rss>

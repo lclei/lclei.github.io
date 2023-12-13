@@ -17,7 +17,8 @@
 
 
 <meta name="author" content="lclei" /><meta name="description" content="线程同步2 时间锁
-1 2 3  #include &amp;lt;pthread.h&amp;gt; #include &amp;lt;time.h&amp;gt; int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct timespec *restrict tsptr);   愿意等待timespec描述的时间，达到时间返回错误码ETIMEOUT 一个例子
+1 2 3  #include &amp;lt;pthread.h&amp;gt; #include &amp;lt;time.h&amp;gt; int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct timespec *restrict tsptr);   愿意等待timespec描述的时间，达到时间返回错误码ETIMEOUT
+一个例子
 " /><meta name="keywords" content="lclei, blog, code" />
 
 
@@ -210,7 +211,7 @@ int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct times
 int pthread_mutex_timedlock(pthread_mutex_t * restrict mutex, const struct timespec *restrict tsptr);
 </code></pre></td></tr></table>
 </div>
-</div><p>愿意等待timespec描述的时间，达到时间返回错误码ETIMEOUT
+</div><p>愿意等待timespec描述的时间，达到时间返回错误码ETIMEOUT<br>
 一个例子</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -426,6 +427,15 @@ can&#39;t lock mutex again:Connection timed out
 
 
 <script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        tags: 'ams',
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
 
 
 
