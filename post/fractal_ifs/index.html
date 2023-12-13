@@ -49,7 +49,7 @@
 <meta itemprop="name" content="IFS生成分形图案">
 <meta itemprop="description" content="最近看到一种分形图案hexaflask，其介绍可以在wiki看到，尝试使用python来生成这个图案。 IFS 生成方法叫做IFS，迭代函数系统。I"><meta itemprop="datePublished" content="2023-12-12T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-12-13T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1166">
+<meta itemprop="wordCount" content="1163">
 <meta itemprop="keywords" content="fractal,python," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="IFS生成分形图案"/>
 <meta name="twitter:description" content="最近看到一种分形图案hexaflask，其介绍可以在wiki看到，尝试使用python来生成这个图案。 IFS 生成方法叫做IFS，迭代函数系统。I"/>
@@ -146,17 +146,6 @@
     <li>
       <ul>
         <li><a href="#ifs">IFS</a></li>
-      </ul>
-    </li>
-    <li><a href="#right">生成方法叫做IFS，迭代函数系统。IFS方法通过迭代的方式生成一系列的点(x, y)，最后把这些点画出来即可。每次迭代是通过叫做IFS码表的东西，从$(x_k, y_k)$得到$(x_{k+1}, x_{k+1})$：<br>
-$$<br>
-\left[<br>
-\begin{matrix}<br>
-x_{k+1}\<br>
-y_{k+1}\<br>
-\end{matrix}<br>
-\right]</a>
-      <ul>
         <li><a href="#sierpinski">Sierpinski</a></li>
         <li><a href="#hexaflake">hexaflake</a></li>
         <li><a href="#参考">参考</a></li>
@@ -169,31 +158,31 @@ y_{k+1}\<br>
     <div class="post-content">
       <p>最近看到一种分形图案hexaflask，其介绍可以在<a href="https://handwiki.org/wiki/Hexaflake">wiki</a>看到，尝试使用python来生成这个图案。</p>
 <h2 id="ifs">IFS</h2>
-<h1 id="right">生成方法叫做IFS，迭代函数系统。IFS方法通过迭代的方式生成一系列的点(x, y)，最后把这些点画出来即可。每次迭代是通过叫做IFS码表的东西，从$(x_k, y_k)$得到$(x_{k+1}, x_{k+1})$：<br>
-$$<br>
+<p>生成方法叫做IFS，迭代函数系统。IFS方法通过迭代的方式生成一系列的点(x, y)，最后把这些点画出来即可。每次迭代是通过叫做IFS码表的东西，从$(x_k, y_k)$得到$(x_{k+1}, x_{k+1})$：</p>
+<p>$$<br>
 \left[<br>
 \begin{matrix}<br>
-x_{k+1}\<br>
-y_{k+1}\<br>
+x_{k+1}\\<br>
+y_{k+1}\\<br>
 \end{matrix}<br>
-\right]</h1>
-<p>\left[<br>
+\right] =<br>
+\left[<br>
 \begin{matrix}<br>
-a&amp;b\<br>
-c&amp;d\<br>
+a&amp;b\\<br>
+c&amp;d\\<br>
 \end{matrix}<br>
 \right]<br>
 \left[<br>
 \begin{matrix}<br>
-x_{k}\<br>
-y_{k}\<br>
+x_{k}\\<br>
+y_{k}\\<br>
 \end{matrix}<br>
 \right]<br>
 +<br>
 \left[<br>
 \begin{matrix}<br>
-e\<br>
-f\<br>
+e\\<br>
+f\\<br>
 \end{matrix}<br>
 \right]<br>
 $$</p>
@@ -202,21 +191,21 @@ $$</p>
 $$<br>
 \left[<br>
 \begin{matrix}<br>
-a&amp;b\<br>
-c&amp;d\<br>
+a&amp;b\\<br>
+c&amp;d\\<br>
 \end{matrix}<br>
 \right] =<br>
 \left[<br>
 \begin{matrix}<br>
-rcos\theta&amp;-ssin\phi\<br>
-rsin\theta&amp;scos\phi\<br>
+rcos\theta&amp;-ssin\phi\\<br>
+rsin\theta&amp;scos\phi\\<br>
 \end{matrix}<br>
 \right]<br>
 $$<br>
 其中$r, s$分别是x和y轴的缩放系数，$\theta$，$\phi$是x，y轴旋转的角度。</p>
 <h2 id="sierpinski">Sierpinski</h2>
 <p>Sierpinski分形是一种简单的分形，用一个简单的Sierpinski分形来介绍IFS码表怎么获得。<br>
-![[/img/sierpinski.png]]</p>
+<img src="/img/sierpinski.png" alt=""></p>
 <p>示意图中可以看出，每一步都做了如下操作：</p>
 <ol>
 <li>把整体大正方形沿x, y方向缩小1/2，然后放在三个位置</li>
@@ -268,10 +257,10 @@ IFS表用来表示三个位置用到的是概率，在一次迭代中，平移�
 </tbody>
 </table>
 <p>最后生成的图形是<br>
-![[/img/ifs_sierpinski.png]]</p>
+<img src="/img/ifs_sierpinski.png" alt=""></p>
 <h2 id="hexaflake">hexaflake</h2>
 <p>同样的，根据hexaflake的图形，可以总结其迭代中的变换。</p>
-<p>![[/img/hexagon.png]]</p>
+<p><img src="/img/hexagon.png" alt=""></p>
 <p>设原正六边形正对的顶点到顶点的长度l_pp是1，那么，边长是1/2，正对的边到边距离l_ee是cos(pi/6)。<br>
 首先可以看出一个大的正六边形，迭代是分成七个小正六边形，缩小的比例是1/3，无旋转。</p>
 <p>编号1位置，向上平移了一个小六边形的边长，可以计算出边长是1/6。<code>f=1/6</code>。<br>
@@ -446,7 +435,7 @@ IFS表用来表示三个位置用到的是概率，在一次迭代中，平移�
 </code></pre></td></tr></table>
 </div>
 </div><p>生成的图形是<br>
-![/img/ifs_hexaflake.png]</p>
+<img src="/img/ifs_hexaflake.png" alt=""></p>
 <p>图案中还到处可以看到koch雪花。</p>
 <h2 id="参考">参考</h2>
 <p><a href="https://hanspub.org/journal/PaperInformation.aspx?paperID=23616">基于迭代函数系统的分形植物模拟</a></p>
