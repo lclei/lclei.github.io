@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>docker - lclei blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="lclei" /><meta name="description" content="基本概念 Follow me 根据debian镜像，创建一个sshd服务。本地使用的环境是windows11 docker desktop &#43; WSL2。 docker commit 创建镜像 1 2 # pull debian image and enter bash docker run" /><meta name="keywords" content="lclei, blog, code" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.92.2 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/docker/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.07cd396beabaa8e7888dfdeb1981afff139a5394f3cb79465e70008be0d583a5.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="docker" />
+<meta property="og:description" content="基本概念 Follow me 根据debian镜像，创建一个sshd服务。本地使用的环境是windows11 docker desktop &#43; WSL2。 docker commit 创建镜像 1 2 # pull debian image and enter bash docker run" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/docker/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-01-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-01-07T00:00:00+00:00" />
+
+<meta itemprop="name" content="docker">
+<meta itemprop="description" content="基本概念 Follow me 根据debian镜像，创建一个sshd服务。本地使用的环境是windows11 docker desktop &#43; WSL2。 docker commit 创建镜像 1 2 # pull debian image and enter bash docker run"><meta itemprop="datePublished" content="2024-01-05T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2024-01-07T00:00:00+00:00" />
+<meta itemprop="wordCount" content="710">
+<meta itemprop="keywords" content="docker," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="docker"/>
+<meta name="twitter:description" content="基本概念 Follow me 根据debian镜像，创建一个sshd服务。本地使用的环境是windows11 docker desktop &#43; WSL2。 docker commit 创建镜像 1 2 # pull debian image and enter bash docker run"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">lclei</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">lclei</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">docker</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2024-01-05 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#基本概念">基本概念</a></li>
+        <li><a href="#follow-me">Follow me</a>
+          <ul>
+            <li><a href="#docker-commit-创建镜像">docker commit 创建镜像</a></li>
+            <li><a href="#dockerfile创建镜像">Dockerfile创建镜像</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="基本概念">基本概念</h2>
+<p><img src="//www.plantuml.com/plantuml/png/HOp13SCW34Nldi8Bi40FLGvTX80Rh1ge77l_eaQ1szVxJsyxBQfv5HZ325yzVKZVB0HhOdWYrtWGFZ3_AUxEak62uqszMUH6kWpr1Wi7vQFOtPbIwhMotPrnNxpuFfMlYy3466PZ2MU1ZLhsAZy0" alt=""></p>
+<h2 id="follow-me">Follow me</h2>
+<p>根据debian镜像，创建一个sshd服务。本地使用的环境是windows11 docker desktop + WSL2。</p>
+<h3 id="docker-commit-创建镜像">docker commit 创建镜像</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># pull debian image and enter bash
+docker run -it debian bash
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># get debian version</span>
+root@c8edec741b80:/$ cat /etc/debian_version
+<span class="c1"># add a user and set password</span>
+root@c8edec741b80:/$ adduser fish
+<span class="c1"># replace debian apt source</span>
+root@c8edec741b80:/etc/apt/sources.list.d$ sed -i <span class="s1">&#39;s/deb.debian.org/mirrors.ustc.edu.cn/g&#39;</span> debian.sources
+<span class="c1"># install and run openssh-server</span>
+root@c8edec741b80:~$ apt install openssh-server
+root@c8edec741b80:~$ mkdir /run/sshd
+root@c8edec741b80:~$ /usr/sbin/sshd -D <span class="p">&amp;</span>
+<span class="o">[</span>1<span class="o">]</span> <span class="m">144006</span> 20:47:00
+<span class="c1"># cancel pam access // # session required pam_loginuid.so</span>
+root@c8edec741b80:~$ vim /etc/pam.d/sshd
+<span class="c1"># create run.sh</span>
+	<span class="c1">#! /bin/bash</span>
+	/usr/sbin/sshd -D
+root@c8edec741b80:~$ <span class="nb">exit</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>创建镜像sshd:debian并执行，在终端ssh进行登录</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">docker ps -a
+c8edec741b80   debian        &#34;bash&#34;           16 hours ago    Exited (0) 16 hours ago                             great_galois
+
+docker commit great_galois sshd:debian
+docker images
+REPOSITORY                                                TAG
+  IMAGE ID       CREATED         SIZE
+sshd                                                      debian
+  7caa99dd2f1d   16 hours ago    226MB
+
+docker run -p 10022:22 -d sshd:debian /root/run.sh
+docker ps
+CONTAINER ID   IMAGE         COMMAND          CREATED         STATUS         PORTS                   NAMES
+8eb23c28e68d   sshd:debian   &#34;/root/run.sh&#34;   7 seconds ago   Up 6 seconds   0.0.0.0:10022-&gt;22/tcp   stoic_carver
+
+ssh fish@localhost -p 10022
+fish@localhost&#39;s password:
+Linux 8eb23c28e68d 5.4.72-microsoft-standard-WSL2 #1 SMP Wed Oct 28 23:40:43 UTC 2020 x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+fish@8eb23c28e68d:~$
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="dockerfile创建镜像">Dockerfile创建镜像</h3>
+<p>在新文件夹下，新建如下文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">~/docker-practice/sshd_debian
+$ ls
+Dockerfile  authorized_keys  run.sh
+</code></pre></td></tr></table>
+</div>
+</div><p>Dockerfile内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="k">FROM</span><span class="s"> debian</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="k">MAINTAINER</span><span class="s"> lclei (lichanglei@ustc,edu)</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="k">RUN</span> sed -i <span class="s1">&#39;s/deb.debian.org/mirrors.ustc.edu.cn/g&#39;</span> /etc/apt/sources.list.d/debian.sources<span class="err">
+</span><span class="err"></span><span class="k">RUN</span> apt update<span class="err">
+</span><span class="err"></span><span class="k">RUN</span> apt install -y openssh-server<span class="err">
+</span><span class="err"></span><span class="k">RUN</span> mkdir -p /run/sshd<span class="err">
+</span><span class="err"></span><span class="k">RUN</span> sed -ri <span class="s1">&#39;s/session    required     pam_loginuid.so/#session    required     pam_loginuid.so/g&#39;</span> /etc/pam.d/sshd<span class="err">
+</span><span class="err"></span><span class="k">ADD</span> authorized_keys /root/.ssh/authorized_keys<span class="err">
+</span><span class="err"></span><span class="k">ADD</span> run.sh /run.sh<span class="err">
+</span><span class="err"></span><span class="k">RUN</span> chmod <span class="m">755</span> /run.sh<span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="k">EXPOSE</span><span class="s"> 22</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;/run.sh&#34;</span><span class="p">]</span><span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>authorized_keys内容则是宿主机使用ssh生成的<code>~/.ssh/id_rsa.pub</code>的内容。<br>
+run.sh</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#! /bin/bash
+</span><span class="cp"></span>/usr/sbin/sshd -D
+
+</code></pre></td></tr></table>
+</div>
+</div><p>准备工作已完成，使用docker创建image，在之前的文件夹sshd_debian下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker build -t sshd:dockerfile .
+<span class="o">[</span>+<span class="o">]</span> Building 0.1s <span class="o">(</span>14/14<span class="o">)</span> FINISHED
+
+$ docker run -d -p 10122:22 sshd:dockerfile
+ce272ad7d685610eede4a7f4fe618e2303da4c9e645df392b0e5dba001c2b9b7
+
+$ docker ps
+CONTAINER ID   IMAGE             COMMAND          CREATED          STATUS          PORTS                   NAMES
+ce272ad7d685   sshd:dockerfile   <span class="s2">&#34;/run.sh&#34;</span>        <span class="m">15</span> minutes ago   Up <span class="m">15</span> minutes   0.0.0.0:10122-&gt;22/tcp   hungry_saha
+8eb23c28e68d   sshd:debian       <span class="s2">&#34;/root/run.sh&#34;</span>   <span class="m">2</span> hours ago      Up <span class="m">2</span> hours      0.0.0.0:10022-&gt;22/tcp   stoic_carver
+
+$ ssh root@localhost -p <span class="m">10122</span>
+Linux ce272ad7d685 5.4.72-microsoft-standard-WSL2 <span class="c1">#1 SMP Wed Oct 28 23:40:43 UTC 2020 x86_64</span>
+
+The programs included with the Debian GNU/Linux system are free software<span class="p">;</span>
+the exact distribution terms <span class="k">for</span> each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+root@ce272ad7d685:~#
+
+</code></pre></td></tr></table>
+</div>
+</div><p>与docker commit创建的镜像相同。但是使用Dockerfile明显更方便分发部署。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">lclei</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2024-01-07
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/docker/">docker</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/fractal_ifs/">
+            <span class="next-text nav-default">IFS生成分形图案</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:lclei@mail.ustc.edu.cn" class="iconfont icon-email" title="email"></a>
+      <a href="https://gitee.com/lclei" class="iconfont icon-gitee" title="gitee"></a>
+      <a href="https://gitee.com/lclei" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        tags: 'ams',
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/gh/jmnote/plantuml-encoder@1.2.4/dist/plantuml-encoder.min.js" integrity="sha256-Qsk2KRBCN5qVZX7B+8+2IvQl1Aqc723qV1tBCQaVoqo=" crossorigin="anonymous"></script>
+<script>
+  (function(){
+    let plantumlPrefix = "language-plantuml";
+    Array.prototype.forEach.call(document.querySelectorAll("[class^=" + plantumlPrefix + "]"), function(code){
+      let image = document.createElement("IMG");
+      image.loading = 'lazy'; 
+      image.src = 'http://www.plantuml.com/plantuml/svg/~1' + plantumlEncoder.encode(code.innerText);
+      code.parentNode.insertBefore(image, code);
+      code.style.display = 'none';
+    });
+  })();
+</script>
+
+
+</body>
+</html>

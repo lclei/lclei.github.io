@@ -126,6 +126,47 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/thread4/">线程同步3</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-06-10 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h1 id="线程同步3">线程同步3</h1>
+<p>使用条件变量进行线程同步</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="kt">int</span> <span class="n">pthread_cond_init</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">cond</span><span class="p">;</span>
+                                   <span class="k">const</span> <span class="n">pthread_condattr_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">attr</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">pthread_cond_destroy</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">pthread_cond_wait</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">cond</span><span class="p">,</span>
+                                     <span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">mutex</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="k">struct</span> <span class="n">timespec</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">tsptr</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+    <div class="read-more">
+      <a href="/post/thread4/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/thread2/">线程同步1</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2019-06-09 </span>
@@ -250,25 +291,6 @@
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/allocator/">allocator</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2018-05-09 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      allocator #include &lt;memory&gt; allocator&lt;T&gt; a 定义一个名为a的allocator对象，它可以为类型为T的对象分配内存 a.allocate(n) 分配一段原始的、未构造的内存，保存n个类型为T的对象 a.deallocate(p,n) 释放
-    </div>
-    <div class="read-more">
-      <a href="/post/allocator/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -310,7 +332,7 @@
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
   </span>
 </div>
 

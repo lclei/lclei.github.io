@@ -126,6 +126,31 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/polymorphism/">多态 polymorphism</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-01-11 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h1 id="多态-polymorphism">多态 polymorphism</h1>
+<ul>
+<li>一个接口，多种方法</li>
+<li>使用虚函数实现</li>
+</ul>
+<p>基类成员函数添加了virtual关键字，该函数在执行时绑定。否则在编译时绑定。所以</p>
+<p><strong>基类希望其派生类进行覆盖的函数，定义为虚函数</strong></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/polymorphism/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/smartpointer/">智能指针</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2020-01-11 </span>
@@ -293,34 +318,6 @@ centos                             The official build of CentOS.                
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/">穷举搜索</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-12-08 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>实质是创建一个状态树，边建立边剪枝，得到最终状态输出<br>
-步骤有：</p>
-<ol>
-<li>列出表示状态的数据结构</li>
-<li>列出在状态之间迁移的动作的数据结构</li>
-<li>列出两个状态转换的所有动作列表</li>
-<li>创建一个deque存储搜索的状态</li>
-<li>从deque尾端取出状态，判断是否是最终状态，是的话打印当前deque，进行搜索search，循环所有动作，执行动作searchOnOneAction</li>
-<li>判断新状态是否有效，有效则加入deque，继续递归调用搜索</li>
-</ol>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -362,7 +359,7 @@ centos                             The official build of CentOS.                
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>lclei</span>
   </span>
 </div>
 

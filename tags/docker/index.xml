@@ -6,7 +6,16 @@
     <description>Recent content in docker on lclei blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 08 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>docker</title>
+      <link>http://localhost:1313/post/docker/</link>
+      <pubDate>Fri, 05 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/docker/</guid>
+      <description>基本概念 Follow me 根据debian镜像，创建一个sshd服务。本地使用的环境是windows11 docker desktop + WSL2。 docker commit 创建镜像 1 2 # pull debian image and enter bash docker run</description>
+    </item>
+    
     <item>
       <title>docker1</title>
       <link>http://localhost:1313/post/docker1/</link>

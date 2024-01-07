@@ -6,7 +6,7 @@
     <description>Recent content on lclei blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 12 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
       <link>http://localhost:1313/about/</link>
@@ -16,6 +16,15 @@
       <description>Hugo is a static site engine written in Go.
 It makes use of a variety of open source projects including:
  Cobra Viper J Walter Weatherman Cast  Learn more and contribute on GitHub.</description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>http://localhost:1313/post/docker/</link>
+      <pubDate>Fri, 05 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/docker/</guid>
+      <description>基本概念 Follow me 根据debian镜像，创建一个sshd服务。本地使用的环境是windows11 docker desktop + WSL2。 docker commit 创建镜像 1 2 # pull debian image and enter bash docker run</description>
     </item>
     
     <item>
